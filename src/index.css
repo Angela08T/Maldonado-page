@@ -1,0 +1,120 @@
+/* ── VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --red:    #e8192c;
+  --orange: #f7941d;
+  --yellow: #f9c123;
+  --green:  #39b54a;
+  --teal:   #00a79d;
+  --dark:   #1a1a2e;
+  --gray:   #f5f5f5;
+  --text:   #333333;
+  --white:  #ffffff;
+  --font-main: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+/* ── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  overflow-x: hidden;
+  background: var(--white);
+}
+img  { max-width: 100%; display: block; }
+a    { text-decoration: none; color: inherit; }
+ul   { list-style: none; }
+button { font-family: inherit; }
+
+/* ── SHARED SECTION ────────────────────────────────────────── */
+section { padding: 5rem 5%; }
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--dark);
+  margin-bottom: .8rem;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow));
+  border-radius: 9999px;
+  margin: 0 auto 3rem;
+}
+
+/* ── REVEAL ANIMATION ──────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── SHARED BUTTONS ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: var(--red);
+  color: var(--white);
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .85rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background .3s, transform .3s, box-shadow .3s;
+}
+.btn-primary:hover {
+  background: #c8001c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(232,25,44,.4);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .75rem 1.8rem;
+  border-radius: 9999px;
+  background: transparent;
+  cursor: pointer;
+  transition: background .3s, color .3s, transform .3s;
+}
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--green);
+  transform: translateY(-2px);
+}
+
+/* ── CARD SHARED ────────────────────────────────────────────── */
+.card-link {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  transition: gap .3s;
+}
+.card-link:hover { gap: .8rem; }

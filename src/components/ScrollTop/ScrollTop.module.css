@@ -1,0 +1,21 @@
+.btn {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  z-index: 500;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .3s, visibility .3s, transform .3s, background .3s;
+  box-shadow: 0 4px 15px rgba(232,25,44,.4);
+}
+.btn.show { opacity: 1; visibility: visible; transform: none; }
+.btn:hover { background: #c8001c; }
