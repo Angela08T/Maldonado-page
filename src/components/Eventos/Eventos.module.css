@@ -1,0 +1,197 @@
+.section {
+  background: var(--white);
+  padding: 0 5% 4rem;
+}
+
+/* ── Header row ──────────────────────────────────────────────── */
+.topRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.eyebrow {
+  display: block;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: .3rem;
+}
+
+.titulo {
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  text-transform: uppercase;
+  color: var(--dark);
+  letter-spacing: 1px;
+}
+
+.verTodosBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(0,167,157,.08);
+  border: 1px solid rgba(0,167,157,.25);
+  border-radius: 9999px;
+  padding: .45rem 1rem;
+  cursor: pointer;
+  transition: background .25s, transform .2s;
+}
+.verTodosBtn:hover { background: rgba(0,167,157,.15); transform: translateX(2px); }
+
+/* ── Grid ────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+/* ── Card ────────────────────────────────────────────────────── */
+.card {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: 16px;
+  padding: 1.4rem;
+  transition: transform .3s, box-shadow .3s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+/* date block */
+.dateBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  border-radius: 12px;
+  border: 1.5px solid;
+  padding: .7rem .5rem;
+  flex-shrink: 0;
+}
+.dia {
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.mes {
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: .15rem;
+}
+
+/* content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.zona {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.nombre {
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: .92rem;
+  text-transform: uppercase;
+  color: var(--dark);
+  line-height: 1.25;
+  letter-spacing: .3px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .74rem;
+  color: #888;
+}
+.meta svg { flex-shrink: 0; color: #bbb; }
+
+.interesaBtn {
+  margin-top: .3rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1.5px solid;
+  border-radius: 9999px;
+  padding: .38rem .9rem;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: opacity .2s, transform .2s;
+}
+.interesaBtn:hover { opacity: .75; transform: translateY(-1px); }
+
+/* ── Ver más (mobile) ────────────────────────────────────────── */
+.verMasWrap {
+  display: none;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.verMasBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: var(--font-body);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(0,167,157,.08);
+  border: 1px solid rgba(0,167,157,.25);
+  border-radius: 9999px;
+  padding: .6rem 1.4rem;
+  cursor: pointer;
+  transition: background .25s;
+}
+.verMasBtn:hover { background: rgba(0,167,157,.15); }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; }
+  .verTodosBtn { display: none; }
+  .verMasWrap { display: flex; }
+}
+@media (max-width: 540px) {
+  .card { flex-direction: column; gap: .8rem; }
+  .dateBlock { flex-direction: row; gap: .4rem; min-width: unset; width: fit-content; padding: .4rem .8rem; }
+  .dia { font-size: 1.4rem; }
+}

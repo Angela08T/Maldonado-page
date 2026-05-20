@@ -20,7 +20,7 @@ body {
   font-family: var(--font-body);
   color: var(--text);
   overflow-x: hidden;
-  background: var(--white);
+  background: #f8f0e0;
 }
 img  { max-width: 100%; display: block; }
 a    { text-decoration: none; color: inherit; }

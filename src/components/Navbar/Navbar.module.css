@@ -8,7 +8,7 @@
   justify-content: space-between;
   padding: 0 5%;
   height: 72px;
-  background: transparent;
+  background: #f8f0e0;
   transition: background .4s ease, box-shadow .4s ease;
 }
 .navbar.scrolled {
@@ -65,6 +65,89 @@
 }
 .links a:hover::after { width: 100%; }
 .activeLink::after    { width: 100% !important; }
+
+/* ── Zona button ─────────────────────────────────────────── */
+.zonaBtn {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  border-radius: 9999px;
+  padding: .45rem 1.1rem;
+  cursor: pointer;
+  transition: background .3s, transform .2s, box-shadow .3s;
+  white-space: nowrap;
+}
+.zonaBtn:hover {
+  background: #008f87;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,167,157,.35);
+}
+.zonaBtnActive {
+  background: #008f87;
+  box-shadow: 0 4px 14px rgba(0,167,157,.4);
+}
+.simBtn {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  color: #25d366;
+  border: 1.5px solid #25d366;
+  border-radius: 9999px;
+  padding: .45rem 1.1rem;
+  cursor: pointer;
+  transition: background .3s, color .3s, transform .2s;
+  white-space: nowrap;
+}
+.simBtn:hover {
+  background: #25d366;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.simBtnActive {
+  background: #25d366;
+  color: #fff;
+}
+.simBtnMobile {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  color: #25d366;
+  border: 1.5px solid #25d366;
+  border-radius: 9999px;
+  padding: .7rem 1.4rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background .3s, color .3s;
+}
+.simBtnMobile:hover { background: #25d366; color: #fff; }
+
+.zonaBtnMobile {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  border-radius: 9999px;
+  padding: .7rem 1.4rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background .3s;
+}
+.zonaBtnMobile:hover { background: #008f87; }
 
 /* ── Social ──────────────────────────────────────────────── */
 .social { display: flex; gap: .8rem; }

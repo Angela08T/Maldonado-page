@@ -38,11 +38,30 @@
   object-position: center 40%;
 }
 
+/* ── Badge ───────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  border: 1.5px solid #39C6C8;
+  border-radius: 9999px;
+  padding: .38rem 1rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #39C6C8;
+  background: rgba(57,198,200,0.08);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp .8s .1s forwards;
+}
+
 /* ── Titles ──────────────────────────────────────────────── */
 .titleMain {
   font-family: 'Bebas Neue', var(--font-main);
   font-weight: 900;
-  font-size: clamp(4.5rem, 8vw, 8rem);
+  font-size: clamp(6rem, 11vw, 11rem);
   line-height: .95;
   color: var(--dark);
   letter-spacing: 2px;
@@ -54,15 +73,15 @@
 .titleSub {
   font-family: 'Bebas Neue', var(--font-main);
   font-weight: 900;
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-size: clamp(4.5rem, 7.2vw, 7.2rem);
   line-height: 1.05;
   white-space: nowrap;
   background: linear-gradient(90deg,
     #FF2F6D 0%,
-    #FF8A00 22%,
-    #D6D63A 42%,
-    #7AC943 62%,
-    #39C6C8 82%,
+    #FF8A00 18%,
+    #D6D63A 35%,
+    #7AC943 52%,
+    #39C6C8 68%,
     #39C6C8 100%
   );
   -webkit-background-clip: text;

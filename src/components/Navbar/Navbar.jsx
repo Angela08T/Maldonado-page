@@ -3,14 +3,14 @@ import styles from './Navbar.module.css'
 
 const links = [
   { label: 'Inicio',          href: '#hero' },
-  { label: 'Sobre Maldonado', href: '#gestion' },
+  { label: 'Sobre Maldonado', href: '#sobre' },
   { label: 'Gestión',         href: '#gestion' },
   { label: 'Avances y Obras', href: '#avances' },
   { label: 'Noticias',        href: '#noticias' },
   { label: 'Contacto',        href: '#cta' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ page, setPage }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen]         = useState(false)
   const [active, setActive]     = useState('#hero')
@@ -65,11 +65,28 @@ export default function Navbar() {
                 href={l.href}
                 className={active === l.href ? styles.activeLink : ''}
                 style={{ color: active === l.href ? 'var(--red)' : textColor }}
+                onClick={() => page === 'zona' && setPage('home')}
               >
                 {l.label}
               </a>
             </li>
           ))}
+          <li>
+            <button
+              className={`${styles.zonaBtn} ${page === 'zona' ? styles.zonaBtnActive : ''}`}
+              onClick={() => { setPage('zona'); window.scrollTo({ top: 0 }) }}
+            >
+              Únete a tu Zona
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${styles.simBtn} ${page === 'simpatizantes' ? styles.simBtnActive : ''}`}
+              onClick={() => { setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
+            >
+              Simpatizantes
+            </button>
+          </li>
         </ul>
 
         {/* Social icons */}
@@ -81,7 +98,7 @@ export default function Navbar() {
             { label: 'YouTube',   youtube: true },
           ].map(s => (
             <a key={s.label} href="#" aria-label={s.label}
-              style={{ background: iconBg, color: scrolled ? 'var(--dark)' : 'var(--white)' }}
+              style={{ background: iconBg, color: 'var(--dark)' }}
               className={styles.socialIcon}
             >
               <SocialSvg {...s} />
@@ -104,10 +121,26 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`${styles.mobileMenu} ${open ? styles.menuOpen : ''}`}>
         {links.map(l => (
-          <a key={l.href + l.label} href={l.href} onClick={() => setOpen(false)}>
+          <a
+            key={l.href + l.label}
+            href={l.href}
+            onClick={() => { setOpen(false); page === 'zona' && setPage('home') }}
+          >
             {l.label}
           </a>
         ))}
+        <button
+          className={styles.zonaBtnMobile}
+          onClick={() => { setOpen(false); setPage('zona'); window.scrollTo({ top: 0 }) }}
+        >
+          Únete a tu Zona
+        </button>
+        <button
+          className={styles.simBtnMobile}
+          onClick={() => { setOpen(false); setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
+        >
+          Simpatizantes
+        </button>
       </div>
     </>
   )

@@ -1,21 +1,38 @@
 .section { background: #f5f5f5; }
 
-.carouselWrapper { overflow-x: hidden; overflow-y: visible; padding-bottom: 1.8rem; }
+.carouselWrapper {
+  overflow: hidden;
+  padding-bottom: 1.8rem;
+  /* espacio arriba para que el iconWrap no quede cortado */
+  padding-top: 1.8rem;
+  margin-top: -1rem;
+}
+
+/* ── Track / pasarela ─────────────────────────────────────────── */
 .track {
   display: flex;
   gap: 1rem;
-  transition: transform .5s cubic-bezier(.4,0,.2,1);
-  will-change: transform;
+  width: max-content;
+  animation: marquee var(--dur, 28s) linear infinite;
 }
 
-/* â”€â”€ Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.carouselWrapper:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--shift, -1800px)); }
+}
+
+/* ── Card ──────────────────────────────────────────────────────── */
 .card {
   background: var(--white);
   border-radius: 16px;
   overflow: visible;
   box-shadow: 0 4px 24px rgba(0,0,0,.08);
   flex-shrink: 0;
-  transition: transform .3s, box-shadow .3s, opacity .7s ease;
+  transition: transform .3s, box-shadow .3s;
   display: flex;
   flex-direction: column;
 }
@@ -24,7 +41,7 @@
   box-shadow: 0 14px 40px rgba(0,0,0,.14);
 }
 
-/* â”€â”€ Image area â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Image area ────────────────────────────────────────────────── */
 .cardImg {
   position: relative;
   overflow: hidden;
@@ -39,7 +56,7 @@
 }
 .card:hover .cardImg img { transform: scale(1.07); }
 
-/* â”€â”€ Badge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Badge ─────────────────────────────────────────────────────── */
 .badge {
   position: absolute;
   top: 14px; left: 14px;
@@ -57,7 +74,7 @@
 .teal   { background: var(--teal); }
 .gray   { background: #777; }
 
-/* â”€â”€ Icon circle (floating over image bottom) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Icon circle (floating over image) ────────────────────────── */
 .iconWrap {
   position: relative;
   width: 54px; height: 54px;
@@ -77,7 +94,7 @@
 .icon_green  { background: var(--green); }
 .icon_teal   { background: var(--teal); }
 
-/* â”€â”€ Card body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Card body ─────────────────────────────────────────────────── */
 .cardBody {
   padding: 2.4rem 1.4rem 1.4rem;
   display: flex;
@@ -101,7 +118,7 @@
   flex: 1;
 }
 
-/* â”€â”€ Link â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Link ──────────────────────────────────────────────────────── */
 .link {
   display: inline-flex;
   align-items: center;
@@ -118,21 +135,3 @@
 .link_orange { color: var(--orange); }
 .link_green  { color: var(--green); }
 .link_teal   { color: var(--teal); }
-
-/* â”€â”€ Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-.controls { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-top: 2.5rem; }
-.btn {
-  width: 50px; height: 50px;
-  border-radius: 50%;
-  background: var(--red);
-  border: none;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 18px rgba(200,0,40,.30);
-  transition: background .25s, transform .25s, box-shadow .25s;
-}
-.btn:hover { background: #b5001e; transform: scale(1.12); box-shadow: 0 6px 24px rgba(200,0,40,.42); }
-.btn:active { transform: scale(.94); }

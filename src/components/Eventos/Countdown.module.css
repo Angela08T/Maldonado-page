@@ -1,0 +1,49 @@
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .6rem .8rem;
+  background: rgba(0,0,0,.03);
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.label {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #bbb;
+  white-space: nowrap;
+}
+.units {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .05rem;
+}
+.val {
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.lbl {
+  font-size: .5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ccc;
+}
+.done {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .7;
+}

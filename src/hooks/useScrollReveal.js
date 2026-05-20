@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-export function useScrollReveal() {
+export function useScrollReveal(deps = []) {
   useEffect(() => {
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -13,5 +13,6 @@ export function useScrollReveal() {
     )
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
     return () => obs.disconnect()
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps)
 }
