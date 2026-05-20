@@ -4,9 +4,7 @@ import heroImg from '../../assets/hero.png'
 export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
-      <div className={styles.rainbow} />
-
-      <div className={styles.content}>
+<div className={styles.content}>
         <h1 className={styles.titleMain}>MALDONADO</h1>
         <h1 className={styles.titleSub}>AVANZA CONTIGO</h1>
         <p className={styles.desc}>

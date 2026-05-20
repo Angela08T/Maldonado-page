@@ -5,28 +5,7 @@
   align-items: center;
   overflow: hidden;
   background: #f8f0e0;
-}
-
-/* ── Rainbow arc ──────────────────────────────────────────── */
-.rainbow {
-  position: absolute;
-  top: -28%;
-  right: -13%;
-  width: 64vw;
-  height: 64vw;
-  border-radius: 50%;
-  background: conic-gradient(from 195deg,
-    transparent   0deg,
-    #e8192c       5deg,
-    #f7941d      42deg,
-    #f9c123      72deg,
-    #39b54a     102deg,
-    #00a79d     120deg,
-    transparent  136deg
-  );
-  -webkit-mask: radial-gradient(circle at center, transparent 57%, black 58%);
-  mask: radial-gradient(circle at center, transparent 57%, black 58%);
-  z-index: 3;
+  padding: 0 !important;
 }
 
 /* ── Content ─────────────────────────────────────────────── */
@@ -49,7 +28,7 @@
   width: 58%;
   overflow: hidden;
   z-index: 1;
-  border-radius: 50% 0 0 15% / 60% 0 0 25%;
+  border-radius: 0 0 0 45% / 0 0 0 55%;
 }
 
 .heroImg {
@@ -61,9 +40,9 @@
 
 /* ── Titles ──────────────────────────────────────────────── */
 .titleMain {
-  font-family: var(--font-main);
+  font-family: 'Bebas Neue', var(--font-main);
   font-weight: 900;
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(4.5rem, 8vw, 8rem);
   line-height: .95;
   color: var(--dark);
   letter-spacing: 2px;
@@ -73,15 +52,23 @@
 }
 
 .titleSub {
-  font-family: var(--font-main);
+  font-family: 'Bebas Neue', var(--font-main);
   font-weight: 900;
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
   line-height: 1.05;
-  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--green));
+  white-space: nowrap;
+  background: linear-gradient(90deg,
+    #FF2F6D 0%,
+    #FF8A00 22%,
+    #D6D63A 42%,
+    #7AC943 62%,
+    #39C6C8 82%,
+    #39C6C8 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp .8s .5s forwards;
@@ -112,5 +99,4 @@
   .hero { flex-direction: column; padding-top: 100px; padding-bottom: 2rem; }
   .content { flex: none; max-width: 100%; padding: 0 5%; margin-top: 0; }
   .imageWrapper { position: relative; width: 100%; height: 52vw; }
-  .rainbow { width: 100vw; height: 100vw; top: -35%; right: -25%; }
 }

@@ -29,6 +29,7 @@ button { font-family: inherit; }
 
 /* ── SHARED SECTION ────────────────────────────────────────── */
 section { padding: 5rem 5%; }
+section#hero { padding: 0; }
 
 .section-title {
   text-align: center;

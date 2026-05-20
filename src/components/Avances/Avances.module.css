@@ -1,93 +1,138 @@
-.section { background: var(--gray); }
+.section { background: #f5f5f5; }
 
-.carouselWrapper { overflow: hidden; }
+.carouselWrapper { overflow-x: hidden; overflow-y: visible; padding-bottom: 1.8rem; }
 .track {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   transition: transform .5s cubic-bezier(.4,0,.2,1);
   will-change: transform;
 }
 
+/* â”€â”€ Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .card {
   background: var(--white);
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,.07);
+  overflow: visible;
+  box-shadow: 0 4px 24px rgba(0,0,0,.08);
   flex-shrink: 0;
   transition: transform .3s, box-shadow .3s, opacity .7s ease;
+  display: flex;
+  flex-direction: column;
 }
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,.15);
+  box-shadow: 0 14px 40px rgba(0,0,0,.14);
 }
 
+/* â”€â”€ Image area â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .cardImg {
   position: relative;
   overflow: hidden;
-  height: 200px;
+  height: 210px;
+  border-radius: 16px 16px 0 0;
+  flex-shrink: 0;
 }
 .cardImg img {
   width: 100%; height: 100%;
   object-fit: cover;
   transition: transform .5s ease;
 }
-.card:hover .cardImg img { transform: scale(1.08); }
+.card:hover .cardImg img { transform: scale(1.07); }
 
+/* â”€â”€ Badge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .badge {
   position: absolute;
-  top: 12px; left: 12px;
-  padding: .3rem .8rem;
+  top: 14px; left: 14px;
+  padding: .28rem .85rem;
   border-radius: 9999px;
-  font-size: .7rem;
+  font-size: .68rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--white);
 }
-.green  { background: var(--green); }
+.red    { background: var(--red); }
 .orange { background: var(--orange); }
+.green  { background: var(--green); }
 .teal   { background: var(--teal); }
-.gray   { background: #999; }
+.gray   { background: #777; }
 
+/* â”€â”€ Icon circle (floating over image bottom) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .iconWrap {
-  position: absolute;
-  bottom: -20px; right: 16px;
-  width: 44px; height: 44px;
+  position: relative;
+  width: 54px; height: 54px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  border: 3px solid var(--white);
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  margin-top: -27px;
+  margin-left: 16px;
+  z-index: 2;
+  flex-shrink: 0;
 }
 .icon_red    { background: var(--red); }
 .icon_orange { background: var(--orange); }
 .icon_green  { background: var(--green); }
 .icon_teal   { background: var(--teal); }
 
-.cardBody { padding: 1.8rem 1.2rem 1.4rem; }
+/* â”€â”€ Card body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.cardBody {
+  padding: 2.4rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .cardBody h3 {
   font-family: var(--font-main);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: .95rem;
   text-transform: uppercase;
   letter-spacing: .5px;
-  margin-bottom: .6rem;
+  margin-bottom: .55rem;
   color: var(--dark);
 }
-.cardBody p { font-size: .85rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
+.cardBody p {
+  font-size: .84rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+  flex: 1;
+}
 
-.controls { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+/* â”€â”€ Link â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: gap .3s;
+}
+.link:hover { gap: .75rem; }
+
+.link_red    { color: var(--red); }
+.link_orange { color: var(--orange); }
+.link_green  { color: var(--green); }
+.link_teal   { color: var(--teal); }
+
+/* â”€â”€ Controls â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.controls { display: flex; justify-content: center; align-items: center; gap: 1.2rem; margin-top: 2.5rem; }
 .btn {
-  width: 44px; height: 44px;
+  width: 50px; height: 50px;
   border-radius: 50%;
-  background: var(--white);
-  border: 2px solid var(--red);
-  color: var(--red);
-  font-size: 1.1rem;
+  background: var(--red);
+  border: none;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background .3s, color .3s, transform .3s;
+  box-shadow: 0 4px 18px rgba(200,0,40,.30);
+  transition: background .25s, transform .25s, box-shadow .25s;
 }
-.btn:hover { background: var(--red); color: var(--white); transform: scale(1.1); }
+.btn:hover { background: #b5001e; transform: scale(1.12); box-shadow: 0 6px 24px rgba(200,0,40,.42); }
+.btn:active { transform: scale(.94); }
