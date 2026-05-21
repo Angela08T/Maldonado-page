@@ -13,6 +13,7 @@ import CTA            from './components/CTA/CTA'
 import Footer         from './components/Footer/Footer'
 import ScrollTop      from './components/ScrollTop/ScrollTop'
 import Zona           from './components/Zona/Zona'
+import WalkingCharacter from './components/WalkingCharacter/WalkingCharacter'
 import Simpatizantes  from './components/Simpatizantes/Simpatizantes'
 import Eventos        from './components/Eventos/Eventos'
 import EventosPage    from './components/Eventos/EventosPage'
@@ -68,6 +69,7 @@ export default function App() {
           <ScrollTop />
         </>
       )}
+      <WalkingCharacter />
     </>
   )
 }
