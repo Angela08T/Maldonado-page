@@ -46,8 +46,9 @@
   border: 1.5px solid #39C6C8;
   border-radius: 9999px;
   padding: .38rem 1rem;
+  font-family: var(--font-data);
   font-size: .72rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 1.5px;
   color: #39C6C8;
   background: rgba(57,198,200,0.08);
@@ -59,19 +60,20 @@
 
 /* ── Titles ──────────────────────────────────────────────── */
 .titleMain {
-  font-family: 'Bebas Neue', var(--font-main);
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(6rem, 11vw, 11rem);
   line-height: .95;
   color: var(--dark);
   letter-spacing: 2px;
+  margin-top: 0.75rem;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp .8s .3s forwards;
 }
 
 .titleSub {
-  font-family: 'Bebas Neue', var(--font-main);
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(4.5rem, 7.2vw, 7.2rem);
   line-height: 1.05;
@@ -94,9 +96,10 @@
 }
 
 .desc {
+  font-family: var(--font-body);
   color: #666;
   font-size: clamp(.85rem, 1.4vw, 1rem);
-  line-height: 1.7;
+  line-height: 1.8;
   max-width: 380px;
   margin: 1.5rem 0 2.5rem;
   opacity: 0;

@@ -17,6 +17,7 @@ import WalkingCharacter from './components/WalkingCharacter/WalkingCharacter'
 import Simpatizantes  from './components/Simpatizantes/Simpatizantes'
 import Eventos        from './components/Eventos/Eventos'
 import EventosPage    from './components/Eventos/EventosPage'
+import Encuestas      from './components/Encuestas/Encuestas'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 export default function App() {
@@ -51,6 +52,8 @@ export default function App() {
         <Simpatizantes onBack={goHome} />
       ) : page === 'eventos' ? (
         <EventosPage onBack={goHome} />
+      ) : page === 'encuestas' ? (
+        <Encuestas onBack={goHome} />
       ) : (
         <>
           <main>

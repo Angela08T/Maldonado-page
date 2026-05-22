@@ -9,8 +9,14 @@
   --gray:   #f5f5f5;
   --text:   #333333;
   --white:  #ffffff;
-  --font-main: 'Montserrat', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  /* ── Tipografía ─────────────────────────────────────── */
+  --font-display:  'Bebas Neue', sans-serif;           /* hero, títulos grandes */
+  --font-heading:  'Plus Jakarta Sans', sans-serif;    /* secciones, tarjetas, navbar */
+  --font-body:     'Inter', sans-serif;                /* párrafos, descripciones */
+  --font-serif:    'Playfair Display', Georgia, serif; /* citas, texto elegante */
+  --font-data:     'Space Grotesk', sans-serif;        /* stats, badges, números */
+  /* alias de compatibilidad */
+  --font-main: 'Plus Jakarta Sans', sans-serif;
 }
 
 /* ── RESET ─────────────────────────────────────────────────── */
@@ -21,6 +27,8 @@ body {
   color: var(--text);
   overflow-x: hidden;
   background: #f8f0e0;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 img  { max-width: 100%; display: block; }
 a    { text-decoration: none; color: inherit; }
@@ -33,11 +41,10 @@ section#hero { padding: 0; }
 
 .section-title {
   text-align: center;
-  font-family: var(--font-main);
-  font-weight: 900;
+  font-family: var(--font-heading);
+  font-weight: 800;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  letter-spacing: 1px;
   color: var(--dark);
   margin-bottom: .8rem;
 }

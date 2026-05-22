@@ -37,19 +37,19 @@ const icons = {
 }
 
 const items = [
-  { iconKey: 'building',  target: 25,  label: 'Obras\nEjecutadas',        color: 'red',    suffix: '+' },
-  { iconKey: 'worker',    target: 15,  label: 'Obras en\nEjecución',      color: 'orange', suffix: '+' },
-  { iconKey: 'people',    target: 100, label: 'Mil Vecinos\nBeneficiados', color: 'green',  suffix: '+' },
-  { iconKey: 'handshake', target: 20,  label: 'Alianzas\nEstratégicas',   color: 'teal',   suffix: '+' },
-  { iconKey: 'chart',     target: 90,  label: 'Compromiso\ncon Maldonado', color: 'teal',   suffix: '%' },
+  { iconKey: 'building',  target: 30,   decimals: 0, label: 'Obras\nEjecutadas',        color: 'red',    suffix: '+' },
+  { iconKey: 'worker',    target: 25,   decimals: 0, label: 'Obras en\nEjecución',      color: 'orange', suffix: '+' },
+  { iconKey: 'people',    target: 1.3,  decimals: 1, label: 'Millones de\nVecinos',     color: 'green',  suffix: '+' },
+  { iconKey: 'handshake', target: 18,   decimals: 0, label: 'Alianzas\nEstratégicas',   color: 'teal',   suffix: '+' },
+  { iconKey: 'chart',     target: 92,   decimals: 0, label: 'Compromiso\ncon Maldonado', color: 'purple', suffix: '%' },
 ]
 
-function animateCounter(el, target, suffix) {
+function animateCounter(el, target, suffix, decimals) {
   let current = 0
   const step = target / 60
   const timer = setInterval(() => {
     current = Math.min(current + step, target)
-    el.textContent = Math.floor(current) + suffix
+    el.textContent = current.toFixed(decimals) + suffix
     if (current >= target) clearInterval(timer)
   }, 20)
 }
@@ -64,7 +64,7 @@ export default function Stats() {
         if (entry.isIntersecting && !animated.current) {
           animated.current = true
           ref.current.querySelectorAll('[data-target]').forEach(el => {
-            animateCounter(el, +el.dataset.target, el.dataset.suffix)
+            animateCounter(el, +el.dataset.target, el.dataset.suffix, +el.dataset.decimals)
           })
         }
       },
@@ -83,7 +83,7 @@ export default function Stats() {
               {icons[item.iconKey]}
             </div>
             <div>
-              <div className={styles.num} data-target={item.target} data-suffix={item.suffix}>0{item.suffix}</div>
+              <div className={styles.num} data-target={item.target} data-suffix={item.suffix} data-decimals={item.decimals}>0{item.suffix}</div>
               <div className={styles.label}>{item.label.split('\n').map((l, j) => <span key={j}>{l}<br/></span>)}</div>
             </div>
           </div>

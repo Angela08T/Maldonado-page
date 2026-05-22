@@ -70,7 +70,7 @@ export default function Gestion() {
 
           <div className={styles.miniStats}>
             <div className={styles.miniStat}>
-              <span className={styles.miniNum}>25<span>+</span></span>
+              <span className={styles.miniNum}>30<span>+</span></span>
               <span className={styles.miniLabel}>Obras ejecutadas</span>
             </div>
             <div className={styles.miniStat}>

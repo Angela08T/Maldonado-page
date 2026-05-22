@@ -65,7 +65,7 @@ export default function Navbar({ page, setPage }) {
                 href={l.href}
                 className={active === l.href ? styles.activeLink : ''}
                 style={{ color: active === l.href ? 'var(--red)' : textColor }}
-                onClick={() => page === 'zona' && setPage('home')}
+                onClick={() => page !== 'home' && setPage('home')}
               >
                 {l.label}
               </a>
@@ -85,6 +85,14 @@ export default function Navbar({ page, setPage }) {
               onClick={() => { setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
             >
               Simpatizantes
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${styles.encuestasBtn} ${page === 'encuestas' ? styles.encuestasBtnActive : ''}`}
+              onClick={() => { setPage('encuestas'); window.scrollTo({ top: 0 }) }}
+            >
+              Encuestas
             </button>
           </li>
         </ul>
@@ -124,7 +132,7 @@ export default function Navbar({ page, setPage }) {
           <a
             key={l.href + l.label}
             href={l.href}
-            onClick={() => { setOpen(false); page === 'zona' && setPage('home') }}
+            onClick={() => { setOpen(false); page !== 'home' && setPage('home') }}
           >
             {l.label}
           </a>
@@ -140,6 +148,12 @@ export default function Navbar({ page, setPage }) {
           onClick={() => { setOpen(false); setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
         >
           Simpatizantes
+        </button>
+        <button
+          className={styles.encuestasBtnMobile}
+          onClick={() => { setOpen(false); setPage('encuestas'); window.scrollTo({ top: 0 }) }}
+        >
+          Encuestas
         </button>
       </div>
     </>

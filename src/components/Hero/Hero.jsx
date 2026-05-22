@@ -11,7 +11,7 @@ export default function Hero() {
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
           </svg>
         </div>
-        <h1 className={styles.titleMain}>JESUS</h1>
+        <h1 className={styles.titleMain}>JESÚS</h1>
         <h1 className={styles.titleSub}>MALDONADO</h1>
         <p className={styles.desc}>
           Trabajamos cada día para construir un distrito<br />

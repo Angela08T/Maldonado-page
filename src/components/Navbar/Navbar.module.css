@@ -25,15 +25,16 @@
   text-decoration: none;
 }
 .logoMain {
-  font-family: var(--font-main);
+  font-family: var(--font-display);
   font-weight: 900;
-  font-size: 1.4rem;
-  letter-spacing: 2px;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
   transition: color .4s;
 }
 .logoSub {
-  font-size: .55rem;
-  font-weight: 600;
+  font-family: var(--font-data);
+  font-size: .52rem;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   transition: color .4s;
@@ -48,7 +49,8 @@
   padding: 0;
 }
 .links a {
-  font-size: .82rem;
+  font-family: var(--font-data);
+  font-size: .75rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -131,6 +133,47 @@
   transition: background .3s, color .3s;
 }
 .simBtnMobile:hover { background: #25d366; color: #fff; }
+
+.encuestasBtn {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  color: #39C6C8;
+  border: 1.5px solid #39C6C8;
+  border-radius: 9999px;
+  padding: .45rem 1.1rem;
+  cursor: pointer;
+  transition: background .3s, color .3s, transform .2s;
+  white-space: nowrap;
+}
+.encuestasBtn:hover {
+  background: #39C6C8;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.encuestasBtnActive {
+  background: #39C6C8;
+  color: #fff;
+}
+.encuestasBtnMobile {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  color: #39C6C8;
+  border: 1.5px solid #39C6C8;
+  border-radius: 9999px;
+  padding: .7rem 1.4rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background .3s, color .3s;
+}
+.encuestasBtnMobile:hover { background: #39C6C8; color: #fff; }
 
 .zonaBtnMobile {
   font-family: var(--font-body);
