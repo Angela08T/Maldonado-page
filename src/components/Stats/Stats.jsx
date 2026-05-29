@@ -37,9 +37,9 @@ const icons = {
 }
 
 const items = [
-  { iconKey: 'building',  target: 30,   decimals: 0, label: 'Obras\nEjecutadas',        color: 'red',    suffix: '+' },
-  { iconKey: 'worker',    target: 25,   decimals: 0, label: 'Obras en\nEjecución',      color: 'orange', suffix: '+' },
-  { iconKey: 'people',    target: 1.3,  decimals: 1, label: 'Millones de\nVecinos',     color: 'green',  suffix: '+' },
+  { iconKey: 'building',  target: 80,   decimals: 0, label: 'Obras\nConcluidas',        color: 'red',    suffix: '' },
+  { iconKey: 'worker',    target: 10,   decimals: 0, label: 'Obras en\nEjecución',      color: 'orange', suffix: '+' },
+  { iconKey: 'people',    target: 1000, decimals: 0, label: 'Vecinos\nBeneficiados',    color: 'green',  suffix: '+' },
   { iconKey: 'handshake', target: 18,   decimals: 0, label: 'Alianzas\nEstratégicas',   color: 'teal',   suffix: '+' },
   { iconKey: 'chart',     target: 92,   decimals: 0, label: 'Compromiso\ncon Maldonado', color: 'purple', suffix: '%' },
 ]

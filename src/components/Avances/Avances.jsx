@@ -1,5 +1,11 @@
 import { useEffect, useRef } from 'react'
 import styles from './Avances.module.css'
+import alamedaImg from '../../assets/Alameda Coronel Althaus.jpeg'
+import marDelSurImg from '../../assets/b.jpg'
+import chalanImg from '../../assets/chalan1.jpg'
+import ecoparkImg from '../../assets/eco1.jpg'
+import eneroImg   from '../../assets/enero1.jpg'
+import plazaImg   from '../../assets/plaza1.jpg'
 
 const BuildingIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -34,59 +40,65 @@ const HomeIcon = () => (
 
 const projects = [
   {
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
-    badge: 'Finalizada', badgeClass: 'red',
-    icon: <BuildingIcon />, iconClass: 'red',
-    title: 'Parque Miraflores',
-    desc: 'Nuevo espacio público para el deporte, la recreación y la familia.',
-    linkClass: 'red',
+    img: eneroImg,
+    badge: 'Finalizada', badgeClass: 'orange',
+    icon: <RoadIcon />, iconClass: 'orange',
+    title: 'La Renovada Av. 13 de Enero',
+    desc: '¡Avenida 13 de Enero es el nuevo orgullo de San Juan de Lurigancho!',
+    linkClass: 'orange',
+    page: 'enero',
   },
   {
-    img: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80',
+    img: plazaImg,
     badge: 'En Ejecución', badgeClass: 'orange',
     icon: <RoadIcon />, iconClass: 'orange',
-    title: 'Mejoramiento Av. Costanera',
-    desc: 'Renovamos pistas, veredas e iluminación para un mejor tránsito.',
+    title: 'Futura Plaza de Armas Mariscal Cáceres',
+    desc: '¡Día histórico para San Juan de Lurigancho!: colocamos primera piedra de Plaza de Armas de Mariscal.',
     linkClass: 'orange',
+    page: 'plaza',
   },
   {
-    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80',
+    img: chalanImg,
     badge: 'En Ejecución', badgeClass: 'green',
     icon: <BuildingIcon />, iconClass: 'green',
-    title: 'Centro Cultural Maldonado',
-    desc: 'Un nuevo espacio para la cultura, el arte y la integración.',
+    title: 'Parque Chalán',
+    desc: 'El renovado parque El Chalán ubicado en Campoy.',
     linkClass: 'green',
+    page: 'chalan',
   },
   {
-    img: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80',
-    badge: 'Próximamente', badgeClass: 'teal',
-    icon: <SportIcon />, iconClass: 'teal',
-    title: 'Complejo Deportivo',
-    desc: 'Más infraestructura deportiva para formar campeones.',
-    linkClass: 'teal',
+    img: marDelSurImg,
+    badge: 'En Ejecución', badgeClass: 'orange',
+    icon: <RoadIcon />, iconClass: 'orange',
+    title: 'Avenida Mar del Sur',
+    desc: 'Vía incluida en las obras de renovación de Circunvalación.',
+    linkClass: 'orange',
+    page: 'mardelasur',
   },
   {
-    img: 'https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=600&q=80',
-    badge: 'En Ejecución', badgeClass: 'teal',
+    img: alamedaImg,
+    badge: 'Finalizado', badgeClass: 'red',
     icon: <DigitalIcon />, iconClass: 'teal',
-    title: 'Digitalización Municipal',
-    desc: 'Trámites en línea y servicios digitales para todos los vecinos.',
+    title: 'Parque Alameda Coronel Althaus',
+    desc: 'Ubicado en el sector de Mariscal Cáceres.',
     linkClass: 'teal',
+    page: 'alameda',
   },
   {
-    img: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&q=80',
-    badge: 'Finalizada', badgeClass: 'red',
-    icon: <HomeIcon />, iconClass: 'red',
-    title: 'Programa de Vivienda',
-    desc: 'Nuevas viviendas sociales para familias que más lo necesitan.',
-    linkClass: 'red',
+    img: ecoparkImg,
+    badge: 'Inaugurado', badgeClass: 'green',
+    icon: <HomeIcon />, iconClass: 'green',
+    title: 'Ecopark',
+    desc: 'Un referente ambiental y turístico que atrae a miles de visitantes.',
+    linkClass: 'green',
+    page: 'ecopark',
   },
 ]
 
 // Triplicar para que el loop nunca deje huecos en pantallas anchas
 const marqueeItems = [...projects, ...projects, ...projects]
 
-export default function Avances() {
+export default function Avances({ setPage }) {
   const trackRef = useRef(null)
 
   useEffect(() => {
@@ -124,7 +136,7 @@ export default function Avances() {
       <div className={styles.carouselWrapper}>
         <div className={styles.track} ref={trackRef}>
           {marqueeItems.map((p, i) => (
-            <div key={i} className={styles.card}>
+            <div key={i} className={`${styles.card} tilt-card`}>
               <div className={styles.cardImg}>
                 <img src={p.img} alt={p.title} loading="lazy" />
                 <span className={`${styles.badge} ${styles[p.badgeClass]}`}>{p.badge}</span>
@@ -135,13 +147,27 @@ export default function Avances() {
               <div className={styles.cardBody}>
                 <h3>{p.title}</h3>
                 <p>{p.desc}</p>
-                <a href="#" className={`${styles.link} ${styles['link_' + p.linkClass]}`}>
-                  Ver Más
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </a>
+                {p.page ? (
+                  <button
+                    className={`${styles.link} ${styles['link_' + p.linkClass]}`}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    onClick={() => { setPage && setPage(p.page); window.scrollTo({ top: 0 }) }}
+                  >
+                    Ver Más
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </button>
+                ) : (
+                  <a href={p.link || '#'} className={`${styles.link} ${styles['link_' + p.linkClass]}`}>
+                    Ver Más
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"/>
+                      <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           ))}

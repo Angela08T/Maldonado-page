@@ -15,7 +15,7 @@ const stats = [
   },
   {
     color: 'orange',
-    valor: '35+',
+    valor: '80',
     label: 'obras y proyectos ejecutados',
     sub: 'parques, vías, áreas verdes y espacios deportivos',
     icon: (
@@ -26,8 +26,8 @@ const stats = [
   },
   {
     color: 'green',
-    valor: '1.2M+',
-    label: 'vecinos beneficiados',
+    valor: '1000+',
+    label: 'Vecinos Beneficiados',
     sub: 'impactados por obras y mejoras urbanas',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -8,6 +8,44 @@
   padding: 0 !important;
 }
 
+/* ── Animated blobs ── */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: blobFloat ease-in-out infinite;
+  z-index: 0;
+}
+.blob1 {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(232,25,44,.18), transparent 70%);
+  top: -140px; left: -140px;
+  animation-duration: 9s;
+}
+.blob2 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(247,148,29,.15), transparent 70%);
+  bottom: -80px; left: 15%;
+  animation-duration: 11s;
+  animation-delay: -4s;
+}
+.blob3 {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(0,167,157,.14), transparent 70%);
+  top: 25%; right: 55%;
+  animation-duration: 13s;
+  animation-delay: -7s;
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(28px, -28px) scale(1.06); }
+  66%  { transform: translate(-18px, 18px) scale(.94); }
+}
+
+/* ── Particles ── */
+.particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+
 /* ── Content ─────────────────────────────────────────────── */
 .content {
   position: relative;
@@ -79,20 +117,22 @@
   line-height: 1.05;
   white-space: nowrap;
   background: linear-gradient(90deg,
-    #FF2F6D 0%,
-    #FF8A00 18%,
-    #D6D63A 35%,
-    #7AC943 52%,
-    #39C6C8 68%,
-    #39C6C8 100%
+    #FF2F6D 0%, #FF8A00 16%, #D6D63A 32%,
+    #7AC943 48%, #39C6C8 64%, #6C63FF 80%, #FF2F6D 100%
   );
+  background-size: 250% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 1px;
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeUp .8s .5s forwards;
+  animation: fadeUp .8s .5s forwards, gradientShift 4s 1.3s ease infinite;
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .desc {
