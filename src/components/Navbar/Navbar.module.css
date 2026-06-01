@@ -8,7 +8,7 @@
   justify-content: space-between;
   padding: 0 5%;
   height: 72px;
-  background: #f8f0e0;
+  background: #F0F6FF;
   transition: background .4s ease, box-shadow .4s ease;
 }
 .navbar.scrolled {
@@ -27,8 +27,8 @@
 .logoMain {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
+  font-size: 1.05rem;
+  letter-spacing: 2px;
   transition: color .4s;
 }
 .logoSub {
@@ -87,11 +87,11 @@
 .zonaBtn:hover {
   background: #008f87;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,167,157,.35);
+  box-shadow: 0 6px 18px rgba(0,87,184,.35);
 }
 .zonaBtnActive {
   background: #008f87;
-  box-shadow: 0 4px 14px rgba(0,167,157,.4);
+  box-shadow: 0 4px 14px rgba(0,87,184,.4);
 }
 .simBtn {
   font-family: var(--font-body);
@@ -141,8 +141,8 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   background: transparent;
-  color: #39C6C8;
-  border: 1.5px solid #39C6C8;
+  color: #0057B8;
+  border: 1.5px solid #0057B8;
   border-radius: 9999px;
   padding: .45rem 1.1rem;
   cursor: pointer;
@@ -150,12 +150,12 @@
   white-space: nowrap;
 }
 .encuestasBtn:hover {
-  background: #39C6C8;
+  background: #0057B8;
   color: #fff;
   transform: translateY(-2px);
 }
 .encuestasBtnActive {
-  background: #39C6C8;
+  background: #0057B8;
   color: #fff;
 }
 .encuestasBtnMobile {
@@ -165,15 +165,15 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   background: transparent;
-  color: #39C6C8;
-  border: 1.5px solid #39C6C8;
+  color: #0057B8;
+  border: 1.5px solid #0057B8;
   border-radius: 9999px;
   padding: .7rem 1.4rem;
   cursor: pointer;
   text-align: left;
   transition: background .3s, color .3s;
 }
-.encuestasBtnMobile:hover { background: #39C6C8; color: #fff; }
+.encuestasBtnMobile:hover { background: #0057B8; color: #fff; }
 
 .zonaBtnMobile {
   font-family: var(--font-body);

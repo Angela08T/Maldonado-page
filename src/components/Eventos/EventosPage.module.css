@@ -1,6 +1,6 @@
 /* ── Page ───────────────────────────────────────────────────── */
 .page {
-  background: #f8f0e0;
+  background: #F0F6FF;
   min-height: 100vh;
   padding-top: 72px;
 }
@@ -9,8 +9,8 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: #f8f0e0;
-  border-bottom: 1px solid #e8dcc8;
+  background: #F0F6FF;
+  border-bottom: 1px solid #BDD4F0;
   padding: 4.5rem 6% 4rem;
 }
 
@@ -26,7 +26,7 @@
   position: absolute;
   width: 200px; height: 200px;
   border-radius: 50%;
-  border: 22px solid rgba(247,148,29,.1);
+  border: 22px solid rgba(43,127,224,.1);
   bottom: -60px; left: 35%;
   pointer-events: none;
 }
@@ -208,7 +208,7 @@
   gap: 1.2rem;
   padding: 1.4rem 6%;
   background: #fff;
-  border-bottom: 1px solid #ede4d4;
+  border-bottom: 1px solid #D6E8FF;
   flex-wrap: wrap;
 }
 .filtrosLabel {
@@ -225,15 +225,15 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  background: #f4ede0;
-  border: 1.5px solid #e8dcc8;
+  background: #EBF3FF;
+  border: 1.5px solid #BDD4F0;
   border-radius: 9999px;
   padding: .38rem .95rem;
   cursor: pointer;
   color: #888;
   transition: all .22s;
 }
-.filtroBtn:hover { background: #ede0c8; color: var(--dark); }
+.filtroBtn:hover { background: #D6E8FF; color: var(--dark); }
 .filtroBtnActive { background: var(--dark); border-color: var(--dark); color: #fff; }
 .filtrosCount {
   font-size: .68rem;
@@ -358,7 +358,7 @@
   flex-direction: column;
   gap: .3rem;
   padding-top: .4rem;
-  border-top: 1px solid #f0e8d8;
+  border-top: 1px solid #D6E8FF;
 }
 .cardMeta span {
   display: inline-flex;

@@ -11,15 +11,21 @@ const navLinks = [
 ]
 
 const logoLetters = [
-  { char: 'M', color: '#e8192c' },
-  { char: 'A', color: '#f7941d' },
-  { char: 'L', color: '#f9c123' },
-  { char: 'D', color: '#8dc63f' },
-  { char: 'O', color: '#39b54a' },
-  { char: 'N', color: '#00a79d' },
-  { char: 'A', color: '#29abe2' },
-  { char: 'D', color: '#0072bc' },
-  { char: 'O', color: '#662d91' },
+  { char: 'J', color: '#D62828' },
+  { char: 'E', color: '#0057B8' },
+  { char: 'S', color: '#F04444' },
+  { char: 'Ú', color: '#2B7FE0' },
+  { char: 'S', color: '#A01E1E' },
+  { char: ' ', color: '#003D82' },
+  { char: 'M', color: '#D62828' },
+  { char: 'A', color: '#0057B8' },
+  { char: 'L', color: '#F04444' },
+  { char: 'D', color: '#2B7FE0' },
+  { char: 'O', color: '#A01E1E' },
+  { char: 'N', color: '#003D82' },
+  { char: 'A', color: '#D62828' },
+  { char: 'D', color: '#0057B8' },
+  { char: 'O', color: '#003D82' },
 ]
 
 export default function Footer() {

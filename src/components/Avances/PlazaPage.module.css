@@ -76,8 +76,8 @@
 .fichaVal { font-size: 1.05rem; font-weight: 800; color: var(--dark, #1a1a2e); }
 .fichaEstado {
   display: inline-block; font-size: .82rem; font-weight: 700;
-  color: var(--orange, #f7941d); background: rgba(247,148,29,.1);
-  border: 1px solid rgba(247,148,29,.3); padding: .25rem .8rem;
+  color: var(--orange, #2B7FE0); background: rgba(43,127,224,.1);
+  border: 1px solid rgba(43,127,224,.3); padding: .25rem .8rem;
   border-radius: 9999px; width: fit-content;
 }
 
@@ -160,13 +160,13 @@
 
 /* ── Cita destacada ── */
 .quoteBlock {
-  background: linear-gradient(135deg, var(--orange, #f7941d) 0%, #e07010 100%);
+  background: linear-gradient(135deg, var(--orange, #2B7FE0) 0%, #1a6dcf 100%);
   border-radius: 20px;
   padding: 2.4rem 3rem;
   display: flex;
   align-items: center;
   gap: 2rem;
-  box-shadow: 0 8px 32px rgba(247,148,29,.35);
+  box-shadow: 0 8px 32px rgba(43,127,224,.35);
 }
 .quoteIcon {
   font-size: 4rem;

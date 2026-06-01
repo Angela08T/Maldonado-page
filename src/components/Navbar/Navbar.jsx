@@ -42,15 +42,21 @@ export default function Navbar({ page, setPage }) {
         {/* Logo */}
         <a href="#hero" className={styles.logo}>
           <span className={styles.logoMain}>
-            <span style={{ color: '#e8192c' }}>M</span>
-            <span style={{ color: '#f7941d' }}>A</span>
-            <span style={{ color: '#f9c123' }}>L</span>
-            <span style={{ color: '#8dc63f' }}>D</span>
-            <span style={{ color: '#39b54a' }}>O</span>
-            <span style={{ color: '#00a79d' }}>N</span>
-            <span style={{ color: '#29abe2' }}>A</span>
-            <span style={{ color: '#0072bc' }}>D</span>
-            <span style={{ color: '#662d91' }}>O</span>
+            <span style={{ color: '#D62828' }}>J</span>
+            <span style={{ color: '#0057B8' }}>E</span>
+            <span style={{ color: '#F04444' }}>S</span>
+            <span style={{ color: '#2B7FE0' }}>Ú</span>
+            <span style={{ color: '#A01E1E' }}>S</span>
+            <span style={{ color: '#003D82' }}>{' '}</span>
+            <span style={{ color: '#D62828' }}>M</span>
+            <span style={{ color: '#0057B8' }}>A</span>
+            <span style={{ color: '#F04444' }}>L</span>
+            <span style={{ color: '#2B7FE0' }}>D</span>
+            <span style={{ color: '#A01E1E' }}>O</span>
+            <span style={{ color: '#003D82' }}>N</span>
+            <span style={{ color: '#D62828' }}>A</span>
+            <span style={{ color: '#0057B8' }}>D</span>
+            <span style={{ color: '#003D82' }}>O</span>
           </span>
           <span className={styles.logoSub} style={{ color: textColor }}>
             Avanzamos Juntos

@@ -1,14 +1,24 @@
 /* ── VARIABLES ─────────────────────────────────────────────── */
 :root {
-  --red:    #e8192c;
-  --orange: #f7941d;
-  --yellow: #f9c123;
-  --green:  #39b54a;
-  --teal:   #00a79d;
-  --dark:   #1a1a2e;
-  --gray:   #f5f5f5;
-  --text:   #333333;
-  --white:  #ffffff;
+  /* ── Paleta Somos Perú ─────────────────────────────── */
+  --blue:        #0057B8;   /* Azul institucional */
+  --blue-light:  #2B7FE0;   /* Azul brillante */
+  --blue-pale:   #5BA3F0;   /* Azul claro */
+  --blue-dark:   #003D82;   /* Azul profundo */
+  --blue-navy:   #001A3D;   /* Azul marino */
+  --blue-soft:   #EBF3FF;   /* Azul niebla */
+  --red:         #D62828;   /* Rojo institucional */
+  --red-light:   #F04444;   /* Rojo brillante */
+  --red-dark:    #A01E1E;   /* Rojo profundo */
+  --white:       #ffffff;
+  /* ── Alias de compatibilidad ──────────────────────── */
+  --orange: #2B7FE0;   /* → azul brillante */
+  --yellow: #5BA3F0;   /* → azul claro */
+  --green:  #003D82;   /* → azul profundo */
+  --teal:   #0057B8;   /* → azul institucional */
+  --dark:   #001A3D;
+  --gray:   #EBF3FF;
+  --text:   #1A2F4D;
   /* ── Tipografía ─────────────────────────────────────── */
   --font-display:  'Bebas Neue', sans-serif;           /* hero, títulos grandes */
   --font-heading:  'Plus Jakarta Sans', sans-serif;    /* secciones, tarjetas, navbar */
@@ -26,7 +36,7 @@ body {
   font-family: var(--font-body);
   color: var(--text);
   overflow-x: hidden;
-  background: #f8f0e0;
+  background: #F0F6FF;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
@@ -68,10 +78,10 @@ section#hero { padding: 0; }
 .scroll-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--green), var(--teal));
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue), var(--blue-light), var(--red-light), var(--red), var(--blue));
   background-size: 200% 100%;
   border-radius: 0 3px 3px 0;
-  box-shadow: 0 0 10px rgba(232,25,44,.6);
+  box-shadow: 0 0 10px rgba(214,40,40,.6);
   animation: gradientFlow 3s ease infinite;
 }
 
@@ -103,7 +113,7 @@ section#hero { padding: 0; }
   transition: width .35s cubic-bezier(.34,1.56,.64,1), height .35s cubic-bezier(.34,1.56,.64,1), border-color .3s, opacity .3s;
   will-change: transform;
 }
-.cursor-ring.hovered { width: 56px; height: 56px; opacity: .9; border-color: var(--orange); }
+.cursor-ring.hovered { width: 56px; height: 56px; opacity: .9; border-color: var(--blue-light); }
 
 /* ── REVEAL ANIMATIONS ──────────────────────────────────────── */
 .reveal {
@@ -171,7 +181,7 @@ section#hero { padding: 0; }
 .section-divider {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--green), var(--teal), var(--red));
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue), var(--blue-light), var(--red-light), var(--red), var(--blue));
   background-size: 300% 100%;
   border-radius: 9999px;
   margin: 0 auto 3rem;
@@ -208,9 +218,9 @@ section#hero { padding: 0; }
 }
 .btn-primary:hover::after { transform: translateX(100%); }
 .btn-primary:hover {
-  background: #c8001c;
+  background: var(--red-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(232,25,44,.4);
+  box-shadow: 0 8px 25px rgba(214,40,40,.4);
 }
 
 .btn-outline {
@@ -233,7 +243,7 @@ section#hero { padding: 0; }
 }
 .btn-outline:hover {
   background: var(--white);
-  color: var(--green);
+  color: var(--blue);
   transform: translateY(-2px);
 }
 

@@ -41,14 +41,14 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--teal);
-  background: rgba(0,167,157,.08);
-  border: 1px solid rgba(0,167,157,.25);
+  background: rgba(0,87,184,.08);
+  border: 1px solid rgba(0,87,184,.25);
   border-radius: 9999px;
   padding: .45rem 1rem;
   cursor: pointer;
   transition: background .25s, transform .2s;
 }
-.verTodosBtn:hover { background: rgba(0,167,157,.15); transform: translateX(2px); }
+.verTodosBtn:hover { background: rgba(0,87,184,.15); transform: translateX(2px); }
 
 /* ── Grid ────────────────────────────────────────────────────── */
 .grid {
@@ -175,14 +175,14 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--teal);
-  background: rgba(0,167,157,.08);
-  border: 1px solid rgba(0,167,157,.25);
+  background: rgba(0,87,184,.08);
+  border: 1px solid rgba(0,87,184,.25);
   border-radius: 9999px;
   padding: .6rem 1.4rem;
   cursor: pointer;
   transition: background .25s;
 }
-.verMasBtn:hover { background: rgba(0,167,157,.15); }
+.verMasBtn:hover { background: rgba(0,87,184,.15); }
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 1024px) {

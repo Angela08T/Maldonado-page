@@ -15,7 +15,7 @@
   visibility: hidden;
   transform: translateY(10px);
   transition: opacity .3s, visibility .3s, transform .3s, background .3s;
-  box-shadow: 0 4px 15px rgba(232,25,44,.4);
+  box-shadow: 0 4px 15px rgba(214,40,40,.4);
 }
 .btn.show { opacity: 1; visibility: visible; transform: none; }
-.btn:hover { background: #c8001c; }
+.btn:hover { background: #A01E1E; }

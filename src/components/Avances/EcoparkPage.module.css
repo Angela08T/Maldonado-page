@@ -76,8 +76,8 @@
 .fichaVal { font-size: 1.05rem; font-weight: 800; color: var(--dark, #1a1a2e); }
 .fichaEstado {
   display: inline-block; font-size: .82rem; font-weight: 700;
-  color: var(--green, #39b54a); background: rgba(57,181,74,.1);
-  border: 1px solid rgba(57,181,74,.25); padding: .25rem .8rem;
+  color: var(--green, #003D82); background: rgba(0,61,130,.1);
+  border: 1px solid rgba(0,61,130,.25); padding: .25rem .8rem;
   border-radius: 9999px; width: fit-content;
 }
 
@@ -106,10 +106,10 @@
 
 /* ── Banner entrada ── */
 .entradaBanner {
-  background: linear-gradient(135deg, var(--green, #39b54a) 0%, #2a9e3a 100%);
+  background: linear-gradient(135deg, var(--green, #003D82) 0%, #002a5c 100%);
   border-radius: 16px; padding: 1.8rem 2rem;
   display: flex; align-items: flex-start; gap: 1.2rem;
-  box-shadow: 0 6px 24px rgba(57,181,74,.3);
+  box-shadow: 0 6px 24px rgba(0,61,130,.3);
 }
 .entradaIcon {
   width: 56px; height: 56px; border-radius: 50%;

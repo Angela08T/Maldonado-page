@@ -1,6 +1,6 @@
 /* ── Page ───────────────────────────────────────────────────── */
 .page {
-  background: #f8f0e0;
+  background: #F0F6FF;
   min-height: 100vh;
   padding-top: 72px;
 }
@@ -9,8 +9,8 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: #f8f0e0;
-  border-bottom: 1px solid #e8dcc8;
+  background: #F0F6FF;
+  border-bottom: 1px solid #BDD4F0;
   padding: 4.5rem 6% 4rem;
 }
 
@@ -151,7 +151,7 @@
   gap: .9rem;
   margin-bottom: 1.8rem;
   padding-bottom: 1.4rem;
-  border-bottom: 1px solid #f0e8d8;
+  border-bottom: 1px solid #D6E8FF;
 }
 .waIcon {
   width: 48px; height: 48px;
@@ -189,8 +189,8 @@
   color: #aaa;
 }
 .field input {
-  background: #fdf7ee;
-  border: 1.5px solid #e8dcc8;
+  background: #EBF3FF;
+  border: 1.5px solid #BDD4F0;
   border-radius: 11px;
   padding: .8rem 1rem;
   font-size: .88rem;
@@ -212,7 +212,7 @@
   display: flex;
   align-items: center;
   background: rgba(37,211,102,.08);
-  border: 1.5px solid #e8dcc8;
+  border: 1.5px solid #BDD4F0;
   border-right: none;
   border-radius: 11px 0 0 11px;
   padding: 0 .9rem;
@@ -288,8 +288,8 @@
 }
 .success strong { color: #25d366; }
 .resetBtn {
-  background: #f0e8d8;
-  border: 1.5px solid #e8dcc8;
+  background: #EBF3FF;
+  border: 1.5px solid #BDD4F0;
   border-radius: 9999px;
   padding: .55rem 1.4rem;
   font-family: var(--font-body);
@@ -299,7 +299,7 @@
   cursor: pointer;
   transition: background .25s;
 }
-.resetBtn:hover { background: #e8dcc8; }
+.resetBtn:hover { background: #D6E8FF; }
 
 /* ── Por qué section ────────────────────────────────────────── */
 .porQueSection {
@@ -379,9 +379,9 @@
   justify-content: center;
 }
 .pqi_red    { background: rgba(232,25,44,.1);  color: var(--red); }
-.pqi_orange { background: rgba(247,148,29,.1); color: var(--orange); }
+.pqi_orange { background: rgba(43,127,224,.1);  color: var(--orange); }
 .pqi_green  { background: rgba(37,211,102,.1); color: #25d366; }
-.pqi_teal   { background: rgba(0,167,157,.1);  color: var(--teal); }
+.pqi_teal   { background: rgba(0,87,184,.1);   color: var(--teal); }
 
 .pqTitulo {
   font-family: var(--font-main);
@@ -399,8 +399,8 @@
 
 /* ── CTA final ──────────────────────────────────────────────── */
 .ctaFinal {
-  background: #f8f0e0;
-  border-top: 1px solid #e8dcc8;
+  background: #F0F6FF;
+  border-top: 1px solid #BDD4F0;
   padding: 4rem 6%;
 }
 .ctaFinalInner {

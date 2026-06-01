@@ -17,7 +17,7 @@
   position: absolute;
   width: 400px; height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,167,157,.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,87,184,.06) 0%, transparent 70%);
   bottom: -120px; right: -80px;
   pointer-events: none;
 }
@@ -42,7 +42,7 @@
   letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--teal);
-  border: 1px solid rgba(0,167,157,.4);
+  border: 1px solid rgba(0,87,184,.4);
   border-radius: 9999px;
   padding: .3rem .9rem;
   width: fit-content;
@@ -110,7 +110,7 @@
 }
 .cta:hover {
   border-color: var(--teal);
-  background: rgba(0,167,157,.08);
+  background: rgba(0,87,184,.08);
   color: var(--teal);
   gap: 1rem;
 }
@@ -189,10 +189,10 @@
 }
 .cardStat strong { font-weight: 800; margin-right: .2rem; }
 
-.stat_red    { background: rgba(232,25,44,.10);  color: var(--red); }
-.stat_orange { background: rgba(247,148,29,.10); color: var(--orange); }
-.stat_green  { background: rgba(57,181,74,.10);  color: var(--green); }
-.stat_teal   { background: rgba(0,167,157,.10);  color: var(--teal); }
+.stat_red    { background: rgba(214,40,40,.10);   color: var(--red); }
+.stat_orange { background: rgba(43,127,224,.10); color: var(--orange); }
+.stat_green  { background: rgba(0,61,130,.10);   color: var(--green); }
+.stat_teal   { background: rgba(0,87,184,.10);   color: var(--teal); }
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 1024px) {

@@ -123,7 +123,7 @@
   display: flex;
   flex-direction: column;
   gap: .8rem;
-  background: linear-gradient(135deg, #fff0f0, #fff5f0);
+  background: linear-gradient(135deg, #EBF3FF, #F0F6FF);
   border-left: 5px solid var(--red);
   border-radius: 0 14px 14px 0;
   padding: 1.6rem 1.8rem;
@@ -248,9 +248,9 @@
 
 /* ── Colores compartidos ─────────────────────────────────────── */
 .ic_red    { background: rgba(232,25,44,.1);  color: var(--red); }
-.ic_orange { background: rgba(247,148,29,.1); color: var(--orange); }
-.ic_green  { background: rgba(57,181,74,.1);  color: var(--green); }
-.ic_teal   { background: rgba(0,167,157,.1);  color: var(--teal); }
+.ic_orange { background: rgba(43,127,224,.1);  color: var(--orange); }
+.ic_green  { background: rgba(0,61,130,.1);   color: var(--green); }
+.ic_teal   { background: rgba(0,87,184,.1);   color: var(--teal); }
 
 .txt_red    { color: var(--red); }
 .txt_orange { color: var(--orange); }
