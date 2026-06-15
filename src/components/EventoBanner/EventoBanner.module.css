@@ -1,0 +1,86 @@
+.banner {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 8500;
+  height: 52px;
+  background: #D62828;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  box-shadow: 0 3px 18px rgba(214,40,40,.4);
+  overflow: hidden;
+}
+
+/* Etiqueta izquierda */
+.label {
+  flex-shrink: 0;
+  background: rgba(0,0,0,.2);
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Contenedor ticker con clip */
+.tickerWrap {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  /* fade en los bordes */
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+.ticker {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: scroll 38s linear infinite;
+}
+
+.ticker span {
+  font-size: .9rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding-left: 2rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Botón Ver más */
+.verMas {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  background: #fff;
+  color: #D62828;
+  border: none;
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0 1.6rem;
+  height: 100%;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+  box-shadow: -3px 0 10px rgba(0,0,0,.2);
+}
+.verMas:hover { background: #fff3f3; }

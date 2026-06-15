@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
   padding: 0 5%;
   height: 72px;
   background: #F0F6FF;
@@ -21,32 +22,50 @@
 .logo {
   display: flex;
   flex-direction: column;
-  line-height: 1;
   text-decoration: none;
+  border-left: 4px solid var(--red);
+  padding-left: 12px;
+  gap: 1px;
 }
-.logoMain {
+.logoName {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+}
+.logoFirst {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+.logoLast {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 1.05rem;
-  letter-spacing: 2px;
-  transition: color .4s;
+  font-size: 1.55rem;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: var(--dark);
 }
 .logoSub {
   font-family: var(--font-data);
-  font-size: .52rem;
-  font-weight: 500;
+  font-size: .58rem;
+  font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  transition: color .4s;
+  color: var(--red);
 }
 
 /* ── Desktop links ───────────────────────────────────────── */
 .links {
   display: flex;
-  gap: 2rem;
+  gap: 1.2rem;
   align-items: center;
   list-style: none;
   padding: 0;
+  margin-right: 0.5rem;
 }
 .links a {
   font-family: var(--font-data);
@@ -67,6 +86,50 @@
 }
 .links a:hover::after { width: 100%; }
 .activeLink::after    { width: 100% !important; }
+
+/* ── Link como botón (mismo estilo que los links del nav) ── */
+.linkBtn {
+  font-family: var(--font-data);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dark);
+  padding: 0;
+  position: relative;
+  transition: color .3s;
+}
+.linkBtn::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 0; height: 2px;
+  background: var(--red);
+  transition: width .3s;
+}
+.linkBtn:hover { color: var(--red); }
+.linkBtn:hover::after { width: 100%; }
+
+.linkBtnMobile {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--dark);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  text-align: left;
+  transition: color .2s;
+}
+.linkBtnMobile:hover { color: var(--red); }
 
 /* ── Zona button ─────────────────────────────────────────── */
 .zonaBtn {
@@ -175,6 +238,87 @@
 }
 .encuestasBtnMobile:hover { background: #0057B8; color: #fff; }
 
+.rendicionBtn {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--red, #D62828);
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: .45rem 1.1rem;
+  cursor: pointer;
+  transition: background .3s, transform .2s, box-shadow .3s;
+  white-space: nowrap;
+}
+.rendicionBtn:hover {
+  background: #a01e1e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(214,40,40,.35);
+}
+.rendicionBtnActive {
+  background: #a01e1e;
+  box-shadow: 0 4px 14px rgba(214,40,40,.4);
+}
+.rendicionBtnMobile {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--red, #D62828);
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: .7rem 1.4rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background .3s;
+}
+.rendicionBtnMobile:hover { background: #a01e1e; }
+
+.apoyaBtn {
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #f7941d, #e8192c);
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: .45rem 1.2rem;
+  cursor: pointer;
+  transition: opacity .2s, transform .2s, box-shadow .3s;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(232,25,44,.3);
+}
+.apoyaBtn:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(232,25,44,.4);
+}
+.apoyaBtnActive { opacity: .85; box-shadow: 0 4px 14px rgba(232,25,44,.45); }
+
+.apoyaBtnMobile {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #f7941d, #e8192c);
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: .7rem 1.4rem;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity .2s;
+}
+.apoyaBtnMobile:hover { opacity: .88; }
+
 .zonaBtnMobile {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -195,7 +339,7 @@
 /* ── Social ──────────────────────────────────────────────── */
 .social { display: flex; gap: .8rem; }
 .socialIcon {
-  width: 32px; height: 32px;
+  width: 40px; height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;

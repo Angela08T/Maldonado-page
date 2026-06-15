@@ -1,11 +1,11 @@
 import styles from './CTA.module.css'
 
 const socials = [
-  { label: 'Facebook',  type: 'fb' },
-  { label: 'Instagram', type: 'ig' },
-  { label: 'TikTok',    type: 'tt' },
-  { label: 'YouTube',   type: 'yt' },
-  { label: 'WhatsApp',  type: 'wa' },
+  { label: 'Facebook',  type: 'fb', href: 'https://www.facebook.com/jesusmaldonadoperu/?locale=es_LA' },
+  { label: 'Instagram', type: 'ig', href: 'https://www.instagram.com/jesus_maldonado_sjl?igsh=MjRwb2J2bmVmZ2t5' },
+  { label: 'TikTok',    type: 'tt', href: 'https://www.tiktok.com/@jesusmaldonadosjl?_r=1&_t=ZS-97ErrWlhxqr' },
+  { label: 'YouTube',   type: 'yt', href: 'https://youtube.com/@jesussinfiltro?si=kxQhFhhlYPZxSYYo' },
+  { label: 'WhatsApp',  type: 'wa', href: 'https://wa.me/51999999999' },
 ]
 
 function SocialSvg({ type }) {
@@ -41,7 +41,7 @@ function SocialSvg({ type }) {
 
 export default function CTA() {
   return (
-    <div className={styles.bar}>
+    <div id="cta" className={styles.bar}>
 
       {/* Panel rojo */}
       <div className={styles.panelRed}>
@@ -65,7 +65,7 @@ export default function CTA() {
         </div>
         <div className={styles.socialIcons}>
           {socials.map(s => (
-            <a key={s.label} href="#" className={styles.socialIcon} aria-label={s.label}>
+            <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label={s.label}>
               <SocialSvg type={s.type} />
             </a>
           ))}

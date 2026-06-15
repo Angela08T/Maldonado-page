@@ -11,7 +11,7 @@ const PARTICLES = [
   { size: 6,  left: '88%', delay: '1s',   dur: '7.5s',color: 'rgba(108,99,255,.4)',  bottom: '22%' },
 ]
 
-export default function Hero() {
+export default function Hero({ setPage }) {
   return (
     <section id="hero" className={styles.hero}>
       {/* Blobs atmosféricos */}
@@ -46,13 +46,16 @@ export default function Hero() {
           moderno, seguro y con más oportunidades<br />
           para todos.
         </p>
-        <a href="#avances" className="btn-primary">
-          Conoce Más
+        <button
+          className="btn-primary"
+          onClick={() => { setPage && setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
+        >
+          Únete a mi equipo
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
-        </a>
+        </button>
       </div>
 
       <div className={styles.imageWrapper}>

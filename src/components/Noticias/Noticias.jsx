@@ -1,27 +1,33 @@
 import styles from './Noticias.module.css'
+import noti2 from '../../assets/noti2.jpg'
+import noti5 from '../../assets/noti5.jpg'
+import noti8 from '../../assets/noti8.jpg'
 
 const news = [
   {
-    img: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=300&q=80',
-    date: '12 Mayo, 2024',
-    title: 'Jornada de Limpieza y Reforestación',
-    desc: 'Vecinos y voluntarios unidos por un Maldonado más verde.',
+    img: noti2,
+    date: 'Junio, 2025',
+    title: 'Primer tramo de la Av. Circunvalación culminó fase de asfaltado',
+    desc: 'Avanza con señalización termoplástica, áreas verdes y pintura en general.',
+    page: 'circunvalacion',
   },
   {
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&q=80',
-    date: '08 Mayo, 2024',
-    title: 'Avanzan Obras en la Av. Los Jardines',
-    desc: 'Más de 60% de avance en la renovación de la avenida.',
+    img: noti5,
+    date: 'Junio, 2025',
+    title: 'Municipalidad de SJL entregó habilitación urbana a vecinos de Canto Grande',
+    desc: 'Primera etapa, manzana E, comuna 9. Un paso clave hacia la formalización de la propiedad.',
+    page: 'cantogr',
   },
   {
-    img: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=300&q=80',
-    date: '05 Mayo, 2024',
-    title: 'Feria de Emprendedores de Maldonado',
-    desc: 'Apoyamos el talento local y reactivamos la economía.',
+    img: noti8,
+    date: 'Junio, 2025',
+    title: 'SJL pone en marcha Agencia Local de Empleo y Coworking para emprendedores',
+    desc: 'Nuevos espacios de orientación laboral, capacitación y desarrollo empresarial para el distrito.',
+    page: 'ale',
   },
 ]
 
-export default function Noticias() {
+export default function Noticias({ setPage }) {
   return (
     <section id="noticias" className={styles.section}>
       <h2 className="section-title reveal">Noticias Recientes</h2>
@@ -37,7 +43,17 @@ export default function Noticias() {
               <p className={styles.date}>{n.date}</p>
               <h3 className={styles.title}>{n.title}</h3>
               <p className={styles.desc}>{n.desc}</p>
-              <a href="#" className={styles.link}>Leer Más →</a>
+              {n.page ? (
+                <button
+                  className={styles.link}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                  onClick={() => { setPage && setPage(n.page); window.scrollTo({ top: 0 }) }}
+                >
+                  Leer Más →
+                </button>
+              ) : (
+                <a href="#" className={styles.link}>Leer Más →</a>
+              )}
             </div>
           </article>
         ))}

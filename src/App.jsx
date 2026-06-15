@@ -12,7 +12,11 @@ import EcoparkPage   from './components/Avances/EcoparkPage'
 import EneroPage     from './components/Avances/EneroPage'
 import PlazaPage     from './components/Avances/PlazaPage'
 import Gestion   from './components/Gestion/Gestion'
-import Noticias   from './components/Noticias/Noticias'
+import Noticias          from './components/Noticias/Noticias'
+import CircunvalacionPage from './components/Noticias/CircunvalacionPage'
+import CantoGrandePage    from './components/Noticias/CantoGrandePage'
+import AleCoworkingPage  from './components/Noticias/AleCoworkingPage'
+import DonacionesPage   from './components/Donaciones/DonacionesPage'
 import Multimedia from './components/Multimedia/Multimedia'
 import Galeria    from './components/Galeria/Galeria'
 import CTA            from './components/CTA/CTA'
@@ -20,10 +24,15 @@ import Footer         from './components/Footer/Footer'
 import ScrollTop      from './components/ScrollTop/ScrollTop'
 import Zona           from './components/Zona/Zona'
 import WalkingCharacter from './components/WalkingCharacter/WalkingCharacter'
+import WhatsApp        from './components/WhatsApp/WhatsApp'
+import EventoBanner      from './components/EventoBanner/EventoBanner'
+import PersoneroBanner  from './components/PersoneroBanner/PersoneroBanner'
+import PersoneroPage    from './components/Personero/PersoneroPage'
 import Simpatizantes  from './components/Simpatizantes/Simpatizantes'
 import Eventos        from './components/Eventos/Eventos'
 import EventosPage    from './components/Eventos/EventosPage'
 import Encuestas      from './components/Encuestas/Encuestas'
+import RendicionPage  from './components/Rendicion/RendicionPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 export default function App() {
@@ -166,6 +175,8 @@ export default function App() {
         <EventosPage onBack={goHome} />
       ) : page === 'encuestas' ? (
         <Encuestas onBack={goHome} />
+      ) : page === 'rendicion' ? (
+        <RendicionPage onBack={goHome} />
       ) : page === 'alameda' ? (
         <AlamedaPage onBack={goHome} />
       ) : page === 'mardelasur' ? (
@@ -178,15 +189,25 @@ export default function App() {
         <EneroPage onBack={goHome} />
       ) : page === 'plaza' ? (
         <PlazaPage onBack={goHome} />
+      ) : page === 'circunvalacion' ? (
+        <CircunvalacionPage onBack={goHome} />
+      ) : page === 'cantogr' ? (
+        <CantoGrandePage onBack={goHome} />
+      ) : page === 'ale' ? (
+        <AleCoworkingPage onBack={goHome} />
+      ) : page === 'donaciones' ? (
+        <DonacionesPage onBack={goHome} />
+      ) : page === 'personero' ? (
+        <PersoneroPage onBack={goHome} />
       ) : (
         <>
           <main>
-            <Hero />
+            <Hero setPage={setPage} />
             <Stats />
             <Sobre />
             <Avances setPage={setPage} />
             <Gestion />
-            <Noticias />
+            <Noticias setPage={setPage} />
             <Multimedia />
             <Eventos onVerTodos={() => { setPage('eventos'); window.scrollTo({ top: 0 }) }} />
             <Galeria />
@@ -197,6 +218,9 @@ export default function App() {
         </>
       )}
       <WalkingCharacter />
+      <WhatsApp />
+      <EventoBanner setPage={setPage} />
+      <PersoneroBanner setPage={setPage} />
     </>
   )
 }

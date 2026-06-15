@@ -19,12 +19,6 @@ const RoadIcon = () => (
     <path d="M12 10v5M10 17h4"/>
   </svg>
 )
-const SportIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 2a14.5 14.5 0 000 20M12 2a14.5 14.5 0 010 20M2 12h20"/>
-  </svg>
-)
 const DigitalIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="14" rx="2"/>
@@ -41,11 +35,11 @@ const HomeIcon = () => (
 const projects = [
   {
     img: eneroImg,
-    badge: 'Finalizada', badgeClass: 'orange',
-    icon: <RoadIcon />, iconClass: 'orange',
+    badge: 'Finalizado', badgeClass: 'green',
+    icon: <RoadIcon />, iconClass: 'green',
     title: 'La Renovada Av. 13 de Enero',
     desc: '¡Avenida 13 de Enero es el nuevo orgullo de San Juan de Lurigancho!',
-    linkClass: 'orange',
+    linkClass: 'green',
     page: 'enero',
   },
   {
@@ -59,11 +53,11 @@ const projects = [
   },
   {
     img: chalanImg,
-    badge: 'En Ejecución', badgeClass: 'green',
-    icon: <BuildingIcon />, iconClass: 'green',
+    badge: 'En Ejecución', badgeClass: 'orange',
+    icon: <BuildingIcon />, iconClass: 'orange',
     title: 'Parque Chalán',
     desc: 'El renovado parque El Chalán ubicado en Campoy.',
-    linkClass: 'green',
+    linkClass: 'orange',
     page: 'chalan',
   },
   {
@@ -77,16 +71,16 @@ const projects = [
   },
   {
     img: alamedaImg,
-    badge: 'Finalizado', badgeClass: 'red',
-    icon: <DigitalIcon />, iconClass: 'teal',
+    badge: 'Finalizado', badgeClass: 'green',
+    icon: <DigitalIcon />, iconClass: 'green',
     title: 'Parque Alameda Coronel Althaus',
     desc: 'Ubicado en el sector de Mariscal Cáceres.',
-    linkClass: 'teal',
+    linkClass: 'green',
     page: 'alameda',
   },
   {
     img: ecoparkImg,
-    badge: 'Inaugurado', badgeClass: 'green',
+    badge: 'Finalizado', badgeClass: 'green',
     icon: <HomeIcon />, iconClass: 'green',
     title: 'Ecopark',
     desc: 'Un referente ambiental y turístico que atrae a miles de visitantes.',

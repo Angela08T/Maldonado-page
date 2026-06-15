@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import styles from './Navbar.module.css'
 
 const links = [
-  { label: 'Inicio',          href: '#hero' },
-  { label: 'Sobre Maldonado', href: '#sobre' },
-  { label: 'Gestión',         href: '#gestion' },
-  { label: 'Avances y Obras', href: '#avances' },
-  { label: 'Noticias',        href: '#noticias' },
-  { label: 'Contacto',        href: '#cta' },
+  { label: 'Inicio',            href: '#hero' },
+  { label: 'Apoya a la Causa', page: 'donaciones' },
+  { label: 'Gestión',           href: '#gestion' },
+  { label: 'Avances y Obras',   href: '#avances' },
+  { label: 'Noticias',          href: '#noticias' },
+  { label: 'Contacto',          href: '#cta' },
 ]
 
 export default function Navbar({ page, setPage }) {
@@ -24,8 +24,10 @@ export default function Navbar({ page, setPage }) {
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]')
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) setActive(`#${e.target.id}`) }),
-      { threshold: 0.4 }
+      entries => {
+        entries.forEach(e => { if (e.isIntersecting) setActive(`#${e.target.id}`) })
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
     )
     sections.forEach(s => obs.observe(s))
     return () => obs.disconnect()
@@ -41,64 +43,61 @@ export default function Navbar({ page, setPage }) {
 
         {/* Logo */}
         <a href="#hero" className={styles.logo}>
-          <span className={styles.logoMain}>
-            <span style={{ color: '#D62828' }}>J</span>
-            <span style={{ color: '#0057B8' }}>E</span>
-            <span style={{ color: '#F04444' }}>S</span>
-            <span style={{ color: '#2B7FE0' }}>Ú</span>
-            <span style={{ color: '#A01E1E' }}>S</span>
-            <span style={{ color: '#003D82' }}>{' '}</span>
-            <span style={{ color: '#D62828' }}>M</span>
-            <span style={{ color: '#0057B8' }}>A</span>
-            <span style={{ color: '#F04444' }}>L</span>
-            <span style={{ color: '#2B7FE0' }}>D</span>
-            <span style={{ color: '#A01E1E' }}>O</span>
-            <span style={{ color: '#003D82' }}>N</span>
-            <span style={{ color: '#D62828' }}>A</span>
-            <span style={{ color: '#0057B8' }}>D</span>
-            <span style={{ color: '#003D82' }}>O</span>
-          </span>
-          <span className={styles.logoSub} style={{ color: textColor }}>
-            Avanzamos Juntos
-          </span>
+          <div className={styles.logoName}>
+            <span className={styles.logoFirst}>Jesús</span>
+            <span className={styles.logoLast}>Maldonado</span>
+          </div>
+          <span className={styles.logoSub}>Avanzamos Juntos</span>
         </a>
 
         {/* Desktop links */}
         <ul className={styles.links}>
           {links.map(l => (
-            <li key={l.href + l.label}>
-              <a
-                href={l.href}
-                className={active === l.href ? styles.activeLink : ''}
-                style={{ color: active === l.href ? 'var(--red)' : textColor }}
-                onClick={() => page !== 'home' && setPage('home')}
-              >
-                {l.label}
-              </a>
+            <li key={l.href || l.page}>
+              {l.page ? (
+                <button
+                  className={styles.linkBtn}
+                  onClick={() => { setActive(''); setPage(l.page); window.scrollTo({ top: 0 }) }}
+                >
+                  {l.label}
+                </button>
+              ) : (
+                <a
+                  href={l.href}
+                  className={active === l.href ? styles.activeLink : ''}
+                  style={{ color: active === l.href ? 'var(--red)' : textColor }}
+                  onClick={() => {
+                    setActive(l.href)
+                    page !== 'home' && setPage('home')
+                  }}
+                >
+                  {l.label}
+                </a>
+              )}
             </li>
           ))}
           <li>
             <button
               className={`${styles.zonaBtn} ${page === 'zona' ? styles.zonaBtnActive : ''}`}
-              onClick={() => { setPage('zona'); window.scrollTo({ top: 0 }) }}
+              onClick={() => { setActive(''); setPage('zona'); window.scrollTo({ top: 0 }) }}
             >
               Únete a tu Zona
             </button>
           </li>
           <li>
             <button
-              className={`${styles.simBtn} ${page === 'simpatizantes' ? styles.simBtnActive : ''}`}
-              onClick={() => { setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
+              className={`${styles.encuestasBtn} ${page === 'encuestas' ? styles.encuestasBtnActive : ''}`}
+              onClick={() => { setActive(''); setPage('encuestas'); window.scrollTo({ top: 0 }) }}
             >
-              Simpatizantes
+              Encuestas
             </button>
           </li>
           <li>
             <button
-              className={`${styles.encuestasBtn} ${page === 'encuestas' ? styles.encuestasBtnActive : ''}`}
-              onClick={() => { setPage('encuestas'); window.scrollTo({ top: 0 }) }}
+              className={`${styles.rendicionBtn} ${page === 'rendicion' ? styles.rendicionBtnActive : ''}`}
+              onClick={() => { setActive(''); setPage('rendicion'); window.scrollTo({ top: 0 }) }}
             >
-              Encuestas
+              Rendición de Cuentas
             </button>
           </li>
         </ul>
@@ -106,12 +105,12 @@ export default function Navbar({ page, setPage }) {
         {/* Social icons */}
         <div className={styles.social}>
           {[
-            { label: 'Facebook', path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', fill: true },
-            { label: 'Instagram', instagram: true },
-            { label: 'TikTok',    tiktok: true },
-            { label: 'YouTube',   youtube: true },
+            { label: 'Facebook', href: 'https://www.facebook.com/jesusmaldonadoperu/?locale=es_LA', path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', fill: true },
+            { label: 'Instagram', href: 'https://www.instagram.com/jesus_maldonado_sjl?igsh=MjRwb2J2bmVmZ2t5', instagram: true },
+            { label: 'TikTok',    href: 'https://www.tiktok.com/@jesusmaldonadosjl?_r=1&_t=ZS-97ErrWlhxqr', tiktok: true },
+            { label: 'YouTube',   href: 'https://youtube.com/@jesussinfiltro?si=kxQhFhhlYPZxSYYo', youtube: true },
           ].map(s => (
-            <a key={s.label} href="#" aria-label={s.label}
+            <a key={s.label} href={s.href} target={s.href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={s.label}
               style={{ background: iconBg, color: 'var(--dark)' }}
               className={styles.socialIcon}
             >
@@ -134,32 +133,40 @@ export default function Navbar({ page, setPage }) {
 
       {/* Mobile menu */}
       <div className={`${styles.mobileMenu} ${open ? styles.menuOpen : ''}`}>
-        {links.map(l => (
+        {links.map(l => l.page ? (
+          <button
+            key={l.page}
+            className={styles.linkBtnMobile}
+            onClick={() => { setOpen(false); setActive(''); setPage(l.page); window.scrollTo({ top: 0 }) }}
+          >
+            {l.label}
+          </button>
+        ) : (
           <a
-            key={l.href + l.label}
+            key={l.href}
             href={l.href}
-            onClick={() => { setOpen(false); page !== 'home' && setPage('home') }}
+            onClick={() => { setOpen(false); setActive(l.href); page !== 'home' && setPage('home') }}
           >
             {l.label}
           </a>
         ))}
         <button
           className={styles.zonaBtnMobile}
-          onClick={() => { setOpen(false); setPage('zona'); window.scrollTo({ top: 0 }) }}
+          onClick={() => { setOpen(false); setActive(''); setPage('zona'); window.scrollTo({ top: 0 }) }}
         >
           Únete a tu Zona
         </button>
         <button
-          className={styles.simBtnMobile}
-          onClick={() => { setOpen(false); setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
-        >
-          Simpatizantes
-        </button>
-        <button
           className={styles.encuestasBtnMobile}
-          onClick={() => { setOpen(false); setPage('encuestas'); window.scrollTo({ top: 0 }) }}
+          onClick={() => { setOpen(false); setActive(''); setPage('encuestas'); window.scrollTo({ top: 0 }) }}
         >
           Encuestas
+        </button>
+        <button
+          className={styles.rendicionBtnMobile}
+          onClick={() => { setOpen(false); setActive(''); setPage('rendicion'); window.scrollTo({ top: 0 }) }}
+        >
+          Rendición de Cuentas
         </button>
       </div>
     </>
@@ -168,7 +175,7 @@ export default function Navbar({ page, setPage }) {
 
 function SocialSvg({ path, fill, instagram, tiktok, youtube }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24"
+    <svg width="18" height="18" viewBox="0 0 24 24"
       fill={fill ? 'currentColor' : 'none'}
       stroke={instagram ? 'currentColor' : 'none'}
       strokeWidth="2"
