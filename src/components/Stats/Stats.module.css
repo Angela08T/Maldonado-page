@@ -1,68 +1,80 @@
 .stats {
-  background: var(--white);
+  background: #fff;
   box-shadow: 0 8px 40px rgba(0,0,0,.12);
-  padding: 2rem 3%;
   position: relative;
   z-index: 5;
   margin: -3.5rem auto 0;
   border-radius: 1rem;
   max-width: 88%;
+  overflow: hidden;
+  border-top: 5px solid var(--red, #D62828);
 }
 
-.grid {
+/* ── Social row ── */
+.socialRow {
+  padding: 1.8rem 2rem 2rem;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: #fff;
 }
-
-.item {
+.socialHeading {
   display: flex;
   align-items: center;
-  gap: .9rem;
+  gap: .8rem;
+}
+.socialHeadingLine {
   flex: 1;
-  padding: 0 1.5rem;
+  height: 1px;
+  background: rgba(0,0,0,.1);
 }
-
-.item + .item {
-  border-left: 1px solid rgba(0,0,0,.08);
+.socialHeadingText {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red, #D62828);
+  white-space: nowrap;
 }
-
-.icon {
-  width: 58px;
-  height: 58px;
+.socialIcons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+.socialLabel { display: none; }
+.socialIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
+  text-decoration: none;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+.socialIcon:hover { transform: translateY(-6px); }
+.socialCircle {
+  width: 68px; height: 68px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   color: #fff;
+  transition: box-shadow .3s, transform .25s;
 }
-
-.red    { background: var(--red); }
-.orange { background: var(--orange); }
-.green  { background: var(--green); }
-.teal   { background: var(--teal); }
-.yellow { background: var(--yellow); }
-.purple { background: #662d91; }
-
-.num {
-  font-family: var(--font-data);
+.socialIcon:hover .socialCircle {
+  box-shadow: 0 12px 28px rgba(0,0,0,.2) !important;
+}
+.socialName {
+  font-size: .75rem;
   font-weight: 700;
-  font-size: 1.8rem;
-  line-height: 1;
-  color: var(--dark);
-}
-
-.label {
-  font-family: var(--font-body);
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
+  color: var(--dark, #001A3D);
   text-transform: uppercase;
-  color: #888;
-  line-height: 1.4;
-  margin-top: .2rem;
+}
+.socialHandle {
+  font-size: .65rem;
+  color: #999;
+  letter-spacing: .3px;
 }
 
 @media (max-width: 900px) {

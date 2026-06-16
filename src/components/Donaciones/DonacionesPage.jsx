@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from './DonacionesPage.module.css'
 import yapeLogo from '../../assets/yape.png'
 import plinLogo from '../../assets/plin.png'
+import { supabase } from '../../lib/supabase'
 
 const MONTOS = [3, 5, 10]
 
@@ -26,9 +27,10 @@ export default function DonacionesPage({ onBack }) {
   const formatCard = v => v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim()
   const formatExp  = v => v.replace(/\D/g, '').slice(0, 4).replace(/^(\d{2})(\d)/, '$1/$2')
 
-  const handlePago = e => {
+  const handlePago = async e => {
     e.preventDefault()
     if (montoFinal < 1) return
+    await supabase.from('donaciones').insert({ monto: montoFinal, metodo, estado: 'pendiente' })
     setPagado(true)
   }
 

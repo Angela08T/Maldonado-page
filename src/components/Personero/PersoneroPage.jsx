@@ -1,199 +1,261 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './PersoneroPage.module.css'
+import logoSomosPeru from '../../assets/logo-somos-peru.png'
+import { supabase } from '../../lib/supabase'
 
-const beneficios = [
-  {
-    color: 'red',
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-    titulo: 'Cuidas tu voto',
-    texto: 'Fiscalizas el proceso de votación en tu mesa asegurando que cada voto sea contado correctamente.',
-  },
-  {
-    color: 'blue',
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>,
-    titulo: 'Representas al movimiento',
-    texto: 'Eres la voz oficial de Jesús Maldonado en tu mesa de votación, garantizando transparencia.',
-  },
-  {
-    color: 'green',
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>,
-    titulo: 'Proceso transparente',
-    texto: 'Tu presencia asegura que el escrutinio sea justo, evitando irregularidades en el conteo de votos.',
-  },
-  {
-    color: 'orange',
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>,
-    titulo: 'Capacitación gratuita',
-    texto: 'Recibirás formación completa sobre tus funciones y derechos como personero antes del día de elecciones.',
-  },
-  {
-    color: 'blue',
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>,
-    titulo: 'Acción en el momento clave',
-    texto: 'Participas activamente el día más importante del proceso democrático, cuando más se necesita tu presencia.',
-  },
-  {
-    color: 'red',
-    icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
-    titulo: 'Reconocimiento ciudadano',
-    texto: 'Tu labor como personero es un acto de servicio cívico que fortalece la democracia en SJL.',
-  },
-]
+function SignaturePad({ canvasRef }) {
+  const drawing = useRef(false)
 
-const requisitos = [
-  'Ser ciudadano peruano con DNI vigente',
-  'Estar inscrito en el padrón electoral del distrito',
-  'Disponibilidad el día de las elecciones',
-  'Asistir a la capacitación previa obligatoria',
-  'Compromiso con la transparencia del proceso',
-]
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    ctx.strokeStyle = '#111'
+    ctx.lineWidth = 2
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
+
+    const getPos = e => {
+      const rect = canvas.getBoundingClientRect()
+      const src = e.touches ? e.touches[0] : e
+      return { x: src.clientX - rect.left, y: src.clientY - rect.top }
+    }
+    const start = e => { e.preventDefault(); drawing.current = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y) }
+    const move  = e => { e.preventDefault(); if (!drawing.current) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke() }
+    const stop  = ()  => { drawing.current = false }
+
+    canvas.addEventListener('mousedown', start)
+    canvas.addEventListener('mousemove', move)
+    canvas.addEventListener('mouseup', stop)
+    canvas.addEventListener('mouseleave', stop)
+    canvas.addEventListener('touchstart', start, { passive: false })
+    canvas.addEventListener('touchmove',  move,  { passive: false })
+    canvas.addEventListener('touchend',   stop)
+    return () => {
+      canvas.removeEventListener('mousedown', start)
+      canvas.removeEventListener('mousemove', move)
+      canvas.removeEventListener('mouseup', stop)
+      canvas.removeEventListener('mouseleave', stop)
+      canvas.removeEventListener('touchstart', start)
+      canvas.removeEventListener('touchmove',  move)
+      canvas.removeEventListener('touchend',   stop)
+    }
+  }, [canvasRef])
+
+  const clear = () => {
+    const canvas = canvasRef.current
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+  }
+
+  return (
+    <div className={styles.signWrap}>
+      <canvas ref={canvasRef} width={280} height={100} className={styles.signCanvas} />
+      <button type="button" className={styles.clearBtn} onClick={clear}>Limpiar</button>
+    </div>
+  )
+}
 
 export default function PersoneroPage({ onBack }) {
-  const [form, setForm]     = useState({ nombre: '', apellidos: '', dni: '', celular: '', zona: '' })
-  const [enviado, setEnviado] = useState(false)
+  const [sexo, setSexo]         = useState('')
+  const [huella, setHuella]     = useState(null)
+  const [fields, setFields]     = useState({
+    apellido_paterno:'', apellido_materno:'', nombres:'', dni:'',
+    fecha_nacimiento:'', lugar_nacimiento:'', region:'', provincia:'',
+    distrito:'', direccion:'', telefono:'', comuna:'', email:''
+  })
+  const canvasRef      = useRef(null)
+  const huellaInputRef = useRef(null)
 
-  useEffect(() => { window.scrollTo({ top: 0 }) }, [])
+  const set = k => e => setFields(f => ({ ...f, [k]: e.target.value }))
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const { nombre, apellidos, dni, celular, zona } = form
-    if (nombre && apellidos && dni && celular && zona) setEnviado(true)
+  const handleDescargar = async () => {
+    await supabase.from('personeros').insert({ ...fields, sexo })
+    window.print()
+  }
+
+  const handleHuella = e => {
+    const file = e.target.files[0]
+    if (file) setHuella(URL.createObjectURL(file))
   }
 
   return (
     <div className={styles.page}>
 
-      {/* ── Hero ── */}
-      <div className={styles.hero}>
-        <div className={styles.heroGlow} />
-        <div className={styles.heroContent}>
-          {onBack && (
-            <button className={styles.backBtn} onClick={onBack}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-              </svg>
-              Volver al inicio
-            </button>
-          )}
-          <span className={styles.eyebrow}>Acción ciudadana · Elecciones</span>
-          <h1 className={styles.heroTitle}>Sé Personero y<br/><span className={styles.accent}>Cuida tu Voto</span></h1>
-          <p className={styles.heroSub}>Regístrate para representar a Jesús Maldonado en tu mesa de votación y garantizar un proceso electoral transparente en San Juan de Lurigancho</p>
-          <div className={styles.heroPills}>
-            <span className={styles.pill}>✔ Gratuito</span>
-            <span className={styles.pill}>✔ Capacitación incluida</span>
-            <span className={styles.pill}>✔ Acción real el día de elecciones</span>
-          </div>
-        </div>
+      {/* Botones de acción — solo visibles en pantalla, ocultos al imprimir */}
+      <div className={styles.actions}>
+        {onBack && (
+          <button className={styles.backBtn} onClick={onBack}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Volver
+          </button>
+        )}
+        <button className={styles.downloadBtn} onClick={handleDescargar}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Descargar / Imprimir Ficha
+        </button>
       </div>
 
-      <div className={styles.container}>
+      {/* ── Ficha oficial ── */}
+      <div className={styles.ficha}>
 
-        {/* ── Grid principal ── */}
-        <div className={styles.mainGrid}>
-
-          {/* Formulario */}
-          <div className={styles.formCard}>
-            {enviado ? (
-              <div className={styles.success}>
-                <div className={styles.successIcon}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                </div>
-                <h3>¡Gracias, {form.nombre}!</h3>
-                <p>Tu registro como personero ha sido recibido. Nos comunicaremos contigo al <strong>{form.celular}</strong> con los detalles de la capacitación.</p>
-                <button className={styles.resetBtn} onClick={() => { setEnviado(false); setForm({ nombre: '', apellidos: '', dni: '', celular: '', zona: '' }) }}>
-                  Registrar otro personero
-                </button>
-              </div>
-            ) : (
-              <>
-                <h2 className={styles.formTitle}>Regístrate para ser Personero</h2>
-                <div className={styles.formDivider} />
-                <p className={styles.formDesc}>Completa el formulario y te contactaremos para coordinar tu capacitación antes del día de elecciones.</p>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                  <div className={styles.fieldRow}>
-                    <div className={styles.field}>
-                      <label>Nombre</label>
-                      <input type="text" placeholder="Jesús" value={form.nombre} onChange={e => setForm(f => ({ ...f, nombre: e.target.value }))} required />
-                    </div>
-                    <div className={styles.field}>
-                      <label>Apellidos</label>
-                      <input type="text" placeholder="García López" value={form.apellidos} onChange={e => setForm(f => ({ ...f, apellidos: e.target.value }))} required />
-                    </div>
-                  </div>
-                  <div className={styles.fieldRow}>
-                    <div className={styles.field}>
-                      <label>DNI</label>
-                      <input type="text" inputMode="numeric" placeholder="12345678" maxLength={8} value={form.dni} onChange={e => setForm(f => ({ ...f, dni: e.target.value.replace(/\D/g,'').slice(0,8) }))} required />
-                    </div>
-                    <div className={styles.field}>
-                      <label>Celular</label>
-                      <input type="tel" inputMode="numeric" placeholder="999 000 000" value={form.celular} onChange={e => setForm(f => ({ ...f, celular: e.target.value.replace(/\D/g,'').slice(0,9) }))} required />
-                    </div>
-                  </div>
-                  <div className={styles.field}>
-                    <label>Zona / Sector donde votarás</label>
-                    <select value={form.zona} onChange={e => setForm(f => ({ ...f, zona: e.target.value }))} required>
-                      <option value="">Selecciona tu zona</option>
-                      <option>Zona Norte – Canto Grande</option>
-                      <option>Zona Sur – Bayóvar / Canto Rey</option>
-                      <option>Zona Centro – Zárate / Campoy</option>
-                      <option>Zona Este – Huáscar / Mariscal Cáceres</option>
-                      <option>Zona Oeste – Mangomarca / El Agustino</option>
-                    </select>
-                  </div>
-                  <button type="submit" className={styles.submitBtn}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    Quiero ser personero
-                  </button>
-                  <p className={styles.privacidad}>Tus datos solo se usarán para coordinar tu participación como personero.</p>
-                </form>
-              </>
-            )}
+        {/* Encabezado */}
+        <div className={styles.header}>
+          <div className={styles.logoBox}>
+            <img src={logoSomosPeru} alt="Somos Perú" className={styles.logoImg} />
           </div>
-
-          {/* Requisitos */}
-          <div className={styles.requisitosCard}>
-            <h3 className={styles.reqTitle}>Requisitos</h3>
-            <div className={styles.reqDivider} />
-            <ul className={styles.reqList}>
-              {requisitos.map((r, i) => (
-                <li key={i} className={styles.reqItem}>
-                  <span className={styles.reqCheck}>✔</span>
-                  {r}
-                </li>
-              ))}
-            </ul>
-            <div className={styles.reqAlert}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <p>Los personeros acreditados reciben un código oficial del movimiento para presentar el día de las elecciones.</p>
+          <div className={styles.headerTexts}>
+            <p className={styles.partido}>PARTIDO DEMOCRÁTICO</p>
+            <p className={styles.somosGrande}>SOMOS PERÚ</p>
+            <div className={styles.tituloFicha}>
+              FICHA DE INSCRIPCIÓN DE PERSONEROS
             </div>
           </div>
         </div>
 
-        {/* ── Beneficios ── */}
-        <div className={styles.beneficiosBlock}>
-          <h2 className={styles.sectionTitle}>¿Por qué ser personero?</h2>
-          <div className={styles.sectionDivider} />
-          <div className={styles.beneficiosGrid}>
-            {beneficios.map((b, i) => (
-              <div key={i} className={`${styles.benCard} ${styles['border_' + b.color]}`}>
-                <div className={`${styles.benIcon} ${styles['bg_' + b.color]}`}>{b.icon}</div>
-                <div>
-                  <h4 className={styles.benTitulo}>{b.titulo}</h4>
-                  <p className={styles.benTexto}>{b.texto}</p>
-                </div>
-              </div>
-            ))}
+        {/* Fecha */}
+        <div className={styles.fechaRow}>
+          <div className={styles.fechaGroup}>
+            <span className={styles.fechaLabel}>DÍA</span>
+            <input className={styles.fechaCelda} type="text" maxLength={2} />
+          </div>
+          <div className={styles.fechaGroup}>
+            <span className={styles.fechaLabel}>MES</span>
+            <input className={styles.fechaCelda} type="text" maxLength={2} />
+          </div>
+          <div className={styles.fechaGroup}>
+            <span className={styles.fechaLabel}>AÑO</span>
+            <input className={styles.fechaCelda} type="text" maxLength={4} />
           </div>
         </div>
 
-        {/* ── CTA final ── */}
-        <div className={styles.ctaFinal}>
-          <div className={styles.ctaIcon}>⚡</div>
-          <h3>El voto es tuyo — protégelo</h3>
-          <p>Cada personero en cada mesa es un paso más hacia una victoria limpia y legítima para San Juan de Lurigancho.</p>
+        {/* Texto declaración */}
+        <p className={styles.declaracion}>
+          Por medio del presente, manifiesto mi decisión de <strong>INSCRIBIRME</strong> como Personero de la organización política Partido Democrático Somos Perú comprometiéndome a cumplir con su estatuto y demás normas internas. En fe de lo cual firmo el presente documento:
+        </p>
+
+        {/* DATOS PERSONALES */}
+        <h2 className={styles.seccion}>DATOS PERSONALES</h2>
+
+        <div className={styles.campoFull}>
+          <label>Apellido Paterno:</label>
+          <input type="text" className={styles.inputFull} value={fields.apellido_paterno} onChange={set('apellido_paterno')} />
+        </div>
+        <div className={styles.campoFull}>
+          <label>Apellido Materno:</label>
+          <input type="text" className={styles.inputFull} value={fields.apellido_materno} onChange={set('apellido_materno')} />
+        </div>
+        <div className={styles.campoFull}>
+          <label>Nombres:</label>
+          <input type="text" className={styles.inputFull} value={fields.nombres} onChange={set('nombres')} />
+        </div>
+
+        {/* DNI + Fecha de nacimiento + Sexo */}
+        <div className={styles.dniRow}>
+          <div className={styles.dniGroup}>
+            <label>DNI</label>
+            <input type="text" className={styles.inputDni} maxLength={8} value={fields.dni} onChange={set('dni')} />
+          </div>
+          <div className={styles.nacRow}>
+            <label>Fecha de Nacimiento</label>
+            <div className={styles.nacCeldas}>
+              <div className={styles.fechaGroup}>
+                <span className={styles.fechaLabelSm}>Día</span>
+                <input className={styles.fechaCeldaSm} type="text" maxLength={2} onChange={e => setFields(f => ({ ...f, fecha_nacimiento: e.target.value + f.fecha_nacimiento.slice(2) }))} />
+              </div>
+              <div className={styles.fechaGroup}>
+                <span className={styles.fechaLabelSm}>Mes</span>
+                <input className={styles.fechaCeldaSm} type="text" maxLength={2} onChange={e => setFields(f => ({ ...f, fecha_nacimiento: f.fecha_nacimiento.slice(0,2) + '/' + e.target.value + f.fecha_nacimiento.slice(5) }))} />
+              </div>
+              <div className={styles.fechaGroup}>
+                <span className={styles.fechaLabelSm}>Año</span>
+                <input className={styles.fechaCeldaSm} type="text" maxLength={4} onChange={e => setFields(f => ({ ...f, fecha_nacimiento: f.fecha_nacimiento.slice(0,5) + '/' + e.target.value }))} />
+              </div>
+            </div>
+          </div>
+          <div className={styles.sexoGroup}>
+            <label>Sexo</label>
+            <div className={styles.sexoOpts}>
+              <button type="button" className={`${styles.sexoBtn} ${sexo === 'F' ? styles.sexoActive : ''}`} onClick={() => setSexo('F')}>F</button>
+              <button type="button" className={`${styles.sexoBtn} ${sexo === 'M' ? styles.sexoActive : ''}`} onClick={() => setSexo('M')}>M</button>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.campoFull}>
+          <label>Lugar de Nacimiento</label>
+          <input type="text" className={styles.inputFull} value={fields.lugar_nacimiento} onChange={set('lugar_nacimiento')} />
+        </div>
+
+        {/* DOMICILIO ACTUAL */}
+        <h2 className={styles.seccion}>DOMICILIO ACTUAL</h2>
+
+        <div className={styles.triRow}>
+          <div className={styles.campo}>
+            <label>Región</label>
+            <input type="text" className={styles.inputCampo} value={fields.region} onChange={set('region')} />
+          </div>
+          <div className={styles.campo}>
+            <label>Provincia</label>
+            <input type="text" className={styles.inputCampo} value={fields.provincia} onChange={set('provincia')} />
+          </div>
+          <div className={styles.campo}>
+            <label>Distrito</label>
+            <input type="text" className={styles.inputCampo} value={fields.distrito} onChange={set('distrito')} />
+          </div>
+        </div>
+
+        <div className={styles.dirRow}>
+          <div className={styles.campoDir}>
+            <label>Avenida / Calle / Jirón / Urbanización / Asentamiento H. / Sector</label>
+            <input type="text" className={styles.inputFull} value={fields.direccion} onChange={set('direccion')} />
+          </div>
+          <div className={styles.campoTel}>
+            <label>Teléfono</label>
+            <input type="text" className={styles.inputFull} value={fields.telefono} onChange={set('telefono')} />
+          </div>
+        </div>
+
+        <div className={styles.duoRow}>
+          <div className={styles.campo}>
+            <label>Comuna</label>
+            <input type="text" className={styles.inputCampo} value={fields.comuna} onChange={set('comuna')} />
+          </div>
+          <div className={styles.campoEmail}>
+            <label>Correo Electrónico</label>
+            <input type="email" className={styles.inputCampo} value={fields.email} onChange={set('email')} />
+          </div>
+        </div>
+
+        {/* Firma y huella */}
+        <div className={styles.firmaRow}>
+          <div className={styles.firmaBox}>
+            <SignaturePad canvasRef={canvasRef} />
+            <span className={styles.firmaLabel}>Firma</span>
+          </div>
+          <div className={styles.huellaBox}>
+            <input
+              ref={huellaInputRef}
+              type="file"
+              accept="image/*"
+              className={styles.huellaInput}
+              onChange={handleHuella}
+            />
+            <div
+              className={styles.huellaRect}
+              onClick={() => huellaInputRef.current.click()}
+            >
+              {huella
+                ? <img src={huella} alt="Huella" className={styles.huellaImg} />
+                : <span className={styles.huellaPlaceholder}>Toca para subir foto</span>
+              }
+            </div>
+            <span className={styles.firmaLabel}>Huella Digital</span>
+          </div>
         </div>
 
       </div>

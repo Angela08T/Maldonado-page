@@ -33,9 +33,8 @@ export default function Navbar({ page, setPage }) {
     return () => obs.disconnect()
   }, [])
 
-  const textColor  = 'var(--dark)'
-  const iconBg     = 'rgba(0,0,0,.07)'
-  const barColor   = 'var(--dark)'
+  const textColor = 'var(--dark)'
+  const barColor  = 'var(--dark)'
 
   return (
     <>
@@ -64,8 +63,8 @@ export default function Navbar({ page, setPage }) {
               ) : (
                 <a
                   href={l.href}
-                  className={active === l.href ? styles.activeLink : ''}
-                  style={{ color: active === l.href ? 'var(--red)' : textColor }}
+                  className={page === 'home' && active === l.href ? styles.activeLink : ''}
+                  style={{ color: page === 'home' && active === l.href ? 'var(--red)' : textColor }}
                   onClick={() => {
                     setActive(l.href)
                     page !== 'home' && setPage('home')
@@ -101,23 +100,6 @@ export default function Navbar({ page, setPage }) {
             </button>
           </li>
         </ul>
-
-        {/* Social icons */}
-        <div className={styles.social}>
-          {[
-            { label: 'Facebook', href: 'https://www.facebook.com/jesusmaldonadoperu/?locale=es_LA', path: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', fill: true },
-            { label: 'Instagram', href: 'https://www.instagram.com/jesus_maldonado_sjl?igsh=MjRwb2J2bmVmZ2t5', instagram: true },
-            { label: 'TikTok',    href: 'https://www.tiktok.com/@jesusmaldonadosjl?_r=1&_t=ZS-97ErrWlhxqr', tiktok: true },
-            { label: 'YouTube',   href: 'https://youtube.com/@jesussinfiltro?si=kxQhFhhlYPZxSYYo', youtube: true },
-          ].map(s => (
-            <a key={s.label} href={s.href} target={s.href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" aria-label={s.label}
-              style={{ background: iconBg, color: 'var(--dark)' }}
-              className={styles.socialIcon}
-            >
-              <SocialSvg {...s} />
-            </a>
-          ))}
-        </div>
 
         {/* Hamburger */}
         <button
@@ -173,21 +155,3 @@ export default function Navbar({ page, setPage }) {
   )
 }
 
-function SocialSvg({ path, fill, instagram, tiktok, youtube }) {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24"
-      fill={fill ? 'currentColor' : 'none'}
-      stroke={instagram ? 'currentColor' : 'none'}
-      strokeWidth="2"
-    >
-      {path && <path d={path} />}
-      {instagram && <>
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
-      </>}
-      {tiktok && <path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9a8.19 8.19 0 004.79 1.52V7.1a4.85 4.85 0 01-1.02-.41z" />}
-      {youtube && <path fill="currentColor" d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />}
-    </svg>
-  )
-}
