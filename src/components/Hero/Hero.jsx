@@ -1,5 +1,5 @@
 import styles from './Hero.module.css'
-import heroImg from '../../assets/hero.png'
+import heroImg from '../../assets/foto-maldonado.jpg'
 
 const PARTICLES = [
   { size: 6,  left: '10%', delay: '0s',   dur: '6s',  color: 'rgba(232,25,44,.5)',   bottom: '15%' },

@@ -29,7 +29,7 @@
   background: rgba(0,0,0,.1);
 }
 .socialHeadingText {
-  font-size: .65rem;
+  font-size: .8rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -53,7 +53,7 @@
 }
 .socialIcon:hover { transform: translateY(-6px); }
 .socialCircle {
-  width: 68px; height: 68px;
+  width: 82px; height: 82px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -64,15 +64,25 @@
 .socialIcon:hover .socialCircle {
   box-shadow: 0 12px 28px rgba(0,0,0,.2) !important;
 }
+.socialImg {
+  width: 82px; height: 82px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 24px rgba(0,0,0,.2);
+  transition: box-shadow .3s;
+}
+.socialIcon:hover .socialImg {
+  box-shadow: 0 12px 28px rgba(0,0,0,.3);
+}
 .socialName {
-  font-size: .75rem;
+  font-size: .9rem;
   font-weight: 700;
   letter-spacing: .5px;
   color: var(--dark, #001A3D);
   text-transform: uppercase;
 }
 .socialHandle {
-  font-size: .65rem;
+  font-size: .78rem;
   color: #999;
   letter-spacing: .3px;
 }

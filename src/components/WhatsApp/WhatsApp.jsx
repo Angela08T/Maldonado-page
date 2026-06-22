@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import styles from './WhatsApp.module.css'
 import { supabase } from '../../lib/supabase'
 
+const WA_URL = 'https://wa.me/51900813888?text=Hola%2C%20me%20gustar%C3%ADa%20unirme.'
+
 const PREGUNTAS = [
   '¡Hola! 👋 ¿Cuál es tu nombre?',
   'Gracias, ¿cuál es tu apellido materno?',
@@ -14,18 +16,17 @@ const PLACEHOLDERS = ['Tu nombre…', 'Apellido materno…', 'Apellido paterno�
 
 const CAMPOS = ['nombre', 'apellidoMaterno', 'apellidoPaterno', 'telefono']
 
-export default function WhatsApp({ setPage }) {
+export default function WhatsApp() {
   const [open, setOpen]           = useState(false)
   const [visible, setVisible]     = useState(false)
   const [messages, setMessages]   = useState([])
   const [input, setInput]         = useState('')
   const [step, setStep]           = useState(0)
-  const [collected, setCollected] = useState({})
-  const [sending, setSending]     = useState(false)
   const [done, setDone]           = useState(false)
-  const popupRef  = useRef(null)
-  const bottomRef = useRef(null)
-  const inputRef  = useRef(null)
+  const popupRef    = useRef(null)
+  const bottomRef   = useRef(null)
+  const inputRef    = useRef(null)
+  const dataRef     = useRef({})
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 2000)
@@ -43,7 +44,7 @@ export default function WhatsApp({ setPage }) {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages, sending])
+  }, [messages])
 
   useEffect(() => {
     if (open && step < 4 && !done) {
@@ -75,46 +76,38 @@ export default function WhatsApp({ setPage }) {
     setMessages(prev => [...prev, { from: 'user', text }])
 
     const campo = CAMPOS[step]
-    const updated = { ...collected, [campo]: text }
-    setCollected(updated)
+    dataRef.current = { ...dataRef.current, [campo]: text }
 
     const nextStep = step + 1
     setStep(nextStep)
     addBotMsg(PREGUNTAS[nextStep])
   }
 
-  const handleOption = async (tipo) => {
-    if (sending || done) return
-    setSending(true)
+  const handleOption = (tipo) => {
+    if (done) return
+    setDone(true)
 
     setMessages(prev => [
       ...prev,
       { from: 'user', text: tipo === 'simpatizante' ? '🤝 Quiero ser Simpatizante' : '📋 Quiero ser Personero' },
     ])
 
-    const { error } = await supabase
-      .from('contactos_chat')
-      .insert([{
-        nombre:           collected.nombre,
-        apellido_materno: collected.apellidoMaterno,
-        apellido_paterno: collected.apellidoPaterno,
-        telefono:         collected.telefono,
-        tipo,
-      }])
+    addBotMsg('¡Perfecto! 🎉 Te redirigimos a WhatsApp ahora mismo…', 400)
 
-    setSending(false)
+    const d = dataRef.current
+    supabase.from('contactos_chat').insert([{
+      nombre:           d.nombre,
+      apellido_materno: d.apellidoMaterno,
+      apellido_paterno: d.apellidoPaterno,
+      telefono:         d.telefono,
+      tipo,
+    }]).then(({ error }) => {
+      if (error) console.error('Supabase:', error)
+    })
 
-    if (error) {
-      addBotMsg('Hubo un problema al guardar tu información. Por favor inténtalo de nuevo.', 500)
-      return
-    }
-
-    setDone(true)
-    addBotMsg('¡Perfecto! Te estamos redirigiendo… 🚀', 500)
     setTimeout(() => {
       setOpen(false)
-      setPage(tipo === 'simpatizante' ? 'simpatizantes' : 'personero')
-      window.scrollTo({ top: 0 })
+      window.open(WA_URL, '_blank', 'noopener')
     }, 1400)
   }
 
@@ -173,13 +166,7 @@ export default function WhatsApp({ setPage }) {
             </div>
           ))}
 
-          {sending && (
-            <div className={styles.botBubble}>
-              <span className={styles.typing}>•••</span>
-            </div>
-          )}
-
-          {step === 4 && !done && !sending && (
+          {step === 4 && !done && (
             <div className={styles.options}>
               <button className={styles.optionBtn} onClick={() => handleOption('simpatizante')}>
                 🤝 Quiero ser Simpatizante
@@ -203,7 +190,6 @@ export default function WhatsApp({ setPage }) {
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={handleKey}
                 placeholder={PLACEHOLDERS[step]}
-                disabled={sending}
               />
               <button
                 className={styles.sendBtn}

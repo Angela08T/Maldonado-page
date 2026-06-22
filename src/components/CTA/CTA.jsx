@@ -5,7 +5,7 @@ const socials = [
   { label: 'Instagram', type: 'ig', href: 'https://www.instagram.com/jesus_maldonado_sjl?igsh=MjRwb2J2bmVmZ2t5' },
   { label: 'TikTok',    type: 'tt', href: 'https://www.tiktok.com/@jesusmaldonadosjl?_r=1&_t=ZS-97ErrWlhxqr' },
   { label: 'YouTube',   type: 'yt', href: 'https://youtube.com/@jesussinfiltro?si=kxQhFhhlYPZxSYYo' },
-  { label: 'WhatsApp',  type: 'wa', href: 'https://wa.me/51999999999' },
+  { label: 'WhatsApp',  type: 'wa', href: 'https://wa.me/51900813888?text=Hola%2C%20me%20gustar%C3%ADa%20unirme.' },
 ]
 
 function SocialSvg({ type }) {
