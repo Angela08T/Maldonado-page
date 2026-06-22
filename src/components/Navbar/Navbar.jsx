@@ -3,7 +3,6 @@ import styles from './Navbar.module.css'
 
 const links = [
   { label: 'Inicio',            href: '#hero' },
-  { label: 'Apoya a la Causa', page: 'donaciones' },
   { label: 'Gestión',           href: '#gestion' },
   { label: 'Avances y Obras',   href: '#avances' },
   { label: 'Noticias',          href: '#noticias' },
@@ -91,14 +90,6 @@ export default function Navbar({ page, setPage }) {
               Encuestas
             </button>
           </li>
-          <li>
-            <button
-              className={`${styles.rendicionBtn} ${page === 'rendicion' ? styles.rendicionBtnActive : ''}`}
-              onClick={() => { setActive(''); setPage('rendicion'); window.scrollTo({ top: 0 }) }}
-            >
-              Rendición de Cuentas
-            </button>
-          </li>
         </ul>
 
         {/* Hamburger */}
@@ -143,12 +134,6 @@ export default function Navbar({ page, setPage }) {
           onClick={() => { setOpen(false); setActive(''); setPage('encuestas'); window.scrollTo({ top: 0 }) }}
         >
           Encuestas
-        </button>
-        <button
-          className={styles.rendicionBtnMobile}
-          onClick={() => { setOpen(false); setActive(''); setPage('rendicion'); window.scrollTo({ top: 0 }) }}
-        >
-          Rendición de Cuentas
         </button>
       </div>
     </>

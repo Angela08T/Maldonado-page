@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Loader    from './components/Loader/Loader'
 import Navbar    from './components/Navbar/Navbar'
 import Hero      from './components/Hero/Hero'
-import Stats     from './components/Stats/Stats'
 import Sobre     from './components/Sobre/Sobre'
 import Avances   from './components/Avances/Avances'
 import AlamedaPage   from './components/Avances/AlamedaPage'
@@ -203,7 +202,6 @@ export default function App() {
         <>
           <main>
             <Hero setPage={setPage} />
-            <Stats />
             <Sobre />
             <Avances setPage={setPage} />
             <Gestion />

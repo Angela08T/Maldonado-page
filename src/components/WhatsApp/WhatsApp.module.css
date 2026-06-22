@@ -1,7 +1,7 @@
 /* ── Wrapper posicionado fijo ── */
 .wrapper {
   position: fixed;
-  top: 9.5rem;
+  top: 45vh;
   right: 2rem;
   z-index: 9000;
   display: flex;
@@ -13,8 +13,8 @@
 /* ── Botón flotante (FAB) ── */
 .fab {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: #25D366;
   border: none;
@@ -261,7 +261,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 480px) {
-  .wrapper { top: 4.5rem; right: 1rem; }
+  .wrapper { top: 45vh; right: 1rem; }
   .popup   { width: calc(100vw - 2rem); }
-  .fab     { width: 62px; height: 62px; }
+  .fab     { width: 86px; height: 86px; }
 }
