@@ -1,7 +1,5 @@
 import styles from './EventoBanner.module.css'
 
-const texto = Array(12).fill('PRÓXIMOS EVENTOS').join('          ✦          ')
-
 export default function EventoBanner({ setPage }) {
   const handleVerMas = () => {
     setPage && setPage('eventos')
@@ -12,7 +10,7 @@ export default function EventoBanner({ setPage }) {
     <div className={styles.banner}>
       <div className={styles.tickerWrap}>
         <div className={styles.ticker}>
-          <span>{texto}&nbsp;&nbsp;&nbsp;✦&nbsp;&nbsp;&nbsp;{texto}</span>
+          <span>✦&nbsp;&nbsp;EVENTOS DE CAMPAÑA&nbsp;&nbsp;✦</span>
         </div>
       </div>
 

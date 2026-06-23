@@ -149,7 +149,7 @@ export default function WhatsApp() {
             </svg>
           </div>
           <div className={styles.headInfo}>
-            <p className={styles.headName}>Municipalidad SJL</p>
+            <p className={styles.headName}>Jesus Maldonado</p>
             <p className={styles.headStatus}><span className={styles.dot} /> En línea</p>
           </div>
           <button className={styles.closeBtn} onClick={() => setOpen(false)} aria-label="Cerrar">

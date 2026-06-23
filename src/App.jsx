@@ -3,7 +3,6 @@ import Loader    from './components/Loader/Loader'
 import Navbar    from './components/Navbar/Navbar'
 import Hero      from './components/Hero/Hero'
 import Sobre     from './components/Sobre/Sobre'
-import Avances   from './components/Avances/Avances'
 import AlamedaPage   from './components/Avances/AlamedaPage'
 import MarDelSurPage from './components/Avances/MarDelSurPage'
 import ChalanPage    from './components/Avances/ChalanPage'
@@ -11,7 +10,6 @@ import EcoparkPage   from './components/Avances/EcoparkPage'
 import EneroPage     from './components/Avances/EneroPage'
 import PlazaPage     from './components/Avances/PlazaPage'
 import Gestion   from './components/Gestion/Gestion'
-import Noticias          from './components/Noticias/Noticias'
 import CircunvalacionPage from './components/Noticias/CircunvalacionPage'
 import CantoGrandePage    from './components/Noticias/CantoGrandePage'
 import AleCoworkingPage  from './components/Noticias/AleCoworkingPage'
@@ -28,7 +26,6 @@ import EventoBanner      from './components/EventoBanner/EventoBanner'
 import PersoneroBanner  from './components/PersoneroBanner/PersoneroBanner'
 import PersoneroPage    from './components/Personero/PersoneroPage'
 import Simpatizantes  from './components/Simpatizantes/Simpatizantes'
-import Eventos        from './components/Eventos/Eventos'
 import EventosPage    from './components/Eventos/EventosPage'
 import Encuestas      from './components/Encuestas/Encuestas'
 import RendicionPage  from './components/Rendicion/RendicionPage'
@@ -203,11 +200,8 @@ export default function App() {
           <main>
             <Hero setPage={setPage} />
             <Sobre />
-            <Avances setPage={setPage} />
             <Gestion />
-            <Noticias setPage={setPage} />
             <Multimedia />
-            <Eventos onVerTodos={() => { setPage('eventos'); window.scrollTo({ top: 0 }) }} />
             <Galeria />
           </main>
           <CTA />

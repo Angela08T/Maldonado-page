@@ -12,14 +12,7 @@ export default function PersoneroBanner({ setPage }) {
 
       <div className={styles.tickerWrap}>
         <div className={styles.ticker}>
-          <span>
-            SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;·&nbsp;&nbsp;
-            Representa a Jesús Maldonado en tu mesa de votación&nbsp;&nbsp;·&nbsp;&nbsp;
-            Juntos garantizamos elecciones transparentes&nbsp;&nbsp;·&nbsp;&nbsp;
-            SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;·&nbsp;&nbsp;
-            Representa a Jesús Maldonado en tu mesa de votación&nbsp;&nbsp;·&nbsp;&nbsp;
-            Juntos garantizamos elecciones transparentes
-          </span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;✦</span>
         </div>
       </div>
 

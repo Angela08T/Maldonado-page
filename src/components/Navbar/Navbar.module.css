@@ -69,8 +69,8 @@
 }
 .links a {
   font-family: var(--font-data);
-  font-size: .75rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   position: relative;
@@ -90,8 +90,8 @@
 /* ── Link como botón (mismo estilo que los links del nav) ── */
 .linkBtn {
   font-family: var(--font-data);
-  font-size: .75rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   background: none;

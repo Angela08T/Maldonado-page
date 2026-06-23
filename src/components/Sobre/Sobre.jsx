@@ -4,46 +4,45 @@ import jesusImg from '../../assets/jesus.png'
 const stats = [
   {
     color: 'red',
-    valor: '30+',
-    label: 'espacios recuperados',
-    sub: 'operativos y recuperación de vías y zonas públicas',
+    valor: '500',
+    label: 'Sistema de Videovigilancia',
+    sub: 'cámaras con IA, Centro de Control 24/7, 12 drones y App "SJL Seguro"',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
       </svg>
     ),
   },
   {
     color: 'orange',
-    valor: '80',
-    label: 'obras y proyectos ejecutados',
-    sub: 'parques, vías, áreas verdes y espacios deportivos',
+    valor: '100',
+    label: 'Becas SJL anuales',
+    sub: 'para institutos técnicos aliados, priorizando jóvenes de Z5, Z6 y zonas altas',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 20h20M6 20V10l6-6 6 6v10"/><path d="M10 20v-6h4v6"/>
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
       </svg>
     ),
   },
   {
     color: 'green',
-    valor: '1000+',
-    label: 'Vecinos Beneficiados',
-    sub: 'impactados por obras y mejoras urbanas',
+    valor: '1era',
+    label: 'Programa "Primera Empresa"',
+    sub: 'mentoría, microcrédito municipal y espacio en Centros de Oportunidad',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
       </svg>
     ),
   },
   {
     color: 'teal',
-    valor: '15+',
-    label: 'alianzas estratégicas',
-    sub: 'trabajo conjunto con instituciones públicas y privadas',
+    valor: '50',
+    label: 'Parques de Bolsillo',
+    sub: 'espacios de 200–500 m² en esquinas conflictivas con jardinería comunitaria',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        <path d="M12 22V12"/><path d="M12 12C12 12 4 9 4 5a8 8 0 0116 0c0 4-8 7-8 7z"/>
       </svg>
     ),
   },
@@ -119,23 +118,17 @@ export default function Sobre() {
         <div className={styles.bioCol}>
           <span className={`${styles.eyebrow} reveal`}>Sobre Jesús Maldonado</span>
           <h2 className={`${styles.titulo} reveal`}>
-            Una gestión enfocada en seguridad, orden y obras para SJL
+            Construiremos una gestión enfocada en seguridad, orden y oportunidades
           </h2>
           <p className={`${styles.intro} reveal`}>
-            Desde 2023, la gestión de Jesús Maldonado viene impulsando la recuperación de espacios
-            públicos, obras viales, parques, seguridad ciudadana y proyectos urbanos en distintos
-            sectores de San Juan de Lurigancho.
-            <br /><br />
-            Entre las principales acciones destacan la recuperación de la Av. Canto Grande,
-            remodelación de parques, nuevas áreas verdes, coordinación con la PNP y ejecución
-            de proyectos que benefician a miles de vecinos del distrito.
+            Seguimos. Porque lo que construimos no se puede tirar. Porque lo que falta lo podemos
+            resolver. Y porque merecemos ser un mejor distrito. Eso es lo que viene.
           </p>
 
           {/* Quote */}
           <div className={`${styles.quoteBlock} reveal`}>
-            <span className={styles.quoteMarks}>"</span>
             <p className={styles.quoteText}>
-              No podemos normalizar el abandono ni la delincuencia. SJL merece vivir con orden, obras y seguridad.
+              No podemos normalizar el abandono ni la delincuencia. Merecemos vivir con orden, obras y seguridad.
             </p>
             <span className={styles.quoteAuthor}>– Jesús Maldonado</span>
           </div>

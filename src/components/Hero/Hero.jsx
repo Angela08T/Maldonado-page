@@ -1,6 +1,5 @@
 import styles from './Hero.module.css'
-import heroImg from '../../assets/foto-maldonado.jpg'
-import somosFans from '../../assets/somos-fans.jpg'
+import heroImg from '../../assets/perfil-uno.png'
 
 const PARTICLES = [
   { size: 6,  left: '10%', delay: '0s',   dur: '6s',  color: 'rgba(232,25,44,.5)',   bottom: '15%' },
@@ -17,17 +16,11 @@ const socials = [
   { label: 'Instagram',    handle: '@jesus_maldonado_sjl', color: 'linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)', glow: 'rgba(225,48,108,.45)', href: 'https://www.instagram.com/jesus_maldonado_sjl?igsh=MjRwb2J2bmVmZ2t5' },
   { label: 'TikTok',       handle: '@jesusmaldonadosjl',   color: '#010101', glow: 'rgba(0,0,0,.35)',       href: 'https://www.tiktok.com/@jesusmaldonadosjl?_r=1&_t=ZS-97ErrWlhxqr' },
   { label: 'YouTube',      handle: '@jesussinfiltro',      color: '#FF0000', glow: 'rgba(255,0,0,.45)',    href: 'https://youtube.com/@jesussinfiltro?si=kxQhFhhlYPZxSYYo' },
-  { label: 'Club de Fans', handle: '@somos_fans_',         img: somosFans,                                 href: 'https://www.tiktok.com/@somos_fans_?is_from_webapp=1&sender_device=pc' },
 ]
 
 const SocialIcon = ({ s }) => {
-  const open = e => {
-    e.preventDefault()
-    e.stopPropagation()
-    window.open(s.href, '_blank', 'noopener,noreferrer')
-  }
   return (
-  <a href={s.href} onClick={open} className={styles.socialIcon} style={{ cursor: 'pointer' }}>
+  <a href={s.href} target="_blank" rel="noopener noreferrer" className={styles.socialIcon} style={{ cursor: 'pointer' }}>
     {s.img ? (
       <div className={styles.socialCircle} style={{ overflow: 'hidden', padding: 0 }}>
         <img src={s.img} alt={s.label} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }} />
@@ -69,6 +62,17 @@ export default function Hero({ setPage }) {
       <div className={styles.blob} style={{ width:520, height:520, background:'radial-gradient(circle, rgba(232,25,44,.16), transparent 70%)', top:-140, left:-140, animationDuration:'9s' }} />
       <div className={styles.blob} style={{ width:420, height:420, background:'radial-gradient(circle, rgba(247,148,29,.14), transparent 70%)', bottom:-80, left:'15%', animationDuration:'11s', animationDelay:'-4s' }} />
       <div className={styles.blob} style={{ width:360, height:360, background:'radial-gradient(circle, rgba(0,167,157,.13), transparent 70%)', top:'25%', right:'56%', animationDuration:'13s', animationDelay:'-7s' }} />
+
+      {/* Decoración geométrica */}
+      <div className={styles.ring1} />
+      <div className={styles.ring2} />
+      <div className={styles.ring3} />
+      <div className={styles.ring4} />
+      <div className={styles.ring5} />
+      <div className={styles.ring6} />
+      <div className={styles.ring7} />
+      <div className={styles.diagonal} />
+      <div className={styles.dots} />
 
       {/* Partículas flotantes */}
       <div className={styles.particles}>

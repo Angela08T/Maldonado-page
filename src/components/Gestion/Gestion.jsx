@@ -61,11 +61,10 @@ export default function Gestion() {
       <div className={styles.inner}>
         {/* ── Columna izquierda ── */}
         <div className={`${styles.left} reveal`}>
-          <span className={styles.eyebrow}>Gestión Municipal</span>
-          <h2 className={styles.titulo}>Nuestra<br />Gestión</h2>
+          <h2 className={styles.titulo}>Nuestras<br />Prioridades</h2>
           <p className={styles.desc}>
             Transparencia, planificación y trabajo en equipo para seguir
-            construyendo el Maldonado que soñamos.
+            construyendo el distrito que soñamos.
           </p>
 
           <div className={styles.miniStats}>
