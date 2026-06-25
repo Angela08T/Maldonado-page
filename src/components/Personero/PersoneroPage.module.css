@@ -226,10 +226,74 @@
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
-  .ficha { padding: 1.5rem 1.2rem; }
-  .triRow { grid-template-columns: 1fr; }
-  .dirRow { grid-template-columns: 1fr; }
-  .duoRow { grid-template-columns: 1fr; }
-  .dniRow { flex-direction: column; align-items: flex-start; }
-  .somosGrande { font-size: 1.4rem; }
+  .page { padding: 7rem .5rem 5rem; }
+  .ficha { padding: 1.2rem 1rem; font-size: .95rem; }
+
+  /* Layout stacks */
+  .triRow { grid-template-columns: 1fr; gap: .6rem; }
+  .dirRow { grid-template-columns: 1fr; gap: .6rem; }
+  .duoRow { grid-template-columns: 1fr; gap: .6rem; }
+  .dniRow { flex-direction: column; align-items: flex-start; gap: .8rem; }
+
+  /* Header */
+  .somosGrande { font-size: 1.3rem; }
+  .logoImg { width: 80px; }
+  .header { gap: 1rem; }
+
+  /* Inputs — mínimo 16px para evitar zoom en iOS, y altura táctil */
+  .inputFull {
+    font-size: 1rem;
+    height: 42px;
+    border: 1.5px solid #bbb;
+    border-radius: 6px;
+    padding: 0 .6rem;
+    background: #fafafa;
+  }
+  .inputFull:focus { border-color: #003D82; background: #fff; }
+
+  .inputCampo {
+    font-size: 1rem;
+    height: 42px;
+    padding: 0 .6rem;
+  }
+  .inputCampo:focus { border-color: #003D82; }
+
+  .inputDni {
+    font-size: 1rem;
+    height: 42px;
+    width: 130px;
+    padding: 0 .6rem;
+  }
+
+  .fechaCelda {
+    font-size: 1rem;
+    height: 42px;
+    width: 70px;
+  }
+
+  .fechaCeldaSm {
+    font-size: 1rem;
+    height: 42px;
+    width: 56px;
+  }
+
+  .sexoBtn {
+    width: 48px;
+    height: 42px;
+    font-size: 1rem;
+  }
+
+  /* Firma y huella — apilados */
+  .firmaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .firmaBox { width: 100%; }
+  .signCanvas { max-width: 100%; }
+  .huellaRect { width: 120px; height: 140px; }
+
+  /* Botones de acción */
+  .actions { flex-wrap: wrap; }
+  .downloadBtn { font-size: .82rem; padding: .65rem 1.2rem; margin-left: 0; }
 }

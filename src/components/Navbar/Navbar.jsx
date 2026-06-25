@@ -114,12 +114,6 @@ export default function Navbar({ page, setPage }) {
           </a>
         ))}
         <button
-          className={styles.zonaBtnMobile}
-          onClick={() => { setOpen(false); setActive(''); setPage('zona'); window.scrollTo({ top: 0 }) }}
-        >
-          Únete a tu Zona
-        </button>
-        <button
           className={styles.encuestasBtnMobile}
           onClick={() => { setOpen(false); setActive(''); setPage('encuestas'); window.scrollTo({ top: 0 }) }}
         >
