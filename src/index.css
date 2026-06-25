@@ -269,6 +269,20 @@ section#hero { padding: 0; }
 }
 .card-link:hover { gap: .8rem; }
 
+/* ── RESPONSIVE GLOBAL ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  section { padding: 3rem 6%; }
+  section#hero { padding: 0; }
+  .section-title { font-size: clamp(1.4rem, 6vw, 1.9rem); }
+  .section-divider { margin-bottom: 2rem; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 2.5rem 5%; }
+  section#hero { padding: 0; }
+  .btn-primary { font-size: .82rem; padding: .75rem 1.6rem; }
+}
+
 /* ── FLOATING PARTICLES (Hero) ──────────────────────────────── */
 .particle {
   position: absolute;

@@ -578,6 +578,31 @@
 .backHome:hover { background: #2d2d4e; }
 
 /* ── Responsive ── */
+@media (max-width: 768px) {
+  .donacionGrid {
+    grid-template-columns: 1fr;
+  }
+  .impactoCol { position: static; }
+  .hero { padding: 4rem 5% 3rem; }
+  .container { padding: 1.5rem 5%; }
+  .qrPanel { flex-direction: column; align-items: center; }
+  .qrBox { width: 100%; max-width: 200px; }
+}
+
+@media (max-width: 480px) {
+  .fieldRow2 { grid-template-columns: 1fr; }
+  .docRow { flex-direction: column; }
+  .docSelect { width: 100%; }
+  .modal { border-radius: 14px; }
+  .modalHeader { padding: 1.2rem 1.2rem .8rem; }
+  .modalForm { padding: 1rem 1.2rem 1.4rem; }
+  .modalSub { padding: .5rem 1.2rem 0; }
+  .tabs { flex-wrap: wrap; }
+  .montoSection { padding: 1.4rem 1.2rem 1rem; }
+  .metodoSection { padding: 1rem 1.2rem 1.4rem; }
+}
+
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .donacionGrid { grid-template-columns: 1fr; }
   .impactoCol { position: static; }

@@ -54,6 +54,12 @@
   text-shadow: 0 0 2px #fff, 0 1px 6px rgba(0,0,0,.3);
 }
 
+@media (max-width: 600px) {
+  .label { display: none; }
+  .banner { height: 44px; }
+  .ticker span { font-size: 1.5rem; letter-spacing: 10px; }
+}
+
 @keyframes scroll {
   0%   { transform: translateX(100vw) translateY(-50%); }
   100% { transform: translateX(-100%) translateY(-50%); }
