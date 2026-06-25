@@ -11,14 +11,19 @@ function SignaturePad({ canvasRef }) {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     ctx.strokeStyle = '#111'
-    ctx.lineWidth = 2
+    ctx.lineWidth = 3
     ctx.lineCap = 'round'
     ctx.lineJoin = 'round'
 
     const getPos = e => {
       const rect = canvas.getBoundingClientRect()
       const src = e.touches ? e.touches[0] : e
-      return { x: src.clientX - rect.left, y: src.clientY - rect.top }
+      const scaleX = canvas.width  / rect.width
+      const scaleY = canvas.height / rect.height
+      return {
+        x: (src.clientX - rect.left) * scaleX,
+        y: (src.clientY - rect.top)  * scaleY,
+      }
     }
     const start = e => { e.preventDefault(); drawing.current = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y) }
     const move  = e => { e.preventDefault(); if (!drawing.current) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke() }
@@ -44,12 +49,19 @@ function SignaturePad({ canvasRef }) {
 
   const clear = () => {
     const canvas = canvasRef.current
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+    if (!canvas) return
+    const w = canvas.width
+    canvas.width = w   // resetea canvas y limpia todo el contenido
+    const ctx = canvas.getContext('2d')
+    ctx.strokeStyle = '#111'
+    ctx.lineWidth = 2
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
   }
 
   return (
     <div className={styles.signWrap}>
-      <canvas ref={canvasRef} width={280} height={100} className={styles.signCanvas} />
+      <canvas ref={canvasRef} width={560} height={200} className={styles.signCanvas} />
       <button type="button" className={styles.clearBtn} onClick={clear}>Limpiar</button>
     </div>
   )
@@ -121,15 +133,15 @@ export default function PersoneroPage({ onBack }) {
         <div className={styles.fechaRow}>
           <div className={styles.fechaGroup}>
             <span className={styles.fechaLabel}>DÍA</span>
-            <input className={styles.fechaCelda} type="text" maxLength={2} />
+            <input className={styles.fechaCelda} type="text" inputMode="numeric" maxLength={2} />
           </div>
           <div className={styles.fechaGroup}>
             <span className={styles.fechaLabel}>MES</span>
-            <input className={styles.fechaCelda} type="text" maxLength={2} />
+            <input className={styles.fechaCelda} type="text" inputMode="numeric" maxLength={2} />
           </div>
           <div className={styles.fechaGroup}>
             <span className={styles.fechaLabel}>AÑO</span>
-            <input className={styles.fechaCelda} type="text" maxLength={4} />
+            <input className={styles.fechaCelda} type="text" inputMode="numeric" maxLength={4} />
           </div>
         </div>
 
@@ -238,22 +250,19 @@ export default function PersoneroPage({ onBack }) {
             <span className={styles.firmaLabel}>Firma</span>
           </div>
           <div className={styles.huellaBox}>
-            <input
-              ref={huellaInputRef}
-              type="file"
-              accept="image/*"
-              className={styles.huellaInput}
-              onChange={handleHuella}
-            />
-            <div
-              className={styles.huellaRect}
-              onClick={() => huellaInputRef.current.click()}
-            >
+            <label className={styles.huellaRect}>
+              <input
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className={styles.huellaInput}
+                onChange={handleHuella}
+              />
               {huella
                 ? <img src={huella} alt="Huella" className={styles.huellaImg} />
                 : <span className={styles.huellaPlaceholder}>Toca para subir foto</span>
               }
-            </div>
+            </label>
             <span className={styles.firmaLabel}>Huella Digital</span>
           </div>
         </div>
