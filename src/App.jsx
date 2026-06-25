@@ -14,7 +14,6 @@ import CircunvalacionPage from './components/Noticias/CircunvalacionPage'
 import CantoGrandePage    from './components/Noticias/CantoGrandePage'
 import AleCoworkingPage  from './components/Noticias/AleCoworkingPage'
 import DonacionesPage   from './components/Donaciones/DonacionesPage'
-import Multimedia from './components/Multimedia/Multimedia'
 import Galeria    from './components/Galeria/Galeria'
 import CTA            from './components/CTA/CTA'
 import Footer         from './components/Footer/Footer'
@@ -201,7 +200,6 @@ export default function App() {
             <Hero setPage={setPage} />
             <Sobre />
             <Gestion />
-            <Multimedia />
             <Galeria />
           </main>
           <CTA />

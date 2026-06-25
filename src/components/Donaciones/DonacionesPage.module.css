@@ -6,6 +6,270 @@
   padding-bottom: 5rem;
 }
 
+/* ── Resumen aportante (después del modal) ── */
+.resumenAportante {
+  background: #EBF3FF;
+  border: 1.5px solid #c5d9f5;
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin-bottom: .5rem;
+}
+.resumenRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+.resumenLabel {
+  font-size: .75rem;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  flex-shrink: 0;
+}
+.resumenVal {
+  font-size: .88rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-align: right;
+}
+.resumenMonto {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #003D82;
+}
+.editarBtn {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid #003D82;
+  color: #003D82;
+  border-radius: 8px;
+  padding: .3rem .9rem;
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: .3rem;
+  transition: background .2s, color .2s;
+}
+.editarBtn:hover { background: #003D82; color: #fff; }
+
+/* ── Modal sección label ── */
+.modalSection {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #003D82;
+  margin: .4rem 0 0;
+}
+.fieldRow2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+}
+.opcional {
+  font-weight: 400;
+  color: #999;
+  font-size: .75rem;
+}
+
+/* ── Modal Declaración Jurada ── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn .2s ease;
+}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+  animation: slideUp .25s ease;
+}
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: 1.6rem 1.8rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #003D82;
+}
+.modalTitle {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #003D82;
+  flex: 1;
+  margin: 0;
+}
+.modalClose {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+  padding: .2rem .4rem;
+  border-radius: 6px;
+  transition: background .2s, color .2s;
+}
+.modalClose:hover { background: #f0f0f0; color: #333; }
+
+.modalSub {
+  padding: .6rem 1.8rem 0;
+  font-size: .8rem;
+  color: #888;
+  margin: 0;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.4rem 1.8rem 1.8rem;
+}
+
+.modalField label {
+  display: block;
+  font-size: .82rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: .45rem;
+}
+.modalField label span { color: #D62828; }
+
+.modalField input {
+  width: 100%;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .2s;
+  box-sizing: border-box;
+}
+.modalField input:focus { border-color: #003D82; }
+
+.docRow {
+  display: flex;
+  gap: .6rem;
+}
+.docSelect {
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  padding: .7rem .8rem;
+  font-size: .88rem;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .2s;
+  flex-shrink: 0;
+}
+.docSelect:focus { border-color: #003D82; }
+.docInput {
+  flex: 1;
+  border: 1.5px solid #ddd;
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-size: .9rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.docInput:focus {
+  border-color: #003D82;
+  box-shadow: 0 0 0 3px rgba(0,61,130,.1);
+}
+
+.montoDisplay {
+  background: #EBF3FF;
+  border: 1.5px solid #c5d9f5;
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #003D82;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+.montoChangeHint {
+  font-size: .72rem;
+  font-weight: 400;
+  color: #888;
+}
+
+.modalDeclaracion {
+  background: #FFF8F0;
+  border: 1.5px solid #FFD9A0;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+.checkLabel {
+  display: flex;
+  gap: .8rem;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: .84rem;
+  color: #444;
+  line-height: 1.6;
+}
+.checkLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: #003D82;
+  cursor: pointer;
+}
+
+.modalError {
+  background: #fff0f0;
+  border: 1px solid #ffc5c5;
+  color: #D62828;
+  border-radius: 8px;
+  padding: .6rem 1rem;
+  font-size: .83rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.modalBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  background: linear-gradient(135deg, #003D82, #0057B8);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: .9rem 1.6rem;
+  font-size: .95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity .2s, transform .15s;
+  letter-spacing: .5px;
+}
+.modalBtn:hover { opacity: .9; transform: translateY(-1px); }
+
 /* ── Hero ── */
 .hero {
   position: relative;

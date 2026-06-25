@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react'
 import styles from './Navbar.module.css'
 
 const links = [
-  { label: 'Inicio',            href: '#hero' },
-  { label: 'Gestión',           href: '#gestion' },
-  { label: 'Avances y Obras',   href: '#avances' },
-  { label: 'Noticias',          href: '#noticias' },
-  { label: 'Contacto',          href: '#cta' },
+  { label: 'Inicio',               href: '#hero' },
+  { label: 'Nuestras Prioridades', href: '#gestion' },
+  { label: 'Contacto',             href: '#cta' },
 ]
 
 export default function Navbar({ page, setPage }) {
@@ -74,14 +72,6 @@ export default function Navbar({ page, setPage }) {
               )}
             </li>
           ))}
-          <li>
-            <button
-              className={`${styles.zonaBtn} ${page === 'zona' ? styles.zonaBtnActive : ''}`}
-              onClick={() => { setActive(''); setPage('zona'); window.scrollTo({ top: 0 }) }}
-            >
-              Únete a tu Zona
-            </button>
-          </li>
           <li>
             <button
               className={`${styles.encuestasBtn} ${page === 'encuestas' ? styles.encuestasBtnActive : ''}`}

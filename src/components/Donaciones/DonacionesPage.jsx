@@ -4,8 +4,6 @@ import yapeLogo from '../../assets/yape.png'
 import plinLogo from '../../assets/plin.png'
 import { supabase } from '../../lib/supabase'
 
-const MONTOS = [3, 5, 10]
-
 const impactos = [
   { monto: 'S/ 3',  texto: 'Ayuda a imprimir material informativo para un vecino.' },
   { monto: 'S/ 5',  texto: 'Contribuye al transporte de voluntarios en el distrito.' },
@@ -14,15 +12,50 @@ const impactos = [
 ]
 
 export default function DonacionesPage({ onBack }) {
-  const [monto, setMonto]       = useState(5)
-  const [custom, setCustom]     = useState('')
-  const [metodo, setMetodo]     = useState('yape')
-  const [card, setCard]         = useState({ num: '', nombre: '', exp: '', cvv: '' })
-  const [pagado, setPagado]     = useState(false)
+  const [metodo, setMetodo] = useState('yape')
+  const [card, setCard]     = useState({ num: '', nombre: '', exp: '', cvv: '' })
+  const [pagado, setPagado] = useState(false)
+
+  // Modal declaración jurada — abre al entrar
+  const [modalDone, setModalDone]   = useState(false)
+  const [modalError, setModalError] = useState('')
+  const [form, setForm] = useState({
+    nombres: '', apellidos: '', razonSocial: '',
+    tipoDoc: 'dni', documento: '',
+    monto: 5, custom: '',
+    declaracion: false,
+  })
 
   useEffect(() => { window.scrollTo({ top: 0 }) }, [])
 
-  const montoFinal = monto === 'otro' ? (parseFloat(custom) || 0) : monto
+  const setF = (key, val) => setForm(f => ({ ...f, [key]: val }))
+
+  const montoFinal = form.monto === 'otro' ? (parseFloat(form.custom) || 0) : form.monto
+
+  const handleModalSubmit = async (e) => {
+    e.preventDefault()
+    if (!form.nombres.trim())    return setModalError('Ingresa tus nombres.')
+    if (!form.apellidos.trim() && !form.razonSocial.trim())
+                                 return setModalError('Ingresa tus apellidos o razón social.')
+    if (!form.documento.trim())  return setModalError('Ingresa tu número de documento.')
+    if (montoFinal < 1)          return setModalError('Selecciona o ingresa un monto válido.')
+    if (!form.declaracion)       return setModalError('Debes aceptar la declaración jurada.')
+    setModalError('')
+
+    await supabase.from('donaciones').insert({
+      nombres:           form.nombres.trim(),
+      apellidos:         form.apellidos.trim(),
+      razon_social:      form.razonSocial.trim() || null,
+      tipo_documento:    form.tipoDoc,
+      numero_documento:  form.documento.trim(),
+      monto:             montoFinal,
+      metodo:            metodo,
+      declaracion_jurada: form.declaracion,
+      estado:            'registrado',
+    })
+
+    setModalDone(true)
+  }
 
   const formatCard = v => v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim()
   const formatExp  = v => v.replace(/\D/g, '').slice(0, 4).replace(/^(\d{2})(\d)/, '$1/$2')
@@ -52,6 +85,105 @@ export default function DonacionesPage({ onBack }) {
   return (
     <div className={styles.page}>
 
+      {/* ── Modal Declaración Jurada (aparece al entrar) ── */}
+      {!modalDone && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modal}>
+            <div className={styles.modalHeader}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              <h2 className={styles.modalTitle}>Datos del Aportante</h2>
+              <button type="button" className={styles.modalClose} onClick={onBack} aria-label="Cerrar">✕</button>
+            </div>
+            <p className={styles.modalSub}>Requerido por normativa electoral (ONPE). Tus datos son confidenciales.</p>
+
+            <form onSubmit={handleModalSubmit} className={styles.modalForm}>
+
+              {/* a) Persona natural */}
+              <p className={styles.modalSection}>a) Identificación</p>
+              <div className={styles.fieldRow2}>
+                <div className={styles.modalField}>
+                  <label>Nombres <span>*</span></label>
+                  <input type="text" placeholder="Ej: Juan Carlos"
+                    value={form.nombres} onChange={e => setF('nombres', e.target.value)} />
+                </div>
+                <div className={styles.modalField}>
+                  <label>Apellidos <span>*</span></label>
+                  <input type="text" placeholder="Ej: Pérez García"
+                    value={form.apellidos} onChange={e => setF('apellidos', e.target.value)} />
+                </div>
+              </div>
+              <div className={styles.modalField}>
+                <label>Razón / Denominación Social <span className={styles.opcional}>(si aplica)</span></label>
+                <input type="text" placeholder="Ej: Campaña"
+                  value={form.razonSocial} onChange={e => setF('razonSocial', e.target.value)} />
+              </div>
+
+              {/* b) Documento */}
+              <p className={styles.modalSection}>b) Documento de identidad</p>
+              <div className={styles.docRow}>
+                <select value={form.tipoDoc} onChange={e => setF('tipoDoc', e.target.value)} className={styles.docSelect}>
+                  <option value="dni">DNI</option>
+                  <option value="carnex">Carné de Extranjería</option>
+                  <option value="ruc">RUC</option>
+                </select>
+                <input type="text" placeholder="Número de documento"
+                  value={form.documento}
+                  onChange={e => setF('documento', e.target.value.replace(/\D/g,''))}
+                  maxLength={11} className={styles.docInput} />
+              </div>
+
+              {/* c) Monto */}
+              <p className={styles.modalSection}>c) Monto del aporte</p>
+              <div className={styles.montoPills}>
+                {[3, 5, 10].map(m => (
+                  <button key={m} type="button"
+                    className={`${styles.pill} ${form.monto === m ? styles.pillActive : ''}`}
+                    onClick={() => setF('monto', m)}>
+                    S/ {m}
+                  </button>
+                ))}
+                <button type="button"
+                  className={`${styles.pill} ${form.monto === 'otro' ? styles.pillActive : ''}`}
+                  onClick={() => setF('monto', 'otro')}>
+                  Otro monto
+                </button>
+              </div>
+              {form.monto === 'otro' && (
+                <div className={styles.customWrap}>
+                  <span className={styles.customPrefix}>S/</span>
+                  <input type="number" min="1" placeholder="Ingresa el monto"
+                    className={styles.customInput} value={form.custom}
+                    onChange={e => setF('custom', e.target.value)} autoFocus />
+                </div>
+              )}
+
+              {/* e) Declaración jurada */}
+              <div className={styles.modalDeclaracion}>
+                <label className={styles.checkLabel}>
+                  <input type="checkbox" checked={form.declaracion}
+                    onChange={e => setF('declaracion', e.target.checked)} />
+                  <span>
+                    <strong>e) Declaración Jurada:</strong> Declaro bajo juramento que mi aporte se encuentra dentro de los límites establecidos por la ley de financiamiento de organizaciones políticas, que los fondos son de origen lícito y que la información proporcionada es verídica.
+                  </span>
+                </label>
+              </div>
+
+              {modalError && <p className={styles.modalError}>{modalError}</p>}
+
+              <button type="submit" className={styles.modalBtn}>
+                Confirmar y ver métodos de pago
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* ── Hero ── */}
       <div className={styles.hero}>
         <div className={styles.heroGlow} />
@@ -78,50 +210,25 @@ export default function DonacionesPage({ onBack }) {
           {/* Columna izquierda: selector de monto + método */}
           <div className={styles.donacionCard}>
 
-            {/* Monto */}
+            {/* Resumen del aportante */}
             <div className={styles.montoSection}>
-              <h3 className={styles.cardTitle}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-                </svg>
-                Elige tu aporte
-              </h3>
-              <div className={styles.montoPills}>
-                {MONTOS.map(m => (
-                  <button
-                    key={m}
-                    className={`${styles.pill} ${monto === m ? styles.pillActive : ''}`}
-                    onClick={() => { setMonto(m); setCustom('') }}
-                  >
-                    S/ {m}
-                  </button>
-                ))}
-                <button
-                  className={`${styles.pill} ${monto === 'otro' ? styles.pillActive : ''}`}
-                  onClick={() => setMonto('otro')}
-                >
-                  Otro monto
+              <div className={styles.resumenAportante}>
+                <div className={styles.resumenRow}>
+                  <span className={styles.resumenLabel}>Aportante</span>
+                  <span className={styles.resumenVal}>{form.nombres} {form.apellidos}{form.razonSocial ? ` / ${form.razonSocial}` : ''}</span>
+                </div>
+                <div className={styles.resumenRow}>
+                  <span className={styles.resumenLabel}>{form.tipoDoc.toUpperCase()}</span>
+                  <span className={styles.resumenVal}>{form.documento}</span>
+                </div>
+                <div className={styles.resumenRow}>
+                  <span className={styles.resumenLabel}>Monto</span>
+                  <span className={styles.resumenMonto}>S/ {montoFinal.toFixed(2)}</span>
+                </div>
+                <button className={styles.editarBtn} onClick={() => setModalDone(false)}>
+                  Editar datos
                 </button>
               </div>
-              {monto === 'otro' && (
-                <div className={styles.customWrap}>
-                  <span className={styles.customPrefix}>S/</span>
-                  <input
-                    type="number"
-                    min="1"
-                    placeholder="Ingresa el monto"
-                    className={styles.customInput}
-                    value={custom}
-                    onChange={e => setCustom(e.target.value)}
-                    autoFocus
-                  />
-                </div>
-              )}
-              {montoFinal > 0 && (
-                <p className={styles.montoResumen}>
-                  Aportarás <strong>S/ {montoFinal.toFixed(2)}</strong> a la causa
-                </p>
-              )}
             </div>
 
             {/* Método de pago */}
