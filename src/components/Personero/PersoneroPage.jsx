@@ -75,8 +75,7 @@ export default function PersoneroPage({ onBack }) {
     fecha_nacimiento:'', lugar_nacimiento:'', region:'', provincia:'',
     distrito:'', direccion:'', telefono:'', comuna:'', email:''
   })
-  const canvasRef      = useRef(null)
-  const huellaInputRef = useRef(null)
+  const canvasRef = useRef(null)
 
   const set = k => e => setFields(f => ({ ...f, [k]: e.target.value }))
 
@@ -254,7 +253,6 @@ export default function PersoneroPage({ onBack }) {
               <input
                 type="file"
                 accept="image/*"
-                capture="environment"
                 className={styles.huellaInput}
                 onChange={handleHuella}
               />

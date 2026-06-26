@@ -209,8 +209,8 @@ export default function App() {
       )}
       <WalkingCharacter />
       <WhatsApp />
-      <EventoBanner setPage={setPage} />
-      <PersoneroBanner setPage={setPage} />
+      {page !== 'personero' && <EventoBanner setPage={setPage} />}
+      {page !== 'personero' && <PersoneroBanner setPage={setPage} />}
     </>
   )
 }
