@@ -161,10 +161,10 @@
 .imageWrapper {
   position: absolute;
   right: 18%;
-  top: 50%;
+  top: 52%;
   transform: translateY(-50%);
-  height: 80%;
-  width: 36%;
+  height: 88%;
+  width: 40%;
   overflow: hidden;
   z-index: 1;
   border-radius: 0;
@@ -188,10 +188,11 @@
   border: none;
   border-radius: 9999px;
   padding: .85rem 2rem;
-  font-family: var(--font-data);
-  font-size: .95rem;
-  font-weight: 800;
-  letter-spacing: 2px;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
   color: #fff;
   background: linear-gradient(135deg, #003D82 0%, #0057B8 50%, #2B7FE0 100%);
   box-shadow: 0 4px 20px rgba(0,87,184,.45);
@@ -229,7 +230,7 @@
 .titleSub {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(4.5rem, 7.2vw, 7.2rem);
+  font-size: clamp(6rem, 11vw, 11rem);
   line-height: 1.05;
   white-space: nowrap;
   background: linear-gradient(90deg,
@@ -253,8 +254,8 @@
 
 .desc {
   font-family: var(--font-body);
-  color: #666;
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: #111;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
   line-height: 1.8;
   max-width: 480px;
   margin: 1.5rem 0 2.5rem;
@@ -279,7 +280,7 @@
 /* ── Social bar (bottom of hero) ─────────────────────────── */
 .socialBar {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 5.5rem;
   left: 0;
   right: 0;
   z-index: 6;
@@ -299,9 +300,10 @@
   min-width: 20px;
 }
 .socialBarLabel {
-  font-size: .72rem;
-  font-weight: 800;
-  letter-spacing: 2px;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 5px;
   color: var(--red);
   white-space: nowrap;
 }
@@ -377,8 +379,8 @@
   .socialName { font-size: .65rem; }
   .socialHandle { display: none; }
   .titleMain { font-size: clamp(3.2rem, 14vw, 5.5rem); }
-  .titleSub  { font-size: clamp(2.2rem, 9vw, 4rem); white-space: normal; }
-  .desc { font-size: .95rem; margin: 1rem auto 1.5rem; max-width: 100%; }
+  .titleSub  { font-size: clamp(3.2rem, 14vw, 5.5rem); white-space: normal; }
+  .desc { font-size: 1.05rem; margin: 1rem auto 1.5rem; max-width: 100%; }
   .content :global(.btn-primary) { margin: 0 auto 1.5rem; display: block; width: fit-content; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
 }
@@ -386,7 +388,7 @@
 @media (max-width: 480px) {
   .hero { padding-top: 120px !important; }
   .titleMain { font-size: clamp(2.8rem, 16vw, 4rem); }
-  .titleSub  { font-size: clamp(1.8rem, 10vw, 3rem); }
+  .titleSub  { font-size: clamp(2.8rem, 16vw, 4rem); }
   .imageWrapper { width: 80%; height: 60vw; }
   .socialCircle { width: 40px; height: 40px; }
   .apoyaBtn { font-size: .85rem; padding: .75rem 1.5rem; }

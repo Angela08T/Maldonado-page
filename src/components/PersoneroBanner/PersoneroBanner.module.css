@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 8500;
-  height: 52px;
+  height: 60px;
   background: linear-gradient(90deg, #003D82 0%, #0057B8 100%);
   display: flex;
   align-items: center;
@@ -44,13 +44,14 @@
 }
 
 .ticker span {
-  font-size: 2.2rem;
-  font-weight: 900;
+  font-family: 'Anton', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 400;
   color: #ffffff;
-  letter-spacing: 18px;
+  letter-spacing: 26px;
   text-transform: uppercase;
-  -webkit-text-stroke: 1.2px #ffffff;
-  text-shadow: 0 0 2px #fff, 0 1px 6px rgba(0,0,0,.3);
+  -webkit-text-stroke: 0.8px #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.35);
 }
 
 @keyframes scroll {
@@ -66,9 +67,10 @@
   background: #fff;
   color: #003D82;
   border: none;
-  font-size: .8rem;
-  font-weight: 900;
-  letter-spacing: 1.5px;
+  font-family: 'Anton', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 4px;
   text-transform: uppercase;
   cursor: pointer;
   padding: 0 1.6rem;
@@ -81,6 +83,6 @@
 
 @media (max-width: 600px) {
   .label { display: none; }
-  .banner { height: 44px; }
-  .ticker span { font-size: 1.5rem; letter-spacing: 10px; }
+  .banner { height: 50px; }
+  .ticker span { font-size: 2rem; letter-spacing: 12px; }
 }

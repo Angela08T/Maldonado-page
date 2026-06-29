@@ -1,3 +1,6 @@
+/* ── FUENTES EXTERNAS ──────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&display=swap');
+
 /* ── VARIABLES ─────────────────────────────────────────────── */
 :root {
   /* ── Paleta Somos Perú ─────────────────────────────── */
@@ -198,11 +201,12 @@ section#hero { padding: 0; }
   gap: .6rem;
   background: var(--red);
   color: var(--white);
-  font-weight: 700;
-  font-size: .9rem;
-  letter-spacing: 1px;
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  letter-spacing: 10px;
   text-transform: uppercase;
-  padding: .85rem 2rem;
+  padding: 1rem 2.5rem;
   border-radius: 9999px;
   border: none;
   cursor: pointer;

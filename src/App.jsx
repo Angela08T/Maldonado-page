@@ -207,7 +207,6 @@ export default function App() {
           <ScrollTop />
         </>
       )}
-      <WalkingCharacter />
       <WhatsApp />
       {page !== 'personero' && <EventoBanner setPage={setPage} />}
       {page !== 'personero' && <PersoneroBanner setPage={setPage} />}
