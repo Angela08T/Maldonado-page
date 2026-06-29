@@ -365,14 +365,15 @@
     text-align: center;
   }
   .imageWrapper {
+    order: -1;
     position: relative;
     right: auto;
     top: auto;
     transform: none;
-    width: 65%;
-    height: 55vw;
-    max-height: 320px;
-    margin: 1.5rem auto 0;
+    width: 72%;
+    height: 60vw;
+    max-height: 340px;
+    margin: 0 auto -1rem;
   }
   .socialBar { position: relative; padding: 1rem 4%; }
   .socialCircle { width: 48px; height: 48px; }
@@ -381,7 +382,7 @@
   .titleMain { font-size: clamp(3.2rem, 14vw, 5.5rem); }
   .titleSub  { font-size: clamp(3.2rem, 14vw, 5.5rem); white-space: normal; }
   .desc { font-size: 1.05rem; margin: 1rem auto 1.5rem; max-width: 100%; }
-  .content :global(.btn-primary) { margin: 0 auto 1.5rem; display: block; width: fit-content; }
+  .content :global(.btn-primary) { margin: 0 auto 1.5rem; display: block; width: fit-content; font-size: 1.4rem; letter-spacing: 4px; padding: .85rem 1.8rem; white-space: nowrap; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
 }
 
