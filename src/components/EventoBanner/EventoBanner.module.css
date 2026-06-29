@@ -1,5 +1,5 @@
 .banner {
-  position: fixed;
+  position: sticky;
   top: 72px;
   left: 0;
   right: 0;

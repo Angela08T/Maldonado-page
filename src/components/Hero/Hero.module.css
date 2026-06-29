@@ -2,10 +2,10 @@
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
   background: #F0F6FF;
-  padding: 100px 0 220px 0 !important;
+  padding: 80px 0 180px 0 !important;
 }
 
 /* ── Animated blobs ── */
@@ -153,6 +153,7 @@
   z-index: 5;
   padding-left: 8%;
   padding-right: 4%;
+  padding-top: 3rem;
   flex: 0 0 45%;
   max-width: 45%;
 }
@@ -161,9 +162,9 @@
 .imageWrapper {
   position: absolute;
   right: 18%;
-  top: 52%;
-  transform: translateY(-50%);
-  height: 88%;
+  top: 145px;
+  transform: none;
+  height: calc(100% - 145px - 80px);
   width: 40%;
   overflow: hidden;
   z-index: 1;
@@ -353,7 +354,7 @@
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
-    padding-top: 130px !important;
+    padding-top: 60px !important;
     padding-bottom: 2rem !important;
     min-height: auto;
   }
@@ -375,19 +376,19 @@
     max-height: 340px;
     margin: 0 auto -1rem;
   }
-  .socialBar { position: relative; padding: 1rem 4%; }
+  .socialBar { position: relative !important; bottom: auto !important; padding: 1rem 4%; margin-top: 2rem; }
   .socialCircle { width: 48px; height: 48px; }
   .socialName { font-size: .65rem; }
   .socialHandle { display: none; }
   .titleMain { font-size: clamp(3.2rem, 14vw, 5.5rem); }
   .titleSub  { font-size: clamp(3.2rem, 14vw, 5.5rem); white-space: normal; }
   .desc { font-size: 1.05rem; margin: 1rem auto 1.5rem; max-width: 100%; }
-  .content :global(.btn-primary) { margin: 0 auto 1.5rem; display: block; width: fit-content; font-size: 1.4rem; letter-spacing: 4px; padding: .85rem 1.8rem; white-space: nowrap; }
+  .content :global(.btn-primary) { margin: 0 auto 2.5rem; display: block; width: fit-content; font-size: 1.4rem; letter-spacing: 4px; padding: .85rem 1.8rem; white-space: nowrap; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
 }
 
 @media (max-width: 480px) {
-  .hero { padding-top: 120px !important; }
+  .hero { padding-top: 60px !important; }
   .titleMain { font-size: clamp(2.8rem, 16vw, 4rem); }
   .titleSub  { font-size: clamp(2.8rem, 16vw, 4rem); }
   .imageWrapper { width: 80%; height: 60vw; }

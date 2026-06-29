@@ -162,6 +162,7 @@ export default function App() {
       <div className="cursor-ring" />
       <Loader />
       <Navbar page={page} setPage={setPage} />
+      {page !== 'personero' && <EventoBanner setPage={setPage} />}
       {page === 'zona' ? (
         <Zona onBack={goHome} />
       ) : page === 'simpatizantes' ? (
@@ -208,7 +209,6 @@ export default function App() {
         </>
       )}
       <WhatsApp />
-      {page !== 'personero' && <EventoBanner setPage={setPage} />}
       {page !== 'personero' && <PersoneroBanner setPage={setPage} />}
     </>
   )
