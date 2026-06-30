@@ -57,16 +57,24 @@ export default function CTA() {
   const [open, setOpen]   = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const pageUrl   = typeof window !== 'undefined' ? window.location.href : ''
   const shareText = '¡Conoce la propuesta de Jesús Maldonado para San Juan de Lurigancho!'
 
-  function handleShare() {
-    if (typeof navigator !== 'undefined' && navigator.share) {
-      navigator.share({ title: 'Jesús Maldonado', text: shareText, url: pageUrl }).catch(() => {})
+  async function handleShare() {
+    const pageUrl = window.location.href
+    const canNativeShare = navigator.share && window.isSecureContext
+    if (canNativeShare) {
+      try {
+        await navigator.share({ title: 'Jesús Maldonado', text: shareText, url: pageUrl })
+      } catch (err) {
+        // Solo abre el popup si NO fue el usuario quien canceló
+        if (err?.name !== 'AbortError') setOpen(true)
+      }
     } else {
       setOpen(o => !o)
     }
   }
+
+  const pageUrl = typeof window !== 'undefined' ? window.location.href : ''
 
   function copyLink() {
     navigator.clipboard.writeText(pageUrl).then(() => {
