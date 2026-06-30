@@ -97,17 +97,7 @@ const metas = [
     ),
   },
   {
-    accion: 'INSTALAR', num: '200', cosa: 'BOTONES DE PÁNICO',
-    icon: (
-      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <circle cx="12" cy="12" r="4"/>
-        <path d="M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-      </svg>
-    ),
-  },
-  {
-    accion: 'COLOCAR', num: '1000', cosa: 'LUCES LED MÁS',
+    accion: 'COLOCAR', num: '2000', cosa: 'LUCES LED MÁS',
     icon: (
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.26A7 7 0 0112 2z"/>

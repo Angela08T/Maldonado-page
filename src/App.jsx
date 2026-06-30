@@ -22,7 +22,6 @@ import Zona           from './components/Zona/Zona'
 import WalkingCharacter from './components/WalkingCharacter/WalkingCharacter'
 import WhatsApp        from './components/WhatsApp/WhatsApp'
 import EventoBanner      from './components/EventoBanner/EventoBanner'
-import PersoneroBanner  from './components/PersoneroBanner/PersoneroBanner'
 import PersoneroPage    from './components/Personero/PersoneroPage'
 import Simpatizantes  from './components/Simpatizantes/Simpatizantes'
 import EventosPage    from './components/Eventos/EventosPage'
@@ -208,8 +207,7 @@ export default function App() {
           <ScrollTop />
         </>
       )}
-      <WhatsApp />
-      {page !== 'personero' && <PersoneroBanner setPage={setPage} />}
+      <WhatsApp setPage={setPage} />
     </>
   )
 }

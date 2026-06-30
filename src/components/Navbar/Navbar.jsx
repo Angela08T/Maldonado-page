@@ -4,7 +4,6 @@ import styles from './Navbar.module.css'
 const links = [
   { label: 'Inicio',               href: '#hero' },
   { label: 'Nuestras Prioridades', href: '#gestion' },
-  { label: 'Contacto',             href: '#cta' },
 ]
 
 export default function Navbar({ page, setPage }) {
@@ -43,7 +42,7 @@ export default function Navbar({ page, setPage }) {
             <span className={styles.logoFirst}>Jesús</span>
             <span className={styles.logoLast}>Maldonado</span>
           </div>
-          <span className={styles.logoSub}>Avanzamos Juntos</span>
+          <span className={styles.logoSub}>El Cambio Continúa</span>
         </a>
 
         {/* Desktop links */}

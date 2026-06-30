@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './Hero.module.css'
 import heroImg from '../../assets/perfil-uno.png'
 
@@ -56,6 +57,14 @@ const SocialIcon = ({ s }) => {
 }
 
 export default function Hero({ setPage }) {
+  const [showModal, setShowModal] = useState(false)
+
+  const navTo = (page) => {
+    setShowModal(false)
+    setPage && setPage(page)
+    window.scrollTo({ top: 0 })
+  }
+
   return (
     <section id="hero" className={styles.hero}>
       {/* Blobs atmosféricos */}
@@ -110,7 +119,7 @@ export default function Hero({ setPage }) {
         </p>
         <button
           className="btn-primary"
-          onClick={() => { setPage && setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
+          onClick={() => setShowModal(true)}
         >
           Únete a mi equipo
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">
@@ -123,6 +132,51 @@ export default function Hero({ setPage }) {
       <div className={styles.imageWrapper}>
         <img src={heroImg} alt="Maldonado" className={styles.heroImg} />
       </div>
+
+      {/* Modal: elige cómo unirte */}
+      {showModal && (
+        <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
+          <div className={styles.modal} onClick={e => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={() => setShowModal(false)} aria-label="Cerrar">✕</button>
+            <h3 className={styles.modalTitle}>¿Cómo quieres unirte?</h3>
+            <p className={styles.modalSub}>Elige una opción para continuar</p>
+            <div className={styles.modalOptions}>
+
+              <button className={styles.optionCard} onClick={() => navTo('personero')}>
+                <div className={styles.optionIcon} style={{ background: 'linear-gradient(135deg,#0057B8,#003D82)' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                  </svg>
+                </div>
+                <div className={styles.optionText}>
+                  <span className={styles.optionLabel}>Personero</span>
+                  <span className={styles.optionDesc}>Cuida el voto el día de las elecciones</span>
+                </div>
+                <svg className={styles.optionArrow} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+
+              <button className={styles.optionCard} onClick={() => navTo('simpatizantes')}>
+                <div className={styles.optionIcon} style={{ background: 'linear-gradient(135deg,#D62828,#9B1C1C)' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                  </svg>
+                </div>
+                <div className={styles.optionText}>
+                  <span className={styles.optionLabel}>Simpatizante</span>
+                  <span className={styles.optionDesc}>Recibe información y apoya el movimiento</span>
+                </div>
+                <svg className={styles.optionArrow} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Banner redes sociales en la parte inferior del hero */}
       <div className={styles.socialBar}>

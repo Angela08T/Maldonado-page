@@ -225,7 +225,7 @@
 /* Grid 5 tarjetas */
 .metasGrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   position: relative;
 }
@@ -285,9 +285,7 @@
 
 /* Tablet grande (≤1024px) */
 @media (max-width: 1024px) {
-  .metasGrid { grid-template-columns: repeat(3, 1fr); }
-  .metaCard:nth-child(4) { grid-column: 1 / 2; }
-  .metaCard:nth-child(5) { grid-column: 2 / 3; }
+  .metasGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Tablet (≤900px) */
@@ -302,9 +300,7 @@
 
   /* Metas: 3 cols en tablet */
   .metasSection { border-radius: 18px; padding: 2rem 1.8rem 2.2rem; }
-  .metasGrid { grid-template-columns: repeat(3, 1fr); gap: .85rem; }
-  .metaCard:nth-child(4) { grid-column: 1 / 2; }
-  .metaCard:nth-child(5) { grid-column: 3 / 4; }
+  .metasGrid { grid-template-columns: repeat(2, 1fr); gap: .85rem; }
   .metaNum     { font-size: 3rem; }
   .metaAccion  { font-size: 1.2rem; letter-spacing: 3px; }
   .metaCosa    { font-size: 1.1rem; letter-spacing: 2.5px; }
@@ -343,10 +339,6 @@
   .metaNum     { font-size: 2.6rem; }
   .metaCosa    { font-size: .95rem; letter-spacing: 2px; }
 
-  /* 5ª tarjeta centrada */
-  .metaCard:nth-child(4) { grid-column: auto; }
-  .metaCard:nth-child(5) { grid-column: auto; }
-  .metaCard:last-child   { grid-column: 1 / -1; max-width: 260px; width: 100%; margin: 0 auto; }
 }
 
 /* Móvil pequeño (≤390px) — iPhone 12/13/14 y similares */
@@ -362,5 +354,4 @@
   .metaCosa     { font-size: .88rem; letter-spacing: 2px; }
   .metaCard     { padding: 1rem .5rem 1rem; }
   .metaIcon     { transform: scale(.75); margin-bottom: -.2rem; }
-  .metaCard:last-child { max-width: 220px; }
 }

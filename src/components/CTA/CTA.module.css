@@ -1,8 +1,8 @@
 .bar {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 110px;
-  overflow: hidden;
+  min-height: 160px;
+  overflow: visible;
   position: relative;
 }
 
@@ -13,7 +13,6 @@
   align-items: center;
   gap: 1.4rem;
   padding: 2rem 5% 2rem 6%;
-  /* diagonal right edge */
   clip-path: polygon(0 0, 100% 0, calc(100% - 50px) 100%, 0 100%);
   position: relative;
   z-index: 1;
@@ -37,54 +36,217 @@
   letter-spacing: -0.5px;
 }
 
-/* ── Panel teal ── */
+/* ── Panel azul – compartir ── */
 .panelTeal {
-  background: var(--teal);
+  background: linear-gradient(135deg, #0057B8 0%, #003D82 60%, #001A3D 100%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.4rem;
-  padding: 2rem 6% 2rem 8%;
-  /* diagonal left edge matching red */
+  justify-content: center;
+  padding: 2rem 6% 2rem 10%;
   clip-path: polygon(50px 0, 100% 0, 100% 100%, 0 100%);
   margin-left: -50px;
+  position: relative;
+  overflow: hidden;
 }
-.tealTexts { display: flex; flex-direction: column; gap: .25rem; }
-.tealTitle {
+
+/* Círculos decorativos de fondo */
+.deco1 {
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  border: 40px solid rgba(255,255,255,.05);
+  right: -40px; top: -60px;
+  pointer-events: none;
+}
+.deco2 {
+  position: absolute;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  border: 25px solid rgba(255,255,255,.06);
+  left: 12%; bottom: -50px;
+  pointer-events: none;
+}
+
+/* ── Wrap relativo para posicionar popup ── */
+.shareWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
+  z-index: 1;
+}
+
+/* Etiqueta superior pequeña */
+.shareLabel {
   font-family: var(--font-main);
-  font-weight: 900;
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+}
+
+/* Título grande */
+.shareTitle {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  letter-spacing: 4px;
   color: #fff;
-  letter-spacing: .5px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: .3rem;
 }
-.tealSub {
-  font-size: .78rem;
-  color: rgba(255,255,255,.8);
+
+/* Botón compartir */
+.shareBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  background: var(--red);
+  border: none;
+  color: #fff;
+  font-family: var(--font-main);
+  font-weight: 800;
+  font-size: clamp(.85rem, 1.4vw, 1rem);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: .75rem 1.8rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(214,40,40,.45);
+  transition: background .2s, transform .2s, box-shadow .2s;
+  white-space: nowrap;
 }
-.socialIcons {
+.shareBtn:hover {
+  background: #c8001e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(214,40,40,.55);
+}
+
+.shareBtnArrow {
   display: flex;
   align-items: center;
-  gap: .5rem;
+  transition: transform .25s;
 }
-.socialIcon {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.18);
+.arrowUp {
+  transform: rotate(-90deg);
+}
+
+/* Backdrop click-away */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+}
+
+/* Popup flotante */
+.sharePopup {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.2);
+  padding: .6rem .5rem;
+  min-width: 210px;
+  z-index: 100;
+  animation: popIn .2s cubic-bezier(.34,1.4,.64,1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(.95); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+.sharePopup::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #fff;
+}
+
+.popupTitle {
+  font-family: var(--font-main);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #999;
+  text-align: center;
+  padding: .4rem .5rem .6rem;
+}
+
+.shareItem {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .55rem .9rem;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: .88rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background .15s;
+}
+.shareItem:hover { background: #f3f4f8; }
+
+.shareItemIcon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  transition: background .2s, transform .2s;
-  text-decoration: none;
-}
-.socialIcon:hover {
-  background: rgba(255,255,255,.32);
-  transform: translateY(-2px);
+  flex-shrink: 0;
 }
 
 /* ── Responsive ── */
+
+/* Tablet grande */
+@media (max-width: 1024px) {
+  .shareTitle { font-size: clamp(1.2rem, 2.5vw, 1.8rem); letter-spacing: 3px; }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .bar { min-height: 180px; }
+  .shareTitle { font-size: 1.4rem; letter-spacing: 3px; }
+  .shareLabel { font-size: .65rem; }
+  .shareBtn   { font-size: .88rem; padding: .65rem 1.4rem; }
+}
+
+/* Móvil — apila paneles */
 @media (max-width: 700px) {
-  .bar { grid-template-columns: 1fr; overflow: visible; }
-  .panelRed  { clip-path: none; }
-  .panelTeal { clip-path: none; margin-left: 0; padding-left: 6%; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .bar { grid-template-columns: 1fr; overflow: visible; min-height: unset; }
+  .panelRed  { clip-path: none; padding: 1.6rem 6%; justify-content: center; text-align: center; }
+  .panelIcon { display: none; }
+  .panelTeal { clip-path: none; margin-left: 0; padding: 2rem 6%; }
+  .shareTitle { font-size: 1.6rem; letter-spacing: 4px; }
+  .shareBtn   { font-size: .9rem; padding: .7rem 1.6rem; }
+  /* popup se abre hacia arriba, centrado */
+  .sharePopup {
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 190px;
+  }
+}
+
+/* Móvil pequeño */
+@media (max-width: 420px) {
+  .panelTeal  { padding: 1.8rem 5%; }
+  .shareTitle { font-size: 1.3rem; letter-spacing: 3px; }
+  .shareLabel { letter-spacing: 2px; }
+  .shareBtn   { font-size: .82rem; padding: .65rem 1.2rem; gap: .5rem; }
+  .sharePopup { min-width: 180px; }
 }

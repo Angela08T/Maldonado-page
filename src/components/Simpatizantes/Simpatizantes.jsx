@@ -84,9 +84,9 @@ function useFadeIn() {
 }
 
 export default function Simpatizantes({ onBack }) {
-  const [nombre, setNombre]       = useState('')
-  const [apellidos, setApellidos] = useState('')
-  const [telefono, setTelefono]   = useState('')
+  const [nombre, setNombre]     = useState('')
+  const [dni, setDni]           = useState('')
+  const [telefono, setTelefono] = useState('')
   const [enviado, setEnviado]     = useState(false)
   const [loading, setLoading]     = useState(false)
   const [error, setError]         = useState('')
@@ -96,12 +96,12 @@ export default function Simpatizantes({ onBack }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!nombre || !apellidos || !telefono) return
+    if (!nombre || !dni || !telefono) return
     setLoading(true)
     setError('')
     const { error: err } = await supabase
       .from('simpatizantes')
-      .insert({ nombre, apellidos, telefono })
+      .insert({ nombre, dni, telefono })
     setLoading(false)
     if (err) { setError('Hubo un error. Intenta nuevamente.'); return }
     setEnviado(true)
@@ -176,19 +176,19 @@ export default function Simpatizantes({ onBack }) {
                   </div>
                   <h4>¡Bienvenido, {nombre}!</h4>
                   <p>Te registramos correctamente. Pronto recibirás nuestros mensajes en el <strong>+51 {telefono}</strong>.</p>
-                  <button className={styles.resetBtn} onClick={() => { setEnviado(false); setNombre(''); setApellidos(''); setTelefono('') }}>
+                  <button className={styles.resetBtn} onClick={() => { setEnviado(false); setNombre(''); setDni(''); setTelefono('') }}>
                     Registrar otro vecino
                   </button>
                 </div>
               ) : (
                 <form className={styles.form} onSubmit={handleSubmit}>
                   <div className={styles.field}>
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Jesús" value={nombre} onChange={e => setNombre(e.target.value)} required />
+                    <label>Nombre y Apellidos</label>
+                    <input type="text" placeholder="Jesús García López" value={nombre} onChange={e => setNombre(e.target.value)} required />
                   </div>
                   <div className={styles.field}>
-                    <label>Apellidos</label>
-                    <input type="text" placeholder="García López" value={apellidos} onChange={e => setApellidos(e.target.value)} required />
+                    <label>DNI</label>
+                    <input type="text" placeholder="12345678" maxLength={8} value={dni} onChange={e => setDni(e.target.value)} required />
                   </div>
                   <div className={styles.field}>
                     <label>Número de WhatsApp</label>
