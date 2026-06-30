@@ -5,7 +5,7 @@
   align-items: flex-start;
   overflow: hidden;
   background: #F0F6FF;
-  padding: 80px 0 180px 0 !important;
+  padding: 80px 0 320px 0 !important;
 }
 
 /* ── Animated blobs ── */
@@ -161,11 +161,11 @@
 /* ── Image ───────────────────────────────────────────────── */
 .imageWrapper {
   position: absolute;
-  right: 18%;
-  top: 145px;
+  right: 8%;
+  top: 80px;
   transform: none;
-  height: calc(100% - 145px - 80px);
-  width: 40%;
+  height: calc(100% - 80px - 320px);
+  width: 45%;
   overflow: hidden;
   z-index: 1;
   border-radius: 0;
