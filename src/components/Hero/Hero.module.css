@@ -359,11 +359,12 @@
   .hero {
     flex-direction: column;
     padding-top: 20px !important;
-    padding-bottom: 3rem !important;
+    padding-bottom: 4rem !important;
     min-height: auto;
     align-items: center;
+    overflow: visible !important;
   }
-  /* Orden móvil: 1-apoyaBtn  2-foto  3-contenido */
+  /* Orden móvil: 1-apoyaBtn  2-foto  3-contenido  4-socialBar */
   .apoyaBtn {
     position: relative;
     top: auto;
@@ -391,7 +392,21 @@
     text-align: center;
     padding-top: .5rem;
   }
-  .socialBar { position: relative !important; bottom: auto !important; padding: 1.2rem 4%; margin-top: 2rem; order: 4; }
+  .socialBar {
+    order: 4;
+    position: relative !important;
+    bottom: auto !important;
+    padding: 1.2rem 4%;
+    margin-top: 1.5rem;
+    margin-bottom: 70px;
+    z-index: 10 !important;
+    pointer-events: auto !important;
+  }
+  .socialIcon {
+    pointer-events: auto !important;
+    z-index: 11 !important;
+    position: relative;
+  }
   .socialCircle { width: 52px; height: 52px; }
   .socialName { font-size: .7rem; }
   .socialHandle { display: none; }
