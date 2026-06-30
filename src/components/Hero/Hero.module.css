@@ -273,8 +273,9 @@
   transform: translateY(30px);
   animation: fadeUp .8s .9s forwards;
   margin-bottom: 2.5rem;
-  font-size: 1.15rem;
-  padding: 1rem 2.4rem;
+  font-size: 1.65rem;
+  letter-spacing: 5px;
+  padding: .95rem 2.2rem;
 }
 
 @keyframes fadeUp {
@@ -413,7 +414,7 @@
   .titleMain { font-size: clamp(3.5rem, 12vw, 6rem); }
   .titleSub  { font-size: clamp(3.5rem, 12vw, 6rem); white-space: normal; }
   .desc { font-size: 1.1rem; margin: 1rem auto 1.5rem; max-width: 90%; }
-  .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.5rem; letter-spacing: 5px; padding: .85rem 2rem; white-space: nowrap; }
+  .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.65rem; letter-spacing: 5px; padding: .95rem 2.2rem; white-space: nowrap; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
 }
 
@@ -425,7 +426,7 @@
   .imageWrapper { width: 78%; height: 58vw; max-height: 300px; }
   .socialCircle { width: 44px; height: 44px; }
   .apoyaBtn { font-size: .9rem; padding: .7rem 1.4rem; }
-  .content :global(.btn-primary) { font-size: 1.25rem; letter-spacing: 3px; padding: .8rem 1.5rem; }
+  .content :global(.btn-primary) { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
 }
 
 /* ── iPhone pequeño (≤390px) ─────────────────────────────── */
@@ -433,5 +434,5 @@
   .titleMain { font-size: clamp(2.5rem, 14vw, 3.2rem); }
   .titleSub  { font-size: clamp(2.5rem, 14vw, 3.2rem); }
   .imageWrapper { width: 85%; height: 60vw; }
-  .content :global(.btn-primary) { font-size: 1.1rem; letter-spacing: 2px; padding: .75rem 1.2rem; }
+  .content :global(.btn-primary) { font-size: 1.3rem; letter-spacing: 3px; padding: .8rem 1.8rem; }
 }
