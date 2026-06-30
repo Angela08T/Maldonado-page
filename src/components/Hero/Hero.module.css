@@ -153,7 +153,7 @@
   z-index: 5;
   padding-left: 8%;
   padding-right: 4%;
-  padding-top: 3rem;
+  padding-top: 8rem;
   flex: 0 0 45%;
   max-width: 45%;
 }
@@ -183,6 +183,11 @@
 
 /* ── Apoya Btn ───────────────────────────────────────────── */
 .apoyaBtn {
+  /* Desktop: anclado en la columna izquierda */
+  position: absolute;
+  top: calc(80px + 3rem);
+  left: 8%;
+  z-index: 6;
   display: inline-flex;
   align-items: center;
   gap: .55rem;
@@ -198,8 +203,6 @@
   background: linear-gradient(135deg, #003D82 0%, #0057B8 50%, #2B7FE0 100%);
   box-shadow: 0 4px 20px rgba(0,87,184,.45);
   cursor: pointer;
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp .8s .1s forwards, apoyaPulse 2.5s 1s ease-in-out infinite;
@@ -351,24 +354,26 @@
   color: #999;
 }
 
-/* ── Tablet Samsung (≤900px) ─────────────────────────────── */
+/* ── Tablet / Móvil (≤900px) ────────────────────────────── */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
-    padding-top: 30px !important;
+    padding-top: 20px !important;
     padding-bottom: 3rem !important;
     min-height: auto;
+    align-items: center;
   }
-  .content {
-    flex: none;
-    max-width: 100%;
-    padding: 0 6%;
-    margin-top: 0;
-    text-align: center;
-    padding-top: 0;
+  /* Orden móvil: 1-apoyaBtn  2-foto  3-contenido */
+  .apoyaBtn {
+    position: relative;
+    top: auto;
+    left: auto;
+    order: 1;
+    margin: 1rem auto .5rem;
+    animation: fadeUp .8s .1s forwards, apoyaPulse 2.5s 1s ease-in-out infinite;
   }
   .imageWrapper {
-    order: -1;
+    order: 2;
     position: relative;
     right: auto;
     top: auto;
@@ -376,9 +381,17 @@
     width: 65%;
     height: 55vw;
     max-height: 360px;
-    margin: 0 auto 0;
+    margin: 0 auto;
   }
-  .socialBar { position: relative !important; bottom: auto !important; padding: 1.2rem 4%; margin-top: 2rem; }
+  .content {
+    order: 3;
+    flex: none;
+    max-width: 100%;
+    padding: .5rem 6% 0;
+    text-align: center;
+    padding-top: .5rem;
+  }
+  .socialBar { position: relative !important; bottom: auto !important; padding: 1.2rem 4%; margin-top: 2rem; order: 4; }
   .socialCircle { width: 52px; height: 52px; }
   .socialName { font-size: .7rem; }
   .socialHandle { display: none; }
