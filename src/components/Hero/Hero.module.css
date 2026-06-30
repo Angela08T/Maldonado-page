@@ -218,7 +218,7 @@
 .titleMain {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(6rem, 11vw, 11rem);
+  font-size: clamp(5rem, 8.5vw, 9rem);
   line-height: .95;
   color: var(--dark);
   letter-spacing: 2px;
@@ -231,7 +231,7 @@
 .titleSub {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(6rem, 11vw, 11rem);
+  font-size: clamp(5rem, 8.5vw, 9rem);
   line-height: 1.05;
   white-space: nowrap;
   background: linear-gradient(90deg,
