@@ -117,9 +117,6 @@ export default function Sobre() {
         {/* Columna derecha: contenido */}
         <div className={styles.bioCol}>
           <span className={`${styles.eyebrow} reveal`}>Sobre Jesús Maldonado</span>
-          <h2 className={`${styles.titulo} reveal`}>
-            El Cambio Continúa
-          </h2>
           <p className={`${styles.intro} ${styles.introImpacto} reveal`}>
             SEGURIDAD, ORDEN Y OPORTUNIDADES
           </p>
