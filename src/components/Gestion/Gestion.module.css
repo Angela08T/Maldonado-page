@@ -170,29 +170,18 @@
    ¡AHORA NOS TOCA! — sección de metas
    ══════════════════════════════════════════════════════ */
 .metasSection {
-  background: linear-gradient(135deg, #B91C1C 0%, #D62828 45%, #991B1B 100%);
+  background: #ffffff;
+  border: 3px solid #0057B8;
   border-radius: 24px;
   overflow: hidden;
   position: relative;
   z-index: 1;
   padding: 2.5rem 2.5rem 2.8rem;
-  box-shadow: 0 20px 60px rgba(214,40,40,.35);
+  box-shadow: 0 8px 32px rgba(0,87,184,.15);
 }
 
-/* Patrón diagonal decorativo */
-.metasSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    -50deg,
-    transparent,
-    transparent 20px,
-    rgba(0,0,0,.04) 20px,
-    rgba(0,0,0,.04) 40px
-  );
-  pointer-events: none;
-}
+/* Sin patrón de fondo */
+.metasSection::before { display: none; }
 
 /* Título */
 .metasTitleWrap {
@@ -206,18 +195,16 @@
 
 .metasTitulo {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
   letter-spacing: 8px;
-  color: #fff;
+  color: #001A3D;
   text-transform: uppercase;
-  text-shadow: 0 3px 14px rgba(0,0,0,.3);
 }
 
 .bang {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-  color: #FFD700;
-  text-shadow: 0 0 16px rgba(255,215,0,.5);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  color: #D62828;
   line-height: 1;
 }
 
@@ -230,44 +217,45 @@
 }
 
 .metaCard {
-  background: rgba(0,0,0,.22);
-  border: 1px solid rgba(255,255,255,.18);
+  background: #001A3D;
+  border: 2px solid #0057B8;
   border-radius: 16px;
-  padding: 1.6rem .8rem 1.4rem;
+  padding: 1.8rem .8rem 1.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .25rem;
+  gap: .4rem;
   text-align: center;
-  transition: background .25s, transform .25s;
+  transition: transform .25s, box-shadow .25s;
   cursor: default;
 }
 .metaCard:hover {
-  background: rgba(0,0,0,.35);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,87,184,.35);
 }
 
 .metaAccion {
   font-family: 'Anton', sans-serif;
-  font-size: .72rem;
-  letter-spacing: 3px;
-  color: rgba(255,255,255,.65);
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  letter-spacing: 4px;
+  color: #7EC8FF;
   text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(126,200,255,.3);
 }
 
 .metaNum {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+  font-size: clamp(2.8rem, 4.5vw, 4.5rem);
   letter-spacing: 2px;
   color: #FFD700;
   line-height: 1;
-  text-shadow: 0 2px 12px rgba(255,215,0,.4);
+  text-shadow: 0 2px 14px rgba(255,215,0,.35);
 }
 
 .metaCosa {
   font-family: 'Anton', sans-serif;
-  font-size: clamp(.65rem, 1vw, .85rem);
-  letter-spacing: 2px;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  letter-spacing: 3px;
   color: #fff;
   text-transform: uppercase;
   line-height: 1.3;
@@ -297,7 +285,9 @@
   .metasGrid { grid-template-columns: repeat(3, 1fr); gap: .85rem; }
   .metaCard:nth-child(4) { grid-column: 1 / 2; }
   .metaCard:nth-child(5) { grid-column: 3 / 4; }
-  .metaNum { font-size: 2.4rem; }
+  .metaNum     { font-size: 3rem; }
+  .metaAccion  { font-size: 1.2rem; letter-spacing: 3px; }
+  .metaCosa    { font-size: 1.1rem; letter-spacing: 2.5px; }
 }
 
 /* Móvil (≤600px) — iPhone SE / Android medio */
@@ -321,20 +311,20 @@
   .cardNum   { font-size: .65rem; }
 
   /* Metas: 2 columnas, 5ª centrada */
-  .metasSection { padding: 1.6rem 1rem 1.8rem; border-radius: 16px; }
+  .metasSection { padding: 1.6rem 1rem 1.8rem; border-radius: 16px; border-width: 2px; }
   .metasTitleWrap { gap: .5rem; margin-bottom: 1.4rem; }
-  .metasTitulo { font-size: 1.3rem; letter-spacing: 3px; }
-  .bang        { font-size: 1.45rem; }
-  .metasGrid   { grid-template-columns: repeat(2, 1fr); gap: .65rem; }
-  .metaCard    { padding: 1.1rem .5rem 1rem; border-radius: 12px; }
-  .metaAccion  { font-size: .62rem; letter-spacing: 2px; }
-  .metaNum     { font-size: 2rem; }
-  .metaCosa    { font-size: .6rem; letter-spacing: 1.5px; }
+  .metasTitulo { font-size: 1.5rem; letter-spacing: 4px; }
+  .bang        { font-size: 1.65rem; }
+  .metasGrid   { grid-template-columns: repeat(2, 1fr); gap: .7rem; }
+  .metaCard    { padding: 1.4rem .8rem 1.2rem; border-radius: 14px; }
+  .metaAccion  { font-size: 1rem; letter-spacing: 2px; }
+  .metaNum     { font-size: 2.6rem; }
+  .metaCosa    { font-size: .95rem; letter-spacing: 2px; }
 
   /* 5ª tarjeta centrada */
   .metaCard:nth-child(4) { grid-column: auto; }
   .metaCard:nth-child(5) { grid-column: auto; }
-  .metaCard:last-child   { grid-column: 1 / -1; max-width: 220px; width: 100%; margin: 0 auto; }
+  .metaCard:last-child   { grid-column: 1 / -1; max-width: 260px; width: 100%; margin: 0 auto; }
 }
 
 /* Móvil pequeño (≤390px) — iPhone 12/13/14 y similares */
@@ -343,8 +333,12 @@
   .card { padding: 1rem; gap: .6rem; }
   .cardTitle { font-size: .75rem; }
   .cardDesc  { font-size: .75rem; }
-  .metasSection { padding: 1.3rem .8rem 1.5rem; }
-  .metaNum  { font-size: 1.7rem; }
-  .metaCosa { font-size: .58rem; }
-  .metaCard { padding: .9rem .4rem .8rem; }
+  .metasSection { padding: 1.2rem .7rem 1.4rem; }
+  .metasTitulo  { font-size: 1.25rem; letter-spacing: 3px; }
+  .bang         { font-size: 1.4rem; }
+  .metaNum      { font-size: 2.2rem; }
+  .metaAccion   { font-size: .9rem; letter-spacing: 2px; }
+  .metaCosa     { font-size: .88rem; letter-spacing: 2px; }
+  .metaCard     { padding: 1.1rem .6rem 1rem; }
+  .metaCard:last-child { max-width: 220px; }
 }

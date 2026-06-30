@@ -392,6 +392,9 @@
     padding: .5rem 6% 0;
     text-align: center;
     padding-top: .5rem;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
   }
   .socialBar {
     order: 4;
@@ -414,7 +417,7 @@
   .titleMain { font-size: clamp(3.5rem, 12vw, 6rem); }
   .titleSub  { font-size: clamp(3.5rem, 12vw, 6rem); white-space: normal; }
   .desc { font-size: 1.1rem; margin: 1rem auto 1.5rem; max-width: 90%; }
-  .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.65rem; letter-spacing: 5px; padding: .95rem 2.2rem; white-space: nowrap; }
+  .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.65rem; letter-spacing: 5px; padding: .95rem 2.2rem; white-space: nowrap; position: relative; z-index: 12; pointer-events: auto !important; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
 }
 
@@ -425,7 +428,7 @@
   .titleSub  { font-size: clamp(2.8rem, 13vw, 3.8rem); }
   .imageWrapper { width: 78%; height: 58vw; max-height: 300px; }
   .socialCircle { width: 44px; height: 44px; }
-  .apoyaBtn { font-size: .9rem; padding: .7rem 1.4rem; }
+  .apoyaBtn { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
   .content :global(.btn-primary) { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
 }
 
@@ -435,4 +438,5 @@
   .titleSub  { font-size: clamp(2.5rem, 14vw, 3.2rem); }
   .imageWrapper { width: 85%; height: 60vw; }
   .content :global(.btn-primary) { font-size: 1.3rem; letter-spacing: 3px; padding: .8rem 1.8rem; }
+  .apoyaBtn { font-size: 1.3rem; letter-spacing: 3px; padding: .8rem 1.8rem; }
 }
