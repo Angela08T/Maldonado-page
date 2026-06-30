@@ -1,106 +1,138 @@
 import styles from './Gestion.module.css'
 
-const cards = [
+const programas = [
   {
-    color: 'red',
+    num: '01', color: 'red',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
       </svg>
     ),
-    title: 'Seguridad Ciudadana',
-    desc: 'Más patrullaje, cámaras y presencia en las calles para que cada familia viva tranquila.',
-    stat: '+40%', statLabel: 'cobertura de serenazgo',
+    title: 'MACROCENTRAL DE VIGILANCIA INTELIGENTE',
+    desc: '500 cámaras con IA en las 8 zonas de mayor criminalidad, enlace directo a comisarías.',
   },
   {
-    color: 'orange',
+    num: '02', color: 'red',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
       </svg>
     ),
-    title: 'Desarrollo Social',
-    desc: 'Programas de apoyo a familias vulnerables, adultos mayores y jóvenes en riesgo.',
-    stat: '15K+', statLabel: 'familias beneficiadas',
+    title: 'PLAN "SJL SIN ZONAS ROJAS"',
+    desc: 'Intervención en los 15 puntos más peligrosos. Serenazgo, PNP y Ministerio Público juntos.',
   },
   {
-    color: 'green',
+    num: '03', color: 'blue',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22V12M12 12C12 7 7 4 2 6c0 5 3 9 10 6zM12 12c0-5 5-8 10-6 0 5-3 9-10 6z"/>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7h6"/>
       </svg>
     ),
-    title: 'Medio Ambiente',
-    desc: 'Un distrito más limpio, verde y sostenible con parques, áreas naturales y gestión de residuos.',
-    stat: '18', statLabel: 'nuevas áreas verdes',
+    title: 'APP "CHAPA CHOROS"',
+    desc: 'Botón de pánico para cada vecino. Respuesta en menos de 5 minutos con coordinación serenazgo.',
   },
   {
-    color: 'teal',
+    num: '04', color: 'green',
     icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-        <polyline points="16 7 22 7 22 13"/>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14z"/>
+        <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
       </svg>
     ),
-    title: 'Desarrollo Económico',
-    desc: 'Impulsamos el empleo local, apoyamos a emprendedores y atraemos inversión al distrito.',
-    stat: '5K+', statLabel: 'empleos generados',
+    title: 'PROGRAMA "RESCATA JOVEN"',
+    desc: 'Centros de formación en 10 zonas. Deporte, oficio y empleo como alternativa a las pandillas.',
   },
+  {
+    num: '05', color: 'blue',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+      </svg>
+    ),
+    title: 'SERENAZGO CON MÉRITO',
+    desc: 'Más plazas, mejor sueldo y capacitación certificada. Un serenazgo que la delincuencia respete.',
+  },
+  {
+    num: '06', color: 'teal',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    ),
+    title: 'RECUPERACIÓN DE ESPACIOS PÚBLICOS',
+    desc: 'Parques oscuros e iluminados, activados y devueltos a las familias del distrito.',
+  },
+]
+
+const metas = [
+  { accion: 'INSTALAR',  num: '500',  cosa: 'CÁMARAS MÁS',        color: 'r' },
+  { accion: 'CONTRATAR', num: '600',  cosa: 'SERENOS MÁS',        color: 'b' },
+  { accion: 'ADQUIRIR',  num: '100',  cosa: 'CAMIONETAS MÁS',     color: 'r' },
+  { accion: 'INSTALAR',  num: '200',  cosa: 'BOTONES DE PÁNICO',   color: 'b' },
+  { accion: 'COLOCAR',   num: '1000', cosa: 'LUCES LED MÁS',       color: 'r' },
 ]
 
 export default function Gestion() {
   return (
     <section id="gestion" className={styles.section}>
 
-      {/* Decoración de fondo */}
-      <div className={styles.bgDeco1} />
-      <div className={styles.bgDeco2} />
+      {/* ── Encabezado ── */}
+      <div className={`${styles.header} reveal`}>
+        <span className={styles.eyebrow}>Propuestas 2026 – 2030</span>
+        <h2 className={styles.titulo}>
+          NUESTRAS <span>PRIORIDADES</span>
+        </h2>
+        <div className={styles.titleLine} />
+        <p className={styles.subtitulo}>
+          Seguridad real, jóvenes con futuro y espacios devueltos a las familias.
+        </p>
+      </div>
 
-      <div className={styles.inner}>
-        {/* ── Columna izquierda ── */}
-        <div className={`${styles.left} reveal`}>
-          <h2 className={styles.titulo}>Nuestras<br />Prioridades</h2>
-          <p className={styles.desc}>
-            Transparencia, planificación y trabajo en equipo para seguir
-            construyendo el distrito que soñamos.
-          </p>
-
-          <div className={styles.miniStats}>
-            <div className={styles.miniStat}>
-              <span className={styles.miniNum}>30<span>+</span></span>
-              <span className={styles.miniLabel}>Obras ejecutadas</span>
-            </div>
-            <div className={styles.miniStat}>
-              <span className={styles.miniNum}>100<span>K+</span></span>
-              <span className={styles.miniLabel}>Vecinos beneficiados</span>
+      {/* ── Grid programas ── */}
+      <div className={styles.grid}>
+        {programas.map((p, i) => (
+          <div
+            key={i}
+            className={`${styles.card} ${styles['border_' + p.color]} reveal`}
+            style={{ transitionDelay: `${i * 0.07}s` }}
+          >
+            <span className={styles.cardNum}>{p.num}</span>
+            <div className={`${styles.cardIcon} ${styles['ic_' + p.color]}`}>{p.icon}</div>
+            <div className={styles.cardBody}>
+              <h3 className={styles.cardTitle}>{p.title}</h3>
+              <p className={styles.cardDesc}>{p.desc}</p>
             </div>
           </div>
+        ))}
+      </div>
 
-          <a href="#" className={styles.cta}>
-            Conoce Nuestra Gestión
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
+      {/* ── ¡AHORA NOS TOCA! ── */}
+      <div className={`${styles.metasSection} reveal`}>
+
+        <div className={styles.metasTitleWrap}>
+          <span className={styles.bang}>¡</span>
+          <h3 className={styles.metasTitulo}>AHORA NOS TOCA</h3>
+          <span className={styles.bang}>!</span>
         </div>
 
-        {/* ── Grid de tarjetas ── */}
-        <div className={styles.grid}>
-          {cards.map((c, i) => (
-            <div key={i} className={`${styles.card} reveal`} style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className={`${styles.cardIcon} ${styles[c.color]}`}>{c.icon}</div>
-              <h3 className={styles.cardTitle}>{c.title}</h3>
-              <p className={styles.cardDesc}>{c.desc}</p>
-              <div className={`${styles.cardStat} ${styles['stat_' + c.color]}`}>
-                <strong>{c.stat}</strong> {c.statLabel}
-              </div>
+        {/* 5 tarjetas stat */}
+        <div className={styles.metasGrid}>
+          {metas.map((m, i) => (
+            <div
+              key={i}
+              className={`${styles.metaCard} reveal`}
+              style={{ transitionDelay: `${i * 0.09}s` }}
+            >
+              <span className={styles.metaAccion}>{m.accion}</span>
+              <span className={styles.metaNum}>{m.num}</span>
+              <span className={styles.metaCosa}>{m.cosa}</span>
             </div>
           ))}
         </div>
+
       </div>
+
     </section>
   )
 }

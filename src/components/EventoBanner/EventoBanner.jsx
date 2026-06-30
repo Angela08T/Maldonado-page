@@ -10,7 +10,12 @@ export default function EventoBanner({ setPage }) {
     <div className={styles.banner}>
       <div className={styles.tickerWrap}>
         <div className={styles.ticker}>
-          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;✦</span>
+          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>
         </div>
       </div>
 

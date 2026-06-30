@@ -29,18 +29,22 @@
   border-right: 1px solid rgba(255,255,255,.15);
 }
 
+/* Contenedor ticker con clip */
 .tickerWrap {
   flex: 1;
-  position: relative;
   overflow: hidden;
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
+/* ticker: 6 copias → anima 0 a -50% para loop continuo sin pausa */
 .ticker {
-  position: absolute;
-  top: 50%;
+  display: flex;
+  width: max-content;
   white-space: nowrap;
-  animation: scroll 10s linear infinite;
+  animation: scroll 26s linear infinite;
+  will-change: transform;
 }
 
 .ticker span {
@@ -50,13 +54,13 @@
   color: #ffffff;
   letter-spacing: 26px;
   text-transform: uppercase;
-  -webkit-text-stroke: 0.8px #ffffff;
   text-shadow: 0 2px 8px rgba(0,0,0,.35);
+  padding-right: 3rem;
 }
 
 @keyframes scroll {
-  0%   { transform: translateX(100vw) translateY(-50%); }
-  100% { transform: translateX(-100%) translateY(-50%); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .verMas {
@@ -84,5 +88,6 @@
 @media (max-width: 600px) {
   .label { display: none; }
   .banner { height: 50px; }
-  .ticker span { font-size: 2rem; letter-spacing: 12px; }
+  .ticker span { font-size: 1.8rem; letter-spacing: 10px; padding-right: 2rem; }
+  .verMas { font-size: 1.1rem; letter-spacing: 2px; padding: 0 1rem; }
 }

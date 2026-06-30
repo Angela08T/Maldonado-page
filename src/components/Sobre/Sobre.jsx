@@ -109,7 +109,7 @@ export default function Sobre() {
           </div>
           <div className={styles.nameTag}>
             <span className={styles.nameTagNombre}>Jesús Maldonado</span>
-            <span className={styles.nameTagCargo}>Alcalde de San Juan de Lurigancho</span>
+
             <div className={styles.nameTagLine} />
           </div>
         </div>

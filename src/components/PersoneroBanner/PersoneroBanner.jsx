@@ -12,7 +12,12 @@ export default function PersoneroBanner({ setPage }) {
 
       <div className={styles.tickerWrap}>
         <div className={styles.ticker}>
-          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;✦</span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;</span>
+          <span>✦&nbsp;&nbsp;SÉ PERSONERO Y CUIDA TU VOTO&nbsp;&nbsp;</span>
         </div>
       </div>
 

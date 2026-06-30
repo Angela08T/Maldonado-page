@@ -1,204 +1,350 @@
+/* ═══════════════════════════════════════════════════════
+   GESTION — Nuestras Prioridades
+   ═══════════════════════════════════════════════════════ */
+
 .section {
-  background: var(--white);
+  background: #F0F6FF;
+  padding: 5rem 5%;
   position: relative;
   overflow: hidden;
 }
 
-/* ── Decoración de fondo ─────────────────────────────────────── */
-.bgDeco1 {
+/* Watermark de fondo */
+.section::before {
+  content: 'JM';
   position: absolute;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,25,44,.06) 0%, transparent 70%);
-  top: -150px; left: -120px;
+  right: -2%;
+  top: 5%;
+  font-family: 'Anton', sans-serif;
+  font-size: 22rem;
+  color: rgba(0,87,184,.04);
   pointer-events: none;
-}
-.bgDeco2 {
-  position: absolute;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,87,184,.06) 0%, transparent 70%);
-  bottom: -120px; right: -80px;
-  pointer-events: none;
+  user-select: none;
+  line-height: 1;
 }
 
-/* ── Layout ──────────────────────────────────────────────────── */
-.inner {
+/* ── Encabezado ──────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 5rem;
-  align-items: center;
 }
-
-/* ── Columna izquierda ───────────────────────────────────────── */
-.left { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .eyebrow {
   display: inline-block;
-  font-size: .72rem;
+  font-family: var(--font-heading);
+  font-size: .7rem;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
-  color: var(--teal);
-  border: 1px solid rgba(0,87,184,.4);
+  color: var(--red);
+  border: 1.5px solid rgba(214,40,40,.4);
   border-radius: 9999px;
-  padding: .3rem .9rem;
-  width: fit-content;
+  padding: .35rem 1.1rem;
+  margin-bottom: 1.2rem;
 }
 
 .titulo {
-  font-family: var(--font-main);
+  font-family: var(--font-heading);
   font-weight: 900;
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.05;
-  color: var(--dark);
-}
-
-.desc {
-  font-size: .95rem;
-  line-height: 1.85;
-  color: #666;
-  max-width: 320px;
-}
-
-/* ── Mini stats ──────────────────────────────────────────────── */
-.miniStats {
-  display: flex;
-  gap: 2rem;
-  padding: 1.2rem 0;
-  border-top: 1px solid rgba(0,0,0,.08);
-  border-bottom: 1px solid rgba(0,0,0,.08);
-}
-
-.miniStat { display: flex; flex-direction: column; gap: .2rem; }
-
-.miniNum {
-  font-family: var(--font-main);
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: var(--dark);
+  letter-spacing: 4px;
   line-height: 1;
-}
-.miniNum span { font-size: 1.1rem; color: var(--red); }
-
-.miniLabel {
-  font-size: .72rem;
-  color: #999;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-}
-
-/* ── CTA ─────────────────────────────────────────────────────── */
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  border: 1.5px solid rgba(0,0,0,.2);
   color: var(--dark);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: .75rem 1.6rem;
-  border-radius: 9999px;
-  width: fit-content;
-  transition: border-color .3s, background .3s, color .3s, gap .3s;
+  margin-bottom: 1rem;
 }
-.cta:hover {
-  border-color: var(--teal);
-  background: rgba(0,87,184,.08);
-  color: var(--teal);
-  gap: 1rem;
+.titulo span {
+  color: var(--red);
+  display: block;
 }
 
-/* ── Grid de tarjetas ────────────────────────────────────────── */
+.titleLine {
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--red), var(--blue));
+  border-radius: 9999px;
+  margin: 0 auto 1.2rem;
+}
+
+.subtitulo {
+  font-size: .97rem;
+  color: #556;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Grid 6 tarjetas ─────────────────────────────────── */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
-  background: var(--gray);
-  border: 1px solid rgba(0,0,0,.05);
-  border-radius: 18px;
-  padding: 1.8rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: .8rem;
-  transition: background .3s, transform .3s, box-shadow .3s;
   position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.6rem 1.5rem 1.6rem 1.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  border-left: 5px solid transparent;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: transform .3s, box-shadow .3s;
   overflow: hidden;
-  border-top: 4px solid transparent;
+}
+.card::after {
+  content: attr(data-num);
+  position: absolute;
+  right: -0.5rem;
+  bottom: -1rem;
+  font-family: 'Anton', sans-serif;
+  font-size: 7rem;
+  color: rgba(0,0,0,.04);
+  pointer-events: none;
+  line-height: 1;
 }
 .card:hover {
-  background: var(--white);
-  transform: translateY(-5px);
-  box-shadow: 0 14px 36px rgba(0,0,0,.09);
+  transform: translateY(-5px) translateX(3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.11);
 }
 
-/* Línea superior de color por tarjeta */
-.card:nth-child(1) { border-top-color: var(--red); }
-.card:nth-child(2) { border-top-color: var(--orange); }
-.card:nth-child(3) { border-top-color: var(--green); }
-.card:nth-child(4) { border-top-color: var(--teal); }
+.border_red  { border-left-color: var(--red);   }
+.border_blue { border-left-color: var(--blue);  }
+.border_green{ border-left-color: #16a34a;      }
+.border_teal { border-left-color: #0369a1;      }
 
-/* ── Icon ────────────────────────────────────────────────────── */
+/* Número de tarjeta */
+.cardNum {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-family: 'Anton', sans-serif;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  color: #bbb;
+}
+
+/* Ícono */
 .cardIcon {
-  width: 50px; height: 50px;
-  border-radius: 12px;
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  flex-shrink: 0;
+  color: #fff;
 }
-.red    { background: var(--red); }
-.orange { background: var(--orange); }
-.green  { background: var(--green); }
-.teal   { background: var(--teal); }
+.ic_red   { background: linear-gradient(135deg, #D62828 0%, #9B1C1C 100%); }
+.ic_blue  { background: linear-gradient(135deg, #0057B8 0%, #003D82 100%); }
+.ic_green { background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); }
+.ic_teal  { background: linear-gradient(135deg, #0369a1 0%, #075985 100%); }
+
+/* Texto */
+.cardBody { flex: 1; }
 
 .cardTitle {
-  font-family: var(--font-main);
-  font-weight: 700;
-  font-size: .88rem;
-  letter-spacing: 1px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: .84rem;
+  letter-spacing: .8px;
   text-transform: uppercase;
   color: var(--dark);
+  line-height: 1.35;
+  margin-bottom: .55rem;
 }
 
 .cardDesc {
-  font-size: .82rem;
-  color: #666;
-  line-height: 1.65;
-  flex: 1;
+  font-size: .84rem;
+  color: #667;
+  line-height: 1.7;
 }
 
-/* ── Stat ────────────────────────────────────────────────────── */
-.cardStat {
-  font-size: .74rem;
-  font-weight: 600;
-  padding: .3rem .7rem;
-  border-radius: 9999px;
-  width: fit-content;
-  margin-top: .2rem;
+/* ══════════════════════════════════════════════════════
+   ¡AHORA NOS TOCA! — sección de metas
+   ══════════════════════════════════════════════════════ */
+.metasSection {
+  background: linear-gradient(135deg, #B91C1C 0%, #D62828 45%, #991B1B 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem 2.5rem 2.8rem;
+  box-shadow: 0 20px 60px rgba(214,40,40,.35);
 }
-.cardStat strong { font-weight: 800; margin-right: .2rem; }
 
-.stat_red    { background: rgba(214,40,40,.10);   color: var(--red); }
-.stat_orange { background: rgba(43,127,224,.10); color: var(--orange); }
-.stat_green  { background: rgba(0,61,130,.10);   color: var(--green); }
-.stat_teal   { background: rgba(0,87,184,.10);   color: var(--teal); }
+/* Patrón diagonal decorativo */
+.metasSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -50deg,
+    transparent,
+    transparent 20px,
+    rgba(0,0,0,.04) 20px,
+    rgba(0,0,0,.04) 40px
+  );
+  pointer-events: none;
+}
 
-/* ── Responsive ──────────────────────────────────────────────── */
+/* Título */
+.metasTitleWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.metasTitulo {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  letter-spacing: 8px;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 3px 14px rgba(0,0,0,.3);
+}
+
+.bang {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  color: #FFD700;
+  text-shadow: 0 0 16px rgba(255,215,0,.5);
+  line-height: 1;
+}
+
+/* Grid 5 tarjetas */
+.metasGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.metaCard {
+  background: rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 16px;
+  padding: 1.6rem .8rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+  text-align: center;
+  transition: background .25s, transform .25s;
+  cursor: default;
+}
+.metaCard:hover {
+  background: rgba(0,0,0,.35);
+  transform: translateY(-4px);
+}
+
+.metaAccion {
+  font-family: 'Anton', sans-serif;
+  font-size: .72rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,.65);
+  text-transform: uppercase;
+}
+
+.metaNum {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+  letter-spacing: 2px;
+  color: #FFD700;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(255,215,0,.4);
+}
+
+.metaCosa {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(.65rem, 1vw, .85rem);
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+
+/* Tablet grande (≤1024px) */
 @media (max-width: 1024px) {
-  .inner { grid-template-columns: 1fr; gap: 3rem; }
-  .desc  { max-width: 100%; }
+  .metasGrid { grid-template-columns: repeat(3, 1fr); }
+  .metaCard:nth-child(4) { grid-column: 1 / 2; }
+  .metaCard:nth-child(5) { grid-column: 2 / 3; }
 }
+
+/* Tablet (≤900px) */
+@media (max-width: 900px) {
+  .section { padding: 3.5rem 5% 4rem; }
+  .grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Tarjeta de programa: mantiene fila icon+texto, se achica un poco */
+  .cardIcon { width: 48px; height: 48px; border-radius: 12px; }
+  .cardTitle { font-size: .82rem; }
+  .cardDesc  { font-size: .82rem; }
+
+  /* Metas: 3 cols en tablet */
+  .metasSection { border-radius: 18px; padding: 2rem 1.8rem 2.2rem; }
+  .metasGrid { grid-template-columns: repeat(3, 1fr); gap: .85rem; }
+  .metaCard:nth-child(4) { grid-column: 1 / 2; }
+  .metaCard:nth-child(5) { grid-column: 3 / 4; }
+  .metaNum { font-size: 2.4rem; }
+}
+
+/* Móvil (≤600px) — iPhone SE / Android medio */
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
+  .section { padding: 2.5rem 4% 3rem; }
+  .section::before { display: none; }
+
+  /* Header */
+  .titulo  { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .subtitulo { font-size: .88rem; }
+
+  /* Tarjeta programa: apila icono arriba del texto */
+  .card {
+    flex-direction: column;
+    gap: .75rem;
+    padding: 1.2rem 1.2rem 1.4rem;
+  }
+  .cardIcon  { width: 44px; height: 44px; border-radius: 10px; }
+  .cardTitle { font-size: .8rem; letter-spacing: .5px; }
+  .cardDesc  { font-size: .8rem; }
+  .cardNum   { font-size: .65rem; }
+
+  /* Metas: 2 columnas, 5ª centrada */
+  .metasSection { padding: 1.6rem 1rem 1.8rem; border-radius: 16px; }
+  .metasTitleWrap { gap: .5rem; margin-bottom: 1.4rem; }
+  .metasTitulo { font-size: 1.3rem; letter-spacing: 3px; }
+  .bang        { font-size: 1.45rem; }
+  .metasGrid   { grid-template-columns: repeat(2, 1fr); gap: .65rem; }
+  .metaCard    { padding: 1.1rem .5rem 1rem; border-radius: 12px; }
+  .metaAccion  { font-size: .62rem; letter-spacing: 2px; }
+  .metaNum     { font-size: 2rem; }
+  .metaCosa    { font-size: .6rem; letter-spacing: 1.5px; }
+
+  /* 5ª tarjeta centrada */
+  .metaCard:nth-child(4) { grid-column: auto; }
+  .metaCard:nth-child(5) { grid-column: auto; }
+  .metaCard:last-child   { grid-column: 1 / -1; max-width: 220px; width: 100%; margin: 0 auto; }
+}
+
+/* Móvil pequeño (≤390px) — iPhone 12/13/14 y similares */
+@media (max-width: 390px) {
+  .section { padding: 2rem 3% 2.5rem; }
+  .card { padding: 1rem; gap: .6rem; }
+  .cardTitle { font-size: .75rem; }
+  .cardDesc  { font-size: .75rem; }
+  .metasSection { padding: 1.3rem .8rem 1.5rem; }
+  .metaNum  { font-size: 1.7rem; }
+  .metaCosa { font-size: .58rem; }
+  .metaCard { padding: .9rem .4rem .8rem; }
 }
