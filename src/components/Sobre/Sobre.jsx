@@ -1,5 +1,5 @@
 import styles from './Sobre.module.css'
-import jesusImg from '../../assets/jesus.png'
+import jesusImg from '../../assets/perfil-uno.png'
 
 const stats = [
   {

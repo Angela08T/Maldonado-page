@@ -203,11 +203,11 @@ section#hero { padding: 0; }
   color: var(--white);
   font-family: 'Anton', sans-serif;
   font-weight: 400;
-  font-size: 3rem;
-  letter-spacing: 10px;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
   text-transform: uppercase;
   white-space: nowrap;
-  padding: 1rem 2.5rem;
+  padding: .85rem 2rem;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
@@ -285,7 +285,7 @@ section#hero { padding: 0; }
 @media (max-width: 480px) {
   section { padding: 2.5rem 5%; }
   section#hero { padding: 0; }
-  .btn-primary { font-size: .82rem; padding: .75rem 1.6rem; }
+  .btn-primary { font-size: 1.1rem; letter-spacing: 3px; padding: .75rem 1.6rem; }
 }
 
 /* ── FLOATING PARTICLES (Hero) ──────────────────────────────── */

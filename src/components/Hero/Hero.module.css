@@ -161,11 +161,11 @@
 /* ── Image ───────────────────────────────────────────────── */
 .imageWrapper {
   position: absolute;
-  right: 8%;
-  top: 80px;
+  right: 4%;
+  top: 60px;
   transform: none;
-  height: calc(100% - 80px - 320px);
-  width: 45%;
+  height: calc(100% - 60px - 240px);
+  width: 52%;
   overflow: hidden;
   z-index: 1;
   border-radius: 0;
@@ -385,7 +385,7 @@
   .titleMain { font-size: clamp(3.5rem, 12vw, 6rem); }
   .titleSub  { font-size: clamp(3.5rem, 12vw, 6rem); white-space: normal; }
   .desc { font-size: 1.1rem; margin: 1rem auto 1.5rem; max-width: 90%; }
-  .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.6rem; letter-spacing: 5px; padding: .9rem 2rem; white-space: nowrap; }
+  .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.5rem; letter-spacing: 5px; padding: .85rem 2rem; white-space: nowrap; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
 }
 
