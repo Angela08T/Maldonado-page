@@ -47,6 +47,8 @@
   margin-left: -50px;
   position: relative;
   overflow: hidden;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 /* Círculos decorativos de fondo */
@@ -74,7 +76,8 @@
   flex-direction: column;
   align-items: center;
   gap: .55rem;
-  z-index: 1;
+  z-index: 3;
+  pointer-events: auto;
 }
 
 /* Etiqueta superior pequeña */
@@ -121,7 +124,8 @@
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   position: relative;
-  z-index: 2;
+  z-index: 4;
+  pointer-events: auto !important;
 }
 .shareBtn:hover {
   background: #c8001e;

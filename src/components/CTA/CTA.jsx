@@ -136,6 +136,7 @@ export default function CTA() {
 
           <button
             className={styles.shareBtn}
+            onPointerDown={(e) => { e.stopPropagation(); setOpen(true); }}
             onClick={() => setOpen(true)}
             aria-label="Compartir página"
           >
