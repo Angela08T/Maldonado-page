@@ -61,17 +61,18 @@ export default function CTA() {
 
   async function handleShare() {
     const pageUrl = window.location.href
-    const canNativeShare = navigator.share && window.isSecureContext
-    if (canNativeShare) {
+    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    // En móvil: intentar native share; si falla por cualquier razón mostrar popup
+    if (navigator.share && window.isSecureContext) {
       try {
         await navigator.share({ title: 'Jesús Maldonado', text: shareText, url: pageUrl })
+        return
       } catch (err) {
-        // Solo abre el popup si NO fue el usuario quien canceló
-        if (err?.name !== 'AbortError') setOpen(true)
+        if (err?.name === 'AbortError') return   // usuario canceló → no abrir popup
+        // cualquier otro error → caer al popup
       }
-    } else {
-      setOpen(o => !o)
     }
+    setOpen(o => !o)
   }
 
   const pageUrl = typeof window !== 'undefined' ? window.location.href : ''
@@ -122,7 +123,7 @@ export default function CTA() {
           <p className={styles.shareLabel}>¿Te gustó lo que ves?</p>
           <p className={styles.shareTitle}>COMPARTE<br/>ESTA PROPUESTA</p>
 
-          <button className={styles.shareBtn} onClick={handleShare} aria-label="Compartir página">
+          <button className={styles.shareBtn} onClick={handleShare} onTouchEnd={(e)=>{e.preventDefault();handleShare()}} aria-label="Compartir página">
             <IconShare />
             <span>Compartir ahora</span>
             <span className={`${styles.shareBtnArrow} ${open ? styles.arrowUp : ''}`}>

@@ -231,22 +231,38 @@
   .bar { grid-template-columns: 1fr; overflow: visible; min-height: unset; }
   .panelRed  { clip-path: none; padding: 1.6rem 6%; justify-content: center; text-align: center; }
   .panelIcon { display: none; }
-  .panelTeal { clip-path: none; margin-left: 0; padding: 2rem 6%; }
+  .panelTeal { clip-path: none; margin-left: 0; padding: 2rem 6%; overflow: visible; }
   .shareTitle { font-size: 1.6rem; letter-spacing: 4px; }
-  .shareBtn   { font-size: .9rem; padding: .7rem 1.6rem; }
-  /* popup se abre hacia arriba, centrado */
-  .sharePopup {
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 190px;
+  .shareBtn   { font-size: .9rem; padding: .7rem 1.6rem; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+  /* En móvil el popup es un modal fijo centrado en pantalla */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 8000;
+    background: rgba(0,0,0,.45);
   }
+  .sharePopup {
+    position: fixed;
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8001;
+    min-width: 260px;
+    max-width: 90vw;
+    border-radius: 20px;
+    padding: 1rem .8rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  }
+  .shareWrap { z-index: auto; }
 }
 
 /* Móvil pequeño */
 @media (max-width: 420px) {
-  .panelTeal  { padding: 1.8rem 5%; }
+  .panelTeal  { padding: 1.8rem 5%; overflow: visible; }
   .shareTitle { font-size: 1.3rem; letter-spacing: 3px; }
   .shareLabel { letter-spacing: 2px; }
   .shareBtn   { font-size: .82rem; padding: .65rem 1.2rem; gap: .5rem; }
-  .sharePopup { min-width: 180px; }
+  .sharePopup { min-width: 240px; }
 }
