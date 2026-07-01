@@ -138,40 +138,32 @@
   transform: rotate(-90deg);
 }
 
-/* Backdrop click-away */
+/* Backdrop — siempre fixed (portal en document.body) */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 9499;
+  background: rgba(0,0,0,.45);
 }
 
-/* Popup flotante */
+/* Popup — siempre centrado en pantalla (portal en document.body) */
 .sharePopup {
-  position: absolute;
-  bottom: calc(100% + 14px);
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.2);
-  padding: .6rem .5rem;
-  min-width: 210px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  padding: 1rem .8rem;
+  min-width: 260px;
+  max-width: 90vw;
   z-index: 9500;
-  animation: popIn .2s cubic-bezier(.34,1.4,.64,1);
+  animation: popIn .22s cubic-bezier(.34,1.4,.64,1);
 }
 @keyframes popIn {
-  from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(.95); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-}
-.sharePopup::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid #fff;
+  from { opacity: 0; transform: translate(-50%, -48%) scale(.93); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 .popupTitle {
@@ -239,26 +231,6 @@
   .shareTitle { font-size: 1.6rem; letter-spacing: 4px; }
   .shareBtn   { font-size: .9rem; padding: .7rem 1.6rem; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 
-  /* En móvil el popup es un modal fijo centrado en pantalla */
-  .backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 9499;
-    background: rgba(0,0,0,.45);
-  }
-  .sharePopup {
-    position: fixed;
-    bottom: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9500;
-    min-width: 260px;
-    max-width: 90vw;
-    border-radius: 20px;
-    padding: 1rem .8rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,.35);
-  }
   .shareWrap { z-index: auto; }
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import styles from './CTA.module.css'
 
 function IconShare() {
@@ -54,24 +55,11 @@ function IconCopy() {
 }
 
 export default function CTA() {
-  const [open, setOpen]   = useState(false)
+  const [open, setOpen]     = useState(false)
   const [copied, setCopied] = useState(false)
 
   const shareText = '¡Conoce la propuesta de Jesús Maldonado para San Juan de Lurigancho!'
-
-  function handleShare() {
-    const pageUrl = window.location.href
-    if (navigator.share && window.isSecureContext) {
-      navigator.share({ title: 'Jesús Maldonado', text: shareText, url: pageUrl })
-        .catch(err => {
-          if (err?.name !== 'AbortError') setOpen(true)
-        })
-      return
-    }
-    setOpen(true)
-  }
-
-  const pageUrl = typeof window !== 'undefined' ? window.location.href : ''
+  const pageUrl   = typeof window !== 'undefined' ? window.location.href : ''
 
   function copyLink() {
     navigator.clipboard.writeText(pageUrl).then(() => {
@@ -81,8 +69,8 @@ export default function CTA() {
     setOpen(false)
   }
 
-  const url = encodeURIComponent(pageUrl)
-  const txt = encodeURIComponent(shareText + ' ')
+  const url  = encodeURIComponent(pageUrl)
+  const txt  = encodeURIComponent(shareText + ' ')
 
   const items = [
     { label: 'WhatsApp',    color: '#25D366', Icon: IconWa, href: `https://api.whatsapp.com/send?text=${txt}${url}` },
@@ -90,6 +78,36 @@ export default function CTA() {
     { label: 'Telegram',    color: '#0088CC', Icon: IconTg, href: `https://t.me/share/url?url=${url}&text=${txt}` },
     { label: 'X / Twitter', color: '#000',    Icon: IconX,  href: `https://twitter.com/intent/tweet?text=${txt}&url=${url}` },
   ]
+
+  /* Portal: backdrop + popup se montan directamente en document.body */
+  const modal = open ? createPortal(
+    <>
+      <div className={styles.backdrop} onClick={() => setOpen(false)} />
+      <div className={styles.sharePopup}>
+        <p className={styles.popupTitle}>Compartir en</p>
+        {items.map(({ label, color, Icon, href }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.shareItem}
+            onClick={() => setOpen(false)}
+          >
+            <span className={styles.shareItemIcon} style={{ background: color }}><Icon /></span>
+            {label}
+          </a>
+        ))}
+        <button className={styles.shareItem} onClick={copyLink}>
+          <span className={styles.shareItemIcon} style={{ background: copied ? '#16a34a' : '#555' }}>
+            <IconCopy />
+          </span>
+          {copied ? '¡Enlace copiado!' : 'Copiar enlace'}
+        </button>
+      </div>
+    </>,
+    document.body
+  ) : null
 
   return (
     <div id="cta" className={styles.bar}>
@@ -109,53 +127,28 @@ export default function CTA() {
 
       {/* Panel azul – compartir */}
       <div className={styles.panelTeal}>
-        {/* decoración de fondo */}
         <span className={styles.deco1} />
         <span className={styles.deco2} />
 
         <div className={styles.shareWrap}>
-          {open && <div className={styles.backdrop} onClick={() => setOpen(false)} />}
-
           <p className={styles.shareLabel}>¿Te gustó lo que ves?</p>
           <p className={styles.shareTitle}>COMPARTE<br/>ESTA PROPUESTA</p>
 
-          <button className={styles.shareBtn} onClick={handleShare} aria-label="Compartir página">
+          <button
+            className={styles.shareBtn}
+            onClick={() => setOpen(true)}
+            aria-label="Compartir página"
+          >
             <IconShare />
             <span>Compartir ahora</span>
             <span className={`${styles.shareBtnArrow} ${open ? styles.arrowUp : ''}`}>
               <IconArrow />
             </span>
           </button>
-
-          {open && (
-            <div className={styles.sharePopup}>
-              <p className={styles.popupTitle}>Compartir en</p>
-              {items.map(({ label, color, Icon, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.shareItem}
-                  onClick={() => setOpen(false)}
-                >
-                  <span className={styles.shareItemIcon} style={{ background: color }}>
-                    <Icon />
-                  </span>
-                  {label}
-                </a>
-              ))}
-              <button className={styles.shareItem} onClick={copyLink}>
-                <span className={styles.shareItemIcon} style={{ background: copied ? '#16a34a' : '#555' }}>
-                  <IconCopy />
-                </span>
-                {copied ? '¡Enlace copiado!' : 'Copiar enlace'}
-              </button>
-            </div>
-          )}
         </div>
       </div>
 
+      {modal}
     </div>
   )
 }
