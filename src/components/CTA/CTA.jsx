@@ -42,8 +42,12 @@ export default function CTA() {
 
   const shareText = '¡Conoce la propuesta de Jesús Maldonado para San Juan de Lurigancho!'
   const pageUrl   = typeof window !== 'undefined' ? window.location.href : ''
-  const url       = encodeURIComponent(pageUrl)
-  const txt       = encodeURIComponent(shareText + ' ')
+  const url = encodeURIComponent(pageUrl)
+  const txt = encodeURIComponent(shareText + ' ')
+
+  function openUrl(href) {
+    window.open(href, '_blank', 'noopener,noreferrer')
+  }
 
   function copyLink() {
     navigator.clipboard.writeText(pageUrl).then(() => {
@@ -77,55 +81,42 @@ export default function CTA() {
           <p className={styles.shareLabel}>¿Te gustó lo que ves?</p>
           <p className={styles.shareTitle}>COMPARTE<br/>ESTA PROPUESTA</p>
 
-          {/* Botones directos — sin popup, siempre visibles */}
+          {/* Botones directos — window.open desde gesto de usuario */}
           <div className={styles.shareRow}>
-            <a
-              href={`https://api.whatsapp.com/send?text=${txt}${url}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
               className={styles.shareIcon}
               style={{ background: '#25D366' }}
+              onClick={() => openUrl(`https://wa.me/?text=${txt}${url}`)}
               aria-label="Compartir en WhatsApp"
-            >
-              <IconWa />
-            </a>
-            <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            ><IconWa /></button>
+
+            <button
               className={styles.shareIcon}
               style={{ background: '#1877F2' }}
+              onClick={() => openUrl(`https://www.facebook.com/sharer/sharer.php?u=${url}`)}
               aria-label="Compartir en Facebook"
-            >
-              <IconFb />
-            </a>
-            <a
-              href={`https://t.me/share/url?url=${url}&text=${txt}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            ><IconFb /></button>
+
+            <button
               className={styles.shareIcon}
               style={{ background: '#0088CC' }}
+              onClick={() => openUrl(`https://t.me/share/url?url=${url}&text=${txt}`)}
               aria-label="Compartir en Telegram"
-            >
-              <IconTg />
-            </a>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${txt}&url=${url}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            ><IconTg /></button>
+
+            <button
               className={styles.shareIcon}
               style={{ background: '#000' }}
+              onClick={() => openUrl(`https://twitter.com/intent/tweet?text=${txt}&url=${url}`)}
               aria-label="Compartir en X"
-            >
-              <IconX />
-            </a>
+            ><IconX /></button>
+
             <button
               className={`${styles.shareIcon} ${copied ? styles.copied : ''}`}
+              style={{ background: copied ? '#16a34a' : '#555' }}
               onClick={copyLink}
               aria-label="Copiar enlace"
-            >
-              <IconCopy />
-            </button>
+            ><IconCopy /></button>
           </div>
 
           {copied && <p className={styles.copiedMsg}>¡Enlace copiado!</p>}
