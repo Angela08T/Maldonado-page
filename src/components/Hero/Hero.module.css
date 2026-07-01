@@ -605,7 +605,7 @@
   .socialHandle { display: none; }
   .titleMain { font-size: clamp(3.5rem, 12vw, 6rem); }
   .titleSub  { font-size: clamp(3.5rem, 12vw, 6rem); white-space: normal; }
-  .desc { font-size: 1.1rem; margin: 1rem auto 1.5rem; max-width: 90%; }
+  .desc { font-size: 1rem; margin: 1rem auto 1.5rem; max-width: 96%; }
   .content :global(.btn-primary) { margin: 0 auto 2rem; display: block; width: fit-content; font-size: 1.65rem; letter-spacing: 5px; padding: .95rem 2.2rem; white-space: nowrap; position: relative; z-index: 12; pointer-events: auto !important; }
   .apoyaSecundario { margin: 0 auto 2rem; display: flex; font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; position: relative; z-index: 12; pointer-events: auto !important; }
   .ring1, .ring2, .ring3, .ring4, .ring5, .ring6, .ring7, .diagonal, .dots { display: none; }
@@ -621,6 +621,7 @@
   .apoyaBtn { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
   .content :global(.btn-primary) { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
   .apoyaSecundario { font-size: 1.2rem; letter-spacing: 3px; padding: .75rem 1.6rem; position: relative; z-index: 20; pointer-events: auto !important; }
+  .desc { font-size: 0.9rem; }
 }
 
 /* ── iPhone pequeño (≤390px) ─────────────────────────────── */

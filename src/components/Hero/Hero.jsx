@@ -111,8 +111,7 @@ export default function Hero({ setPage }) {
         <h1 className={styles.titleMain}>JESÚS</h1>
         <h1 className={styles.titleSub}>MALDONADO</h1>
         <p className={styles.desc}>
-          Trabajamos para construir un distrito moderno,<br />
-          seguro y con más oportunidades.
+          Trabajamos para construir un distrito moderno, seguro y con más oportunidades.
         </p>
         <button
           className={styles.apoyaSecundario}
