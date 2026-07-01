@@ -547,7 +547,7 @@
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
-    padding-top: 20px !important;
+    padding-top: 88px !important;
     padding-bottom: 4rem !important;
     min-height: auto;
     align-items: center;
@@ -606,7 +606,7 @@
 
 /* ── iPhone / Android (≤480px) ───────────────────────────── */
 @media (max-width: 480px) {
-  .hero { padding-top: 20px !important; }
+  .hero { padding-top: 84px !important; }
   .titleMain { font-size: clamp(2.8rem, 13vw, 3.8rem); }
   .titleSub  { font-size: clamp(2.8rem, 13vw, 3.8rem); }
   .imageWrapper { width: 78%; height: 58vw; max-height: 300px; }
