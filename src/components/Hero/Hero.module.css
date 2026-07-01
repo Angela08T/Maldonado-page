@@ -586,14 +586,7 @@
     pointer-events: auto;
   }
   .socialBar {
-    order: 4;
-    position: relative !important;
-    bottom: auto !important;
-    padding: 1.2rem 4%;
-    margin-top: 1.5rem;
-    margin-bottom: 70px;
-    z-index: 10 !important;
-    pointer-events: auto !important;
+    display: none;
   }
   .socialIcon {
     pointer-events: auto !important;
