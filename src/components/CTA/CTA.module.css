@@ -51,7 +51,7 @@
   pointer-events: auto;
 }
 
-/* Círculos decorativos de fondo */
+/* Círculos decorativos */
 .deco1 {
   position: absolute;
   width: 220px; height: 220px;
@@ -69,18 +69,18 @@
   pointer-events: none;
 }
 
-/* ── Wrap relativo para posicionar popup ── */
+/* ── Share wrap ── */
 .shareWrap {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: .55rem;
+  position: relative;
   z-index: 3;
   pointer-events: auto;
 }
 
-/* Etiqueta superior pequeña */
+/* Etiqueta */
 .shareLabel {
   font-family: var(--font-main);
   font-size: .7rem;
@@ -90,7 +90,7 @@
   color: rgba(255,255,255,.65);
 }
 
-/* Título grande */
+/* Título */
 .shareTitle {
   font-family: 'Anton', sans-serif;
   font-size: clamp(1.4rem, 2.6vw, 2.2rem);
@@ -99,150 +99,86 @@
   text-transform: uppercase;
   line-height: 1.1;
   text-align: center;
-  margin-bottom: .3rem;
+  margin-bottom: .4rem;
 }
 
-/* Botón compartir */
-.shareBtn {
-  display: inline-flex;
+/* ── Fila de iconos directos ── */
+.shareRow {
+  display: flex;
   align-items: center;
   gap: .65rem;
-  background: var(--red);
-  border: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Icono circular — link o button */
+.shareIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
   color: #fff;
-  font-family: var(--font-main);
-  font-weight: 800;
-  font-size: clamp(.85rem, 1.4vw, 1rem);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: .75rem 1.8rem;
-  border-radius: 9999px;
+  border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(214,40,40,.45);
-  transition: background .2s, transform .2s, box-shadow .2s;
-  white-space: nowrap;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+  box-shadow: 0 3px 10px rgba(0,0,0,.25);
+  flex-shrink: 0;
+  /* garantiza que los toques lleguen */
+  pointer-events: auto !important;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   position: relative;
   z-index: 4;
-  pointer-events: auto !important;
 }
-.shareBtn:hover {
-  background: #c8001e;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(214,40,40,.55);
+.shareIcon:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
 }
+.shareIcon.copied { background: #16a34a !important; }
 
-.shareBtnArrow {
-  display: flex;
-  align-items: center;
-  transition: transform .25s;
-}
-.arrowUp {
-  transform: rotate(-90deg);
-}
-
-/* Backdrop — siempre fixed (portal en document.body) */
-.backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 9499;
-  background: rgba(0,0,0,.45);
-}
-
-/* Popup — siempre centrado en pantalla (portal en document.body) */
-.sharePopup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.3);
-  padding: 1rem .8rem;
-  min-width: 260px;
-  max-width: 90vw;
-  z-index: 9500;
-  animation: popIn .22s cubic-bezier(.34,1.4,.64,1);
-}
-@keyframes popIn {
-  from { opacity: 0; transform: translate(-50%, -48%) scale(.93); }
-  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-
-.popupTitle {
+/* Mensaje copiado */
+.copiedMsg {
   font-family: var(--font-main);
-  font-size: .65rem;
+  font-size: .75rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #999;
-  text-align: center;
-  padding: .4rem .5rem .6rem;
+  color: #86efac;
+  letter-spacing: 1px;
+  animation: fadeIn .25s ease;
 }
-
-.shareItem {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  padding: .55rem .9rem;
-  border-radius: 10px;
-  font-family: var(--font-main);
-  font-size: .88rem;
-  font-weight: 600;
-  color: #1a1a2e;
-  text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  transition: background .15s;
-}
-.shareItem:hover { background: #f3f4f8; }
-
-.shareItemIcon {
-  width: 32px; height: 32px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  flex-shrink: 0;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Responsive ── */
 
-/* Tablet grande */
 @media (max-width: 1024px) {
   .shareTitle { font-size: clamp(1.2rem, 2.5vw, 1.8rem); letter-spacing: 3px; }
 }
 
-/* Tablet */
 @media (max-width: 900px) {
   .bar { min-height: 180px; }
   .shareTitle { font-size: 1.4rem; letter-spacing: 3px; }
   .shareLabel { font-size: .65rem; }
-  .shareBtn   { font-size: .88rem; padding: .65rem 1.4rem; }
+  .shareIcon  { width: 42px; height: 42px; }
 }
 
 /* Móvil — apila paneles */
 @media (max-width: 700px) {
-  .bar { grid-template-columns: 1fr; overflow: visible; min-height: unset; }
+  .bar       { grid-template-columns: 1fr; overflow: visible; min-height: unset; }
   .panelRed  { clip-path: none; padding: 1.6rem 6%; justify-content: center; text-align: center; }
   .panelIcon { display: none; }
   .panelTeal { clip-path: none; margin-left: 0; padding: 2rem 6%; overflow: visible; }
-  .shareTitle { font-size: 1.6rem; letter-spacing: 4px; }
-  .shareBtn   { font-size: .9rem; padding: .7rem 1.6rem; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-
-  .shareWrap { z-index: auto; }
+  .shareTitle { font-size: 1.5rem; letter-spacing: 3px; }
+  .shareIcon  { width: 52px; height: 52px; }
+  .shareRow   { gap: .8rem; }
 }
 
-/* Móvil pequeño */
 @media (max-width: 420px) {
-  .panelTeal  { padding: 1.8rem 5%; overflow: visible; }
-  .shareTitle { font-size: 1.3rem; letter-spacing: 3px; }
-  .shareLabel { letter-spacing: 2px; }
-  .shareBtn   { font-size: .82rem; padding: .65rem 1.2rem; gap: .5rem; }
-  .sharePopup { min-width: 240px; }
+  .panelTeal  { padding: 1.8rem 5%; }
+  .shareTitle { font-size: 1.3rem; letter-spacing: 2px; }
+  .shareIcon  { width: 48px; height: 48px; }
 }
