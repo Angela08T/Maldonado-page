@@ -401,7 +401,35 @@
 }
 .mobileMenu a:hover { color: var(--red); }
 
+/* Íconos sociales solo móvil — ocultos en desktop */
+.mobileSocial {
+  display: none;
+}
+.mobileSocialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.06);
+  transition: background .25s, transform .2s;
+  text-decoration: none;
+}
+.mobileSocialIcon:hover {
+  background: rgba(0,0,0,.13);
+  transform: scale(1.12);
+}
+
 @media (max-width: 768px) {
   .links, .social { display: none; }
   .hamburger { display: flex; }
+  /* Ocultar logo, mostrar redes */
+  .logo { display: none; }
+  .mobileSocial {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex: 1;
+  }
 }
