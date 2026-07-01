@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import styles from './CTA.module.css'
 
@@ -57,6 +57,16 @@ function IconCopy() {
 export default function CTA() {
   const [open, setOpen]     = useState(false)
   const [copied, setCopied] = useState(false)
+  const btnRef              = useRef(null)
+
+  /* Listener nativo — bypassa React synthetic events en móvil */
+  useEffect(() => {
+    const btn = btnRef.current
+    if (!btn) return
+    const handler = () => setOpen(true)
+    btn.addEventListener('touchstart', handler, { passive: true })
+    return () => btn.removeEventListener('touchstart', handler)
+  }, [])
 
   const shareText = '¡Conoce la propuesta de Jesús Maldonado para San Juan de Lurigancho!'
   const pageUrl   = typeof window !== 'undefined' ? window.location.href : ''
@@ -135,8 +145,8 @@ export default function CTA() {
           <p className={styles.shareTitle}>COMPARTE<br/>ESTA PROPUESTA</p>
 
           <button
+            ref={btnRef}
             className={styles.shareBtn}
-            onPointerDown={(e) => { e.stopPropagation(); setOpen(true); }}
             onClick={() => setOpen(true)}
             aria-label="Compartir página"
           >
