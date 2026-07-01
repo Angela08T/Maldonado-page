@@ -548,7 +548,7 @@
   .hero {
     flex-direction: column;
     padding-top: 88px !important;
-    padding-bottom: 4rem !important;
+    padding-bottom: 1.5rem !important;
     min-height: auto;
     align-items: center;
     overflow-x: hidden !important;
