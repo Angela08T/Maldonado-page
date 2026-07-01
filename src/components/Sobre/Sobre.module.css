@@ -333,6 +333,7 @@
 @media (max-width: 768px) {
   .section { padding: 4rem 6%; }
   .main { grid-template-columns: 1fr; gap: 2.5rem; }
+  .imgCol { display: none; }
   .imgFrame { max-width: 300px; margin: 0 auto; }
   .quoteIllustration { display: none; }
   .stats { grid-template-columns: repeat(2, 1fr); }
