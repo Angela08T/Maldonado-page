@@ -198,6 +198,7 @@ export default function App() {
         <>
           <main>
             <Hero setPage={setPage} />
+            <EventoBanner setPage={setPage} mobile />
             <Sobre />
             <Gestion />
             <Galeria />

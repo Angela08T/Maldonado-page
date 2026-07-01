@@ -1,13 +1,13 @@
 import styles from './EventoBanner.module.css'
 
-export default function EventoBanner({ setPage }) {
+export default function EventoBanner({ setPage, mobile }) {
   const handleVerMas = () => {
     setPage && setPage('eventos')
     window.scrollTo({ top: 0 })
   }
 
   return (
-    <div className={styles.banner}>
+    <div className={mobile ? styles.bannerMobile : styles.banner}>
       <div className={styles.tickerWrap}>
         <div className={styles.ticker}>
           <span>✦&nbsp;&nbsp;PRÓXIMOS EVENTOS&nbsp;&nbsp;</span>

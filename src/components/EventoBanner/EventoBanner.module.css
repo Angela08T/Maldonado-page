@@ -1,3 +1,4 @@
+/* ── Versión escritorio (sticky bajo el navbar) ── */
 .banner {
   position: sticky;
   top: 72px;
@@ -8,6 +9,18 @@
   margin-top: 72px;
   background: #D62828;
   display: flex;
+  align-items: center;
+  gap: 0;
+  box-shadow: 0 3px 18px rgba(214,40,40,.4);
+  overflow: hidden;
+}
+
+/* ── Versión móvil (flujo normal, al fondo del Hero) ── */
+.bannerMobile {
+  display: none; /* oculta en escritorio */
+  width: 100%;
+  height: 60px;
+  background: #D62828;
   align-items: center;
   gap: 0;
   box-shadow: 0 3px 18px rgba(214,40,40,.4);
@@ -71,11 +84,15 @@
 }
 .verMas:hover { background: #fff3f3; }
 
-@media (max-width: 768px) {
-  .banner { margin-top: 72px; }
-}
-@media (max-width: 600px) {
-  .banner { height: 48px; }
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  /* Oculta la versión sticky en móvil/tablet */
+  .banner { display: none; }
+  /* Muestra la versión del final del Hero */
+  .bannerMobile {
+    display: flex;
+    height: 52px;
+  }
   .ticker span { font-size: 1.8rem; letter-spacing: 10px; padding-right: 2rem; }
   .verMas { font-size: 1.1rem; letter-spacing: 2px; padding: 0 1rem; }
 }
