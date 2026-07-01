@@ -16,7 +16,7 @@ const PLACEHOLDERS = ['Tu nombre…', 'Apellido materno…', 'Apellido paterno�
 
 const CAMPOS = ['nombre', 'apellidoMaterno', 'apellidoPaterno', 'telefono']
 
-export default function WhatsApp() {
+export default function WhatsApp({ setPage }) {
   const [open, setOpen]           = useState(false)
   const [visible, setVisible]     = useState(false)
   const [messages, setMessages]   = useState([])
@@ -92,8 +92,6 @@ export default function WhatsApp() {
       { from: 'user', text: tipo === 'simpatizante' ? '🤝 Quiero ser Simpatizante' : '📋 Quiero ser Personero' },
     ])
 
-    addBotMsg('¡Perfecto! 🎉 Te redirigimos a WhatsApp ahora mismo…', 400)
-
     const d = dataRef.current
     supabase.from('contactos_chat').insert([{
       nombre:           d.nombre,
@@ -105,10 +103,20 @@ export default function WhatsApp() {
       if (error) console.error('Supabase:', error)
     })
 
-    setTimeout(() => {
-      setOpen(false)
-      window.open(WA_URL, '_blank', 'noopener')
-    }, 1400)
+    if (tipo === 'personero') {
+      addBotMsg('¡Perfecto! 🎉 Te llevamos a la ficha de inscripción…', 400)
+      setTimeout(() => {
+        setOpen(false)
+        setPage && setPage('personero')
+        window.scrollTo({ top: 0 })
+      }, 1400)
+    } else {
+      addBotMsg('¡Perfecto! 🎉 Te redirigimos a WhatsApp ahora mismo…', 400)
+      setTimeout(() => {
+        setOpen(false)
+        window.open(WA_URL, '_blank', 'noopener')
+      }, 1400)
+    }
   }
 
   const handleKey = e => {

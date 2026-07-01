@@ -38,7 +38,7 @@ const stats = [
   {
     color: 'teal',
     valor: '50',
-    label: 'Parques de Bolsillo',
+    label: 'Parques',
     sub: 'espacios de 200–500 m² en esquinas conflictivas con jardinería comunitaria',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -117,12 +117,8 @@ export default function Sobre() {
         {/* Columna derecha: contenido */}
         <div className={styles.bioCol}>
           <span className={`${styles.eyebrow} reveal`}>Sobre Jesús Maldonado</span>
-          <h2 className={`${styles.titulo} reveal`}>
-            Construiremos una gestión enfocada en seguridad, orden y oportunidades
-          </h2>
-          <p className={`${styles.intro} reveal`}>
-            Seguimos. Porque lo que construimos no se puede tirar. Porque lo que falta lo podemos
-            resolver. Y porque merecemos ser un mejor distrito. Eso es lo que viene.
+          <p className={`${styles.intro} ${styles.introImpacto} reveal`}>
+            SEGURIDAD, ORDEN Y OPORTUNIDADES
           </p>
 
           {/* Quote */}
@@ -149,13 +145,7 @@ export default function Sobre() {
 
           {/* Botones */}
           <div className={`${styles.btns} reveal`}>
-            <a href="#avances" className={styles.btnPrimary}>
-              Ver Avances
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </a>
-            <a href="#gestion" className={styles.btnSecondary}>
+            <a href="#gestion" className={styles.btnPrimary}>
               Conocer Propuestas
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>

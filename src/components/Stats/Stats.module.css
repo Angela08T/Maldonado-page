@@ -29,9 +29,9 @@
   background: rgba(0,0,0,.1);
 }
 .socialHeadingText {
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--red, #D62828);
   white-space: nowrap;
@@ -91,4 +91,11 @@
   .stats { max-width: 94%; margin: -2rem auto 0; }
   .grid { flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
   .item { flex: 0 0 auto; min-width: 130px; border-left: none !important; padding: 0 .8rem; }
+  .socialHeadingText { font-size: 1rem; letter-spacing: 3px; }
+}
+
+@media (max-width: 480px) {
+  .socialHeadingText { font-size: .88rem; letter-spacing: 2.5px; }
+  .grid { gap: .8rem; }
+  .item { min-width: 100px; }
 }

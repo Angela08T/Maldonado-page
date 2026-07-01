@@ -118,6 +118,16 @@
   line-height: 1.8;
 }
 
+.introImpacto {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  letter-spacing: 5px;
+  color: var(--red);
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow: 0 4px 24px rgba(214,40,40,.25);
+}
+
 /* ── Quote ───────────────────────────────────────────────────── */
 .quoteBlock {
   display: flex;
@@ -214,19 +224,24 @@
 .btnPrimary {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
+  gap: .6rem;
   background: var(--red);
   color: #fff;
   border-radius: 9999px;
-  padding: .7rem 1.8rem;
-  font-weight: 700;
-  font-size: .85rem;
-  letter-spacing: .5px;
+  padding: .9rem 2.4rem;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background .2s, transform .15s;
+  box-shadow: 0 6px 22px rgba(214,40,40,.4);
+  transition: background .2s, transform .2s, box-shadow .2s;
 }
-.btnPrimary:hover { background: #c8001e; transform: translateY(-2px); }
+.btnPrimary:hover {
+  background: #c8001e;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(214,40,40,.55);
+}
 
 .btnSecondary {
   display: inline-flex;
@@ -321,10 +336,25 @@
   .imgFrame { max-width: 300px; margin: 0 auto; }
   .quoteIllustration { display: none; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  /* "SEGURIDAD, ORDEN Y OPORTUNIDADES" en tablet/móvil */
+  .introImpacto {
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+    letter-spacing: 3px;
+    text-align: center;
+  }
+  .titulo { text-align: center; }
+  .eyebrow { display: block; text-align: center; }
+  .quoteBlock { margin: 0 auto; }
+  .btns { justify-content: center; }
 }
 
 @media (max-width: 480px) {
   .valores { grid-template-columns: 1fr; }
   .stats   { grid-template-columns: repeat(2, 1fr); }
-  .btns    { flex-direction: column; }
+  .btns    { flex-direction: column; align-items: center; }
+  .introImpacto {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+    letter-spacing: 2px;
+  }
+  .btnPrimary { width: 100%; justify-content: center; }
 }

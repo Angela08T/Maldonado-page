@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './Hero.module.css'
 import heroImg from '../../assets/perfil-uno.png'
 
@@ -56,6 +57,14 @@ const SocialIcon = ({ s }) => {
 }
 
 export default function Hero({ setPage }) {
+  const [showModal, setShowModal] = useState(false)
+
+  const navTo = (page) => {
+    setShowModal(false)
+    setPage && setPage(page)
+    window.scrollTo({ top: 0 })
+  }
+
   return (
     <section id="hero" className={styles.hero}>
       {/* Blobs atmosféricos */}
@@ -87,15 +96,12 @@ export default function Hero({ setPage }) {
         ))}
       </div>
 
-      {/* Botón APOYA – fuera de .content para poder reordenarlo en móvil */}
+      {/* Botón ÚNETE – posición flotante superior */}
       <button
         className={styles.apoyaBtn}
-        onClick={() => { setPage && setPage('donaciones'); window.scrollTo({ top: 0 }) }}
+        onClick={() => setShowModal(true)}
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-        APOYA A LA CAUSA
+        ÚNETE A MI EQUIPO
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
         </svg>
@@ -109,10 +115,10 @@ export default function Hero({ setPage }) {
           seguro y con más oportunidades.
         </p>
         <button
-          className="btn-primary"
-          onClick={() => { setPage && setPage('simpatizantes'); window.scrollTo({ top: 0 }) }}
+          className={styles.apoyaSecundario}
+          onClick={() => { setPage && setPage('donaciones'); window.scrollTo({ top: 0 }) }}
         >
-          Únete a mi equipo
+          APOYA A LA CAUSA
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
@@ -123,6 +129,51 @@ export default function Hero({ setPage }) {
       <div className={styles.imageWrapper}>
         <img src={heroImg} alt="Maldonado" className={styles.heroImg} />
       </div>
+
+      {/* Modal: elige cómo unirte */}
+      {showModal && (
+        <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
+          <div className={styles.modal} onClick={e => e.stopPropagation()}>
+            <button className={styles.modalClose} onClick={() => setShowModal(false)} aria-label="Cerrar">✕</button>
+            <h3 className={styles.modalTitle}>¿Cómo quieres unirte?</h3>
+            <p className={styles.modalSub}>Elige una opción para continuar</p>
+            <div className={styles.modalOptions}>
+
+              <button className={styles.optionCard} onClick={() => navTo('personero')}>
+                <div className={styles.optionIcon} style={{ background: 'linear-gradient(135deg,#0057B8,#003D82)' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                  </svg>
+                </div>
+                <div className={styles.optionText}>
+                  <span className={styles.optionLabel}>Personero</span>
+                  <span className={styles.optionDesc}>Cuida el voto el día de las elecciones</span>
+                </div>
+                <svg className={styles.optionArrow} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+
+              <button className={styles.optionCard} onClick={() => navTo('simpatizantes')}>
+                <div className={styles.optionIcon} style={{ background: 'linear-gradient(135deg,#D62828,#9B1C1C)' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                  </svg>
+                </div>
+                <div className={styles.optionText}>
+                  <span className={styles.optionLabel}>Simpatizante</span>
+                  <span className={styles.optionDesc}>Recibe información y apoya el movimiento</span>
+                </div>
+                <svg className={styles.optionArrow} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Banner redes sociales en la parte inferior del hero */}
       <div className={styles.socialBar}>

@@ -1,14 +1,5 @@
 import styles from './Footer.module.css'
 
-const navLinks = [
-  { label: 'INICIO' },
-  { label: 'QUIÉN SOY' },
-  { label: 'PROPUESTAS' },
-  { label: 'ZONAS' },
-  { label: 'MULTIMEDIA' },
-  { label: 'PARTICIPA' },
-  { label: 'NOTICIAS' },
-]
 
 export default function Footer() {
   return (
@@ -18,7 +9,7 @@ export default function Footer() {
         {/* Logo */}
         <div className={styles.brand}>
           <div className={styles.logo}>JESÚS MALDONADO</div>
-          <p className={styles.brandSub}>AVANZAMOS JUNTOS</p>
+          <p className={styles.brandSub}>EL CAMBIO CONTINÚA</p>
         </div>
 
         {/* Copyright */}
