@@ -117,6 +117,7 @@ export default function Hero({ setPage }) {
         <button
           className={styles.apoyaSecundario}
           onClick={() => { setPage && setPage('donaciones'); window.scrollTo({ top: 0 }) }}
+          onTouchEnd={(e) => { e.preventDefault(); setPage && setPage('donaciones'); window.scrollTo({ top: 0 }) }}
         >
           APOYA A LA CAUSA
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">

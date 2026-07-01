@@ -190,6 +190,8 @@
   z-index: 6;
   display: inline-flex;
   align-items: center;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   gap: .55rem;
   border: none;
   border-radius: 9999px;
@@ -236,6 +238,8 @@
   border-radius: 9999px;
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   box-shadow: 0 4px 20px rgba(0,87,184,.45);
   transition: background .3s, transform .3s, box-shadow .3s;
   animation: fadeUp .8s .3s both;
