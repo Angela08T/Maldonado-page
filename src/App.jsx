@@ -36,8 +36,12 @@ export default function App() {
 
   /* Detecta #registrar en la URL al cargar */
   useEffect(() => {
-    if (window.location.hash === '#registrar') {
+    const hash = window.location.hash
+    if (hash === '#registrar') {
       setPage('registrador')
+      history.replaceState(null, '', window.location.pathname)
+    } else if (hash === '#personero') {
+      setPage('personero')
       history.replaceState(null, '', window.location.pathname)
     }
   }, [])
