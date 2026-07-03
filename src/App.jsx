@@ -26,12 +26,21 @@ import PersoneroPage    from './components/Personero/PersoneroPage'
 import Simpatizantes  from './components/Simpatizantes/Simpatizantes'
 import EventosPage    from './components/Eventos/EventosPage'
 import Encuestas      from './components/Encuestas/Encuestas'
-import RendicionPage  from './components/Rendicion/RendicionPage'
+import RendicionPage    from './components/Rendicion/RendicionPage'
+import RegistradorPage  from './components/Registrador/RegistradorPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
 
 export default function App() {
   const [page, setPage] = useState('home')
   useScrollReveal([page])
+
+  /* Detecta #registrar en la URL al cargar */
+  useEffect(() => {
+    if (window.location.hash === '#registrar') {
+      setPage('registrador')
+      history.replaceState(null, '', window.location.pathname)
+    }
+  }, [])
 
   /* Parallax on hero background */
   useEffect(() => {
@@ -170,6 +179,8 @@ export default function App() {
         <EventosPage onBack={goHome} />
       ) : page === 'encuestas' ? (
         <Encuestas onBack={goHome} />
+      ) : page === 'registrador' ? (
+        <RegistradorPage onBack={goHome} />
       ) : page === 'rendicion' ? (
         <RendicionPage onBack={goHome} />
       ) : page === 'alameda' ? (
