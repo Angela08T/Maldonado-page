@@ -62,17 +62,22 @@ export default function RegistradorPage({ onBack }) {
   const [saveError, setSaveError]   = useState('')
   const canvasRef = useRef(null)
 
-  const setReg = k => e => setRegistrador(r => ({ ...r, [k]: e.target.value }))
-  const set    = k => e => setFields(f => ({ ...f, [k]: e.target.value }))
+  const nombresRef   = useRef(null)
+  const apellidosRef = useRef(null)
+
+  const set = k => e => setFields(f => ({ ...f, [k]: e.target.value }))
 
   const handleContinuar = () => {
-    if (!registrador.nombres.trim() || !registrador.apellidos.trim()) {
+    const nombres   = (nombresRef.current?.value   || '').trim()
+    const apellidos = (apellidosRef.current?.value || '').trim()
+    if (!nombres || !apellidos) {
       setRegError('Ingresa tu nombre y apellido completos.')
       return
     }
+    setRegistrador({ nombres, apellidos })
     setRegError('')
     setStep(2)
-    window.scrollTo({ top: 0 })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }
 
   const handleGuardar = async () => {
@@ -109,71 +114,63 @@ export default function RegistradorPage({ onBack }) {
     window.scrollTo({ top: 0 })
   }
 
-  // ── PASO 1 ────────────────────────────────────────────────────
-  if (step === 1) {
-    return (
-      <div className={styles.page}>
-        <div className={styles.stepCard}>
-          <div className={styles.stepHeader}>
-            <img src={logoSomosPeru} alt="Somos Perú" className={styles.stepLogo} />
-            <h1 className={styles.stepTitle}>REGISTRO DE PERSONEROS</h1>
-            <p className={styles.stepSub}>Sistema para Registradores Autorizados</p>
-          </div>
-
-          <div className={styles.stepBody}>
-            <div className={styles.stepBadge}>PASO 1 DE 2</div>
-            <h2 className={styles.stepQ}>Identifícate como Registrador</h2>
-            <p className={styles.stepDesc}>
-              Antes de registrar a un personero, ingresa tus propios datos como registrador autorizado del partido.
-            </p>
-
-            <div className={styles.fieldGroup}>
-              <label className={styles.label}>Nombres del Registrador <span className={styles.req}>*</span></label>
-              <input
-                type="text"
-                className={styles.input}
-                placeholder="Ej: Juan Carlos"
-                value={registrador.nombres}
-                onChange={setReg('nombres')}
-                onKeyDown={e => e.key === 'Enter' && handleContinuar()}
-              />
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <label className={styles.label}>Apellidos del Registrador <span className={styles.req}>*</span></label>
-              <input
-                type="text"
-                className={styles.input}
-                placeholder="Ej: García López"
-                value={registrador.apellidos}
-                onChange={setReg('apellidos')}
-                onKeyDown={e => e.key === 'Enter' && handleContinuar()}
-              />
-            </div>
-
-            {regError && <p className={styles.errorMsg}>{regError}</p>}
-
-            <button className={styles.btnContinuar} onClick={handleContinuar}>
-              Continuar al formulario
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </button>
-
-            {onBack && (
-              <button className={styles.btnBackStep1} onClick={onBack}>
-                ← Volver al inicio
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  // ── PASO 2: Formulario del personero ─────────────────────────
   return (
     <div className={styles.page}>
+
+    {/* ── PASO 1 ── */}
+    {step === 1 && (
+      <div className={styles.stepCard}>
+        <div className={styles.stepHeader}>
+          <img src={logoSomosPeru} alt="Somos Perú" className={styles.stepLogo} />
+          <h1 className={styles.stepTitle}>REGISTRO DE PERSONEROS</h1>
+          <p className={styles.stepSub}>Sistema para Registradores Autorizados</p>
+        </div>
+        <div className={styles.stepBody}>
+          <div className={styles.stepBadge}>PASO 1 DE 2</div>
+          <h2 className={styles.stepQ}>Identifícate como Registrador</h2>
+          <p className={styles.stepDesc}>
+            Antes de registrar a un personero, ingresa tus propios datos como registrador autorizado del partido.
+          </p>
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>Nombres del Registrador <span className={styles.req}>*</span></label>
+            <input
+              ref={nombresRef}
+              type="text"
+              className={styles.input}
+              placeholder="Ej: Juan Carlos"
+              autoComplete="off"
+              onKeyDown={e => e.key === 'Enter' && handleContinuar()}
+            />
+          </div>
+          <div className={styles.fieldGroup}>
+            <label className={styles.label}>Apellidos del Registrador <span className={styles.req}>*</span></label>
+            <input
+              ref={apellidosRef}
+              type="text"
+              className={styles.input}
+              placeholder="Ej: García López"
+              autoComplete="off"
+              onKeyDown={e => e.key === 'Enter' && handleContinuar()}
+            />
+          </div>
+          {regError && <p className={styles.errorMsg}>{regError}</p>}
+          <button className={styles.btnContinuar} onClick={handleContinuar} type="button">
+            Continuar al formulario
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+          {onBack && (
+            <button className={styles.btnBackStep1} onClick={onBack} type="button">
+              ← Volver al inicio
+            </button>
+          )}
+        </div>
+      </div>
+    )}
+
+    {/* ── PASO 2 ── */}
+    {step === 2 && (<>
 
       {/* Banner del registrador — oculto al imprimir */}
       <div className={styles.registradorBanner}>
@@ -359,17 +356,17 @@ export default function RegistradorPage({ onBack }) {
         </div>
 
         {/* Botón al fondo — solo visible en móvil/tablet */}
-        {!saved && (
-          <button className={`${styles.downloadBtn} ${styles.downloadBtnBottom}`} onClick={handleGuardar} disabled={saving}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            {saving ? 'Enviando...' : 'Enviar / Descargar'}
-          </button>
-        )}
+        <button className={`${styles.downloadBtn} ${styles.downloadBtnBottom}`} onClick={handleGuardar} disabled={saving}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          {saving ? 'Enviando...' : 'Enviar / Descargar'}
+        </button>
 
       </div>
+      </>)}
+
     </div>
   )
 }
