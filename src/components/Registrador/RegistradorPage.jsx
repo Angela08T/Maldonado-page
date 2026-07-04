@@ -58,7 +58,7 @@ export default function RegistradorPage({ onBack }) {
   const [huella, setHuella]         = useState(null)
   const [fields, setFields]         = useState(EMPTY_FIELDS)
   const [saving, setSaving]         = useState(false)
-  const [saved, setSaved]           = useState(false)
+  const [showPopup, setShowPopup]   = useState(false)
   const [saveError, setSaveError]   = useState('')
   const canvasRef = useRef(null)
 
@@ -98,15 +98,13 @@ export default function RegistradorPage({ onBack }) {
       registrador_apellidos: registrador.apellidos.trim(),
     })
     setSaving(false)
-    if (error) { setSaveError('Error al enviar. Intenta nuevamente.'); return }
-    setSaved(true)
-    window.scrollTo({ top: 0 })
-    setTimeout(() => window.print(), 150)
+    if (error) { setSaveError('Error al enviar. Verifica tu conexión e intenta nuevamente.'); return }
+    setShowPopup(true)
   }
 
   const handleOtro = () => {
     setFields(EMPTY_FIELDS); setSexo(''); setHuella(null)
-    setSaved(false); setSaveError('')
+    setShowPopup(false); setSaveError('')
     if (canvasRef.current) { canvasRef.current.width = canvasRef.current.width }
     window.scrollTo({ top: 0 })
   }
@@ -199,32 +197,39 @@ export default function RegistradorPage({ onBack }) {
           </button>
         )}
 
-        {saved ? (
-          <button className={styles.otroBtn} onClick={handleOtro}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-            Registrar otro personero
-          </button>
-        ) : (
-          <button className={`${styles.downloadBtn} ${styles.downloadBtnTop}`} onClick={handleGuardar} disabled={saving}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            {saving ? 'Enviando...' : 'Enviar / Descargar'}
-          </button>
-        )}
+        <button className={`${styles.downloadBtn} ${styles.downloadBtnTop}`} onClick={handleGuardar} disabled={saving}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          {saving ? 'Enviando...' : 'Enviar / Descargar'}
+        </button>
       </div>
 
-      {saveError && <p className={styles.errorMsg} style={{ margin: '0 0 .5rem' }}>{saveError}</p>}
-      {saved && (
-        <div className={styles.successBanner}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-          </svg>
-          ¡Registro enviado exitosamente! Los datos del personero han sido guardados correctamente.
+      {saveError && <div className={styles.errorBanner}>{saveError}</div>}
+
+      {/* Popup de éxito */}
+      {showPopup && (
+        <div className={styles.popupOverlay}>
+          <div className={styles.popupCard}>
+            <div className={styles.popupCheck}>
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3 className={styles.popupTitle}>¡Registro Exitoso!</h3>
+            <p className={styles.popupMsg}>Los datos del personero han sido guardados correctamente en el sistema.</p>
+            <button className={styles.popupPrintBtn} onClick={() => window.print()}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Descargar / Imprimir PDF
+            </button>
+            <button className={styles.popupCloseBtn} onClick={handleOtro}>
+              Registrar otro personero
+            </button>
+          </div>
         </div>
       )}
 
