@@ -70,6 +70,9 @@ function SignaturePad({ canvasRef }) {
 export default function PersoneroPage({ onBack }) {
   const [sexo, setSexo]         = useState('')
   const [huella, setHuella]     = useState(null)
+  const [saving, setSaving]     = useState(false)
+  const [saved, setSaved]       = useState(false)
+  const [saveError, setSaveError] = useState('')
   const [fields, setFields]     = useState({
     apellido_paterno:'', apellido_materno:'', nombres:'', dni:'',
     fecha_nacimiento:'', lugar_nacimiento:'', region:'', provincia:'',
@@ -80,8 +83,14 @@ export default function PersoneroPage({ onBack }) {
   const set = k => e => setFields(f => ({ ...f, [k]: e.target.value }))
 
   const handleDescargar = async () => {
-    await supabase.from('personeros').insert({ ...fields, sexo })
-    window.print()
+    setSaving(true)
+    setSaveError('')
+    const { error } = await supabase.from('personeros').insert({ ...fields, sexo, tipo_registro: 'directo' })
+    setSaving(false)
+    if (error) { setSaveError('Error al enviar. Intenta nuevamente.'); return }
+    setSaved(true)
+    window.scrollTo({ top: 0 })
+    setTimeout(() => window.print(), 150)
   }
 
   const handleHuella = e => {
@@ -102,14 +111,26 @@ export default function PersoneroPage({ onBack }) {
             Volver
           </button>
         )}
-        <button className={styles.downloadBtn} onClick={handleDescargar}>
+        <button className={`${styles.downloadBtn} ${styles.downloadBtnTop}`} onClick={handleDescargar} disabled={saving}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Descargar / Imprimir Ficha
+          {saving ? 'Enviando...' : 'Enviar / Descargar'}
         </button>
       </div>
+
+      {saveError && (
+        <div className={styles.errorBanner}>{saveError}</div>
+      )}
+      {saved && (
+        <div className={styles.successBanner}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          ¡Registro enviado exitosamente! Tus datos han sido guardados correctamente.
+        </div>
+      )}
 
       {/* ── Ficha oficial ── */}
       <div className={styles.ficha}>
@@ -264,6 +285,15 @@ export default function PersoneroPage({ onBack }) {
             <span className={styles.firmaLabel}>Huella Digital</span>
           </div>
         </div>
+
+        {/* Botón al fondo — solo visible en móvil/tablet */}
+        <button className={`${styles.downloadBtn} ${styles.downloadBtnBottom}`} onClick={handleDescargar} disabled={saving}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          {saving ? 'Enviando...' : 'Enviar / Descargar'}
+        </button>
 
       </div>
     </div>

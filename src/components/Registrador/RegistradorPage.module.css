@@ -114,17 +114,20 @@
   margin: 0;
 }
 
-.successMsg {
-  color: #16a34a;
-  font-size: .85rem;
-  font-weight: 700;
-  background: #f0fdf4;
-  border: 1px solid #86efac;
-  border-radius: 8px;
-  padding: .6rem 1rem;
-  margin: 0 0 .2rem;
+.successBanner {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
   width: 100%;
   max-width: 820px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  color: #15803d;
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .btnContinuar {
@@ -233,6 +236,9 @@
   letter-spacing: .5px; touch-action: manipulation;
 }
 .otroBtn:hover { background: #002D62; transform: translateY(-2px); }
+
+/* Botón inferior — oculto en escritorio, visible en móvil */
+.downloadBtnBottom { display: none; }
 
 /* ── Ficha ── */
 .ficha {
@@ -358,4 +364,6 @@
   .huellaRect { width: 120px; height: 140px; }
   .actions { flex-wrap: wrap; }
   .downloadBtn, .otroBtn { font-size: .82rem; padding: .65rem 1.2rem; margin-left: 0; }
+  .downloadBtnTop    { display: none; }
+  .downloadBtnBottom { display: flex; width: 100%; justify-content: center; margin-top: 2rem; font-size: 1rem; padding: 1rem; border-radius: 12px; }
 }

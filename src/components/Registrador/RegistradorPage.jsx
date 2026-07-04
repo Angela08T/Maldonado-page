@@ -98,9 +98,10 @@ export default function RegistradorPage({ onBack }) {
       registrador_apellidos: registrador.apellidos.trim(),
     })
     setSaving(false)
-    if (error) { setSaveError('Error al guardar. Intenta nuevamente.'); return }
+    if (error) { setSaveError('Error al enviar. Intenta nuevamente.'); return }
     setSaved(true)
-    window.print()
+    window.scrollTo({ top: 0 })
+    setTimeout(() => window.print(), 150)
   }
 
   const handleOtro = () => {
@@ -207,18 +208,25 @@ export default function RegistradorPage({ onBack }) {
             Registrar otro personero
           </button>
         ) : (
-          <button className={styles.downloadBtn} onClick={handleGuardar} disabled={saving}>
+          <button className={`${styles.downloadBtn} ${styles.downloadBtnTop}`} onClick={handleGuardar} disabled={saving}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
             </svg>
-            {saving ? 'Guardando...' : 'Guardar y Descargar Ficha'}
+            {saving ? 'Enviando...' : 'Enviar / Descargar'}
           </button>
         )}
       </div>
 
-      {saveError && <p className={styles.errorMsg} style={{ margin: '0 1.5rem .5rem' }}>{saveError}</p>}
-      {saved && <p className={styles.successMsg}>✓ Personero registrado correctamente.</p>}
+      {saveError && <p className={styles.errorMsg} style={{ margin: '0 0 .5rem' }}>{saveError}</p>}
+      {saved && (
+        <div className={styles.successBanner}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          ¡Registro enviado exitosamente! Los datos del personero han sido guardados correctamente.
+        </div>
+      )}
 
       {/* ── Ficha oficial ── */}
       <div className={styles.ficha}>
@@ -330,7 +338,7 @@ export default function RegistradorPage({ onBack }) {
           </div>
         </div>
 
-        {/* Firma y huella */}
+        {/* Firma y huella — */}
         <div className={styles.firmaRow}>
           <div className={styles.firmaBox}>
             <SignaturePad canvasRef={canvasRef} />
@@ -344,6 +352,17 @@ export default function RegistradorPage({ onBack }) {
             <span className={styles.firmaLabel}>Huella Digital</span>
           </div>
         </div>
+
+        {/* Botón al fondo — solo visible en móvil/tablet */}
+        {!saved && (
+          <button className={`${styles.downloadBtn} ${styles.downloadBtnBottom}`} onClick={handleGuardar} disabled={saving}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            {saving ? 'Enviando...' : 'Enviar / Descargar'}
+          </button>
+        )}
 
       </div>
     </div>

@@ -34,7 +34,35 @@
   box-shadow: 0 6px 20px rgba(214,40,40,.4);
   letter-spacing: .5px;
 }
-.downloadBtn:hover { background: #a01e1e; transform: translateY(-2px); }
+.downloadBtn:hover:not(:disabled) { background: #a01e1e; transform: translateY(-2px); }
+.downloadBtn:disabled { opacity: .7; cursor: default; }
+
+/* ── Banner de éxito ── */
+.successBanner {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  max-width: 820px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  padding: 1rem 1.4rem;
+  color: #15803d;
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* Botón inferior — oculto en escritorio, visible en móvil */
+.downloadBtnBottom { display: none; }
+
+.errorBanner {
+  width: 100%; max-width: 820px;
+  background: #fff5f5; border: 1.5px solid #fca5a5;
+  border-radius: 12px; padding: .85rem 1.4rem;
+  color: #D62828; font-size: .9rem; font-weight: 700;
+}
 
 /* ── Ficha ── */
 .ficha {
@@ -297,4 +325,6 @@
   /* Botones de acción */
   .actions { flex-wrap: wrap; }
   .downloadBtn { font-size: .82rem; padding: .65rem 1.2rem; margin-left: 0; }
+  .downloadBtnTop    { display: none; }
+  .downloadBtnBottom { display: flex; width: 100%; justify-content: center; margin-top: 2rem; font-size: 1rem; padding: 1rem; border-radius: 12px; }
 }
