@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import styles from './Galeria.module.css'
 
-import g1 from '../../assets/galeria1.jpeg'
-import g2 from '../../assets/galeria2.jpeg'
-import g4 from '../../assets/galeria4.jpeg'
+import g1 from '../../assets/galeria1.png'
+import g2 from '../../assets/galeria2.jpg'
+import g3 from '../../assets/galeria3.jpg'
+import g4 from '../../assets/galeria4.jpg'
 
 const images = [
   { thumb: g1, full: g1, alt: 'Galería 1' },
   { thumb: g2, full: g2, alt: 'Galería 2' },
-  { thumb: g4, full: g4, alt: 'Galería 3' },
+  { thumb: g3, full: g3, alt: 'Galería 3' },
+  { thumb: g4, full: g4, alt: 'Galería 4' },
 ]
 
 export default function Galeria() {
