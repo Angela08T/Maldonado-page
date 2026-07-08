@@ -4,7 +4,7 @@ import jesusImg from '../../assets/perfil-uno.png'
 const stats = [
   {
     color: 'red',
-    valor: '500',
+    valor: '500 nuevas cámaras',
     label: 'Sistema de Videovigilancia',
     sub: 'cámaras con IA, Centro de Control 24/7, 12 drones y App "SJL Seguro"',
     icon: (
@@ -15,8 +15,8 @@ const stats = [
   },
   {
     color: 'orange',
-    valor: '100',
-    label: 'Becas SJL anuales',
+    valor: <>100 Becas SJL anuales</>,
+    label: '',
     sub: 'para institutos técnicos aliados, priorizando jóvenes de Z5, Z6 y zonas altas',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -26,8 +26,8 @@ const stats = [
   },
   {
     color: 'green',
-    valor: '1era',
-    label: 'Programa "Primera Empresa"',
+    valor: <>1era Programa "Primera Empresa"</>,
+    label: '',
     sub: 'mentoría, microcrédito municipal y espacio en Centros de Oportunidad',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -37,8 +37,8 @@ const stats = [
   },
   {
     color: 'teal',
-    valor: '50',
-    label: 'Parques',
+    valor: <>50 Parques</>,
+    label: '',
     sub: 'espacios de 200–500 m² en esquinas conflictivas con jardinería comunitaria',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
