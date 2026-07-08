@@ -560,7 +560,7 @@
     top: auto;
     left: auto;
     order: 1;
-    margin: 1rem auto .5rem;
+    margin: .4rem auto .3rem;
     animation: fadeUp .8s .1s forwards, apoyaPulse 2.5s 1s ease-in-out infinite;
   }
   .imageWrapper {
@@ -570,8 +570,8 @@
     top: auto;
     transform: none;
     width: 65%;
-    height: 55vw;
-    max-height: 360px;
+    height: 46vw;
+    max-height: 300px;
     margin: 0 auto;
   }
   .content {
@@ -606,10 +606,10 @@
 
 /* ── iPhone / Android (≤480px) ───────────────────────────── */
 @media (max-width: 480px) {
-  .hero { padding-top: 84px !important; }
+  .hero { padding-top: 72px !important; }
   .titleMain { font-size: clamp(2.8rem, 13vw, 3.8rem); }
   .titleSub  { font-size: clamp(2.8rem, 13vw, 3.8rem); }
-  .imageWrapper { width: 78%; height: 58vw; max-height: 300px; }
+  .imageWrapper { width: 72%; height: 46vw; max-height: 240px; }
   .socialCircle { width: 44px; height: 44px; }
   .apoyaBtn { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
   .content :global(.btn-primary) { font-size: 1.45rem; letter-spacing: 4px; padding: .85rem 2rem; }
@@ -621,7 +621,7 @@
 @media (max-width: 390px) {
   .titleMain { font-size: clamp(2.5rem, 14vw, 3.2rem); }
   .titleSub  { font-size: clamp(2.5rem, 14vw, 3.2rem); }
-  .imageWrapper { width: 85%; height: 60vw; }
+  .imageWrapper { width: 80%; height: 46vw; max-height: 220px; }
   .content :global(.btn-primary) { font-size: 1.3rem; letter-spacing: 3px; padding: .8rem 1.8rem; }
   .apoyaBtn { font-size: 1.3rem; letter-spacing: 3px; padding: .8rem 1.8rem; }
   .apoyaSecundario { font-size: 1.1rem; letter-spacing: 2px; padding: .75rem 1.5rem; margin: 0 auto .4rem; position: relative; z-index: 20; pointer-events: auto !important; }

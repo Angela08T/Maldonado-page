@@ -9,7 +9,7 @@ const programas = [
       </svg>
     ),
     title: 'MACROCENTRAL DE VIGILANCIA INTELIGENTE',
-    desc: '500 cámaras con IA en las 8 zonas de mayor criminalidad, enlace directo a comisarías.',
+    desc: '500 nuevas cámaras con IA en las zonas de mayor incidencia.',
   },
   {
     num: '02', color: 'red',
@@ -20,7 +20,7 @@ const programas = [
       </svg>
     ),
     title: 'PLAN "SJL SIN ZONAS ROJAS"',
-    desc: 'Intervención en los 15 puntos más peligrosos. Serenazgo, PNP y Ministerio Público juntos.',
+    desc: 'Intervención en los 50 puntos más peligrosos. Serenazgo, PNP y Ministerio Público juntos.',
   },
   {
     num: '03', color: 'blue',
@@ -29,7 +29,7 @@ const programas = [
         <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 7h6"/>
       </svg>
     ),
-    title: 'APP "CHAPA CHOROS"',
+    title: 'APP CHAPA TU CHORO',
     desc: 'Botón de pánico para cada vecino. Respuesta en menos de 5 minutos con coordinación serenazgo.',
   },
   {
@@ -40,7 +40,7 @@ const programas = [
         <path d="M7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/>
       </svg>
     ),
-    title: 'PROGRAMA "RESCATA JOVEN"',
+    title: 'PROGRAMA "RESCATE JUVENIL"',
     desc: 'Centros de formación en 10 zonas. Deporte, oficio y empleo como alternativa a las pandillas.',
   },
   {
@@ -61,7 +61,7 @@ const programas = [
       </svg>
     ),
     title: 'RECUPERACIÓN DE ESPACIOS PÚBLICOS',
-    desc: 'Parques oscuros e iluminados, activados y devueltos a las familias del distrito.',
+    desc: 'Parques mejor iluminados, activados y recuperados para las familias del distrito.',
   },
 ]
 
