@@ -4,9 +4,7 @@ import styles from './RendicionPage.module.css'
 // Import all 79 slide images
 const slides = Array.from({ length: 79 }, (_, i) => {
   const n = String(i + 1).padStart(2, '0')
-  const exts = { 1:'jpg',2:'jpg',32:'jpg',33:'jpg',34:'jpg',35:'jpg',36:'jpg',46:'jpg',53:'jpg',79:'jpg' }
-  const ext = exts[i + 1] || 'png'
-  return new URL(`../../assets/rendicion/slide${n}.${ext}`, import.meta.url).href
+  return new URL(`../../assets/rendicion/slide${n}.jpg`, import.meta.url).href
 })
 
 function useFadeIn() {

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './Galeria.module.css'
 
-import g1 from '../../assets/galeria1.png'
+import g1 from '../../assets/galeria1.jpg'
 import g2 from '../../assets/galeria2.jpg'
 import g3 from '../../assets/galeria3.jpg'
 import g4 from '../../assets/galeria4.jpg'

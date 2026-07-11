@@ -67,7 +67,7 @@ const programas = [
 
 const metas = [
   {
-    accion: 'INSTALAR', num: '500', cosa: 'CÁMARAS MÁS',
+    accion: 'INSTALAR', num: '500 NUEVAS', cosa: 'CÁMARAS',
     icon: (
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
@@ -114,7 +114,7 @@ export default function Gestion() {
       <div className={`${styles.header} reveal`}>
         <span className={styles.eyebrow}>Propuestas 2026 – 2030</span>
         <h2 className={styles.titulo}>
-          NUESTRAS <span>PRIORIDADES</span>
+          NUESTRAS <span>PROPUESTAS 2026-2030</span>
         </h2>
         <div className={styles.titleLine} />
         <p className={styles.subtitulo}>
