@@ -101,9 +101,9 @@ export default function Simpatizantes({ onBack }) {
     setError('')
     const { error: err } = await supabase
       .from('simpatizantes')
-      .insert({ nombre, dni, telefono })
+      .insert({ nombre, apellidos: nombre, dni, telefono })
     setLoading(false)
-    if (err) { console.error('Supabase error:', err); setError(`Error: ${err.message || err.code || 'Intenta nuevamente.'}`); return }
+    if (err) { setError('Hubo un error. Intenta nuevamente.'); return }
     setEnviado(true)
   }
 
