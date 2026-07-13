@@ -76,7 +76,8 @@ export default function PersoneroPage({ onBack }) {
   const [fields, setFields]       = useState({
     apellido_paterno:'', apellido_materno:'', nombres:'', dni:'',
     fecha_nacimiento:'', lugar_nacimiento:'', region:'', provincia:'',
-    distrito:'', direccion:'', telefono:'', comuna:'', email:''
+    distrito:'', direccion:'', telefono:'', comuna:'', email:'',
+    colegio_votacion:'', numero_mesa:''
   })
   const canvasRef = useRef(null)
 
@@ -234,6 +235,20 @@ export default function PersoneroPage({ onBack }) {
         <div className={styles.campoFull}>
           <label>Lugar de Nacimiento</label>
           <input type="text" className={styles.inputFull} value={fields.lugar_nacimiento} onChange={set('lugar_nacimiento')} />
+        </div>
+
+        {/* DATOS ELECTORALES */}
+        <h2 className={styles.seccion}>DATOS ELECTORALES</h2>
+
+        <div className={styles.duoRow}>
+          <div className={styles.campo}>
+            <label>N° de Mesa</label>
+            <input type="text" inputMode="numeric" className={styles.inputCampo} value={fields.numero_mesa} onChange={set('numero_mesa')} />
+          </div>
+          <div className={styles.campoEmail}>
+            <label>Colegio de Votación</label>
+            <input type="text" className={styles.inputCampo} value={fields.colegio_votacion} onChange={set('colegio_votacion')} />
+          </div>
         </div>
 
         {/* DOMICILIO ACTUAL */}

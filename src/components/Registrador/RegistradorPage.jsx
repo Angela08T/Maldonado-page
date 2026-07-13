@@ -46,7 +46,8 @@ function SignaturePad({ canvasRef }) {
 const EMPTY_FIELDS = {
   apellido_paterno:'', apellido_materno:'', nombres:'', dni:'',
   fnac_dia:'', fnac_mes:'', fnac_anio:'',
-  lugar_nacimiento:'', region:'', provincia:'',
+  lugar_nacimiento:'', colegio_votacion:'', numero_mesa:'',
+  region:'', provincia:'',
   distrito:'', direccion:'', telefono:'', comuna:'', email:''
 }
 
@@ -90,6 +91,8 @@ export default function RegistradorPage({ onBack }) {
       dni:              fields.dni,
       fecha_nacimiento,
       lugar_nacimiento: fields.lugar_nacimiento,
+      colegio_votacion: fields.colegio_votacion,
+      numero_mesa:      fields.numero_mesa,
       region:           fields.region,
       provincia:        fields.provincia,
       distrito:         fields.distrito,
@@ -305,6 +308,19 @@ export default function RegistradorPage({ onBack }) {
         <div className={styles.campoFull}>
           <label>Lugar de Nacimiento</label>
           <input type="text" className={styles.inputFull} value={fields.lugar_nacimiento} onChange={set('lugar_nacimiento')} />
+        </div>
+
+        <h2 className={styles.seccion}>DATOS ELECTORALES</h2>
+
+        <div className={styles.duoRow}>
+          <div className={styles.campo}>
+            <label>N° de Mesa</label>
+            <input type="text" inputMode="numeric" className={styles.inputCampo} value={fields.numero_mesa} onChange={set('numero_mesa')} />
+          </div>
+          <div className={styles.campoEmail}>
+            <label>Colegio de Votación</label>
+            <input type="text" className={styles.inputCampo} value={fields.colegio_votacion} onChange={set('colegio_votacion')} />
+          </div>
         </div>
 
         <h2 className={styles.seccion}>DOMICILIO ACTUAL</h2>

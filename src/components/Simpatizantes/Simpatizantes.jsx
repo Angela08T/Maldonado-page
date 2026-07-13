@@ -103,7 +103,7 @@ export default function Simpatizantes({ onBack }) {
       .from('simpatizantes')
       .insert({ nombre, dni, telefono })
     setLoading(false)
-    if (err) { setError('Hubo un error. Intenta nuevamente.'); return }
+    if (err) { console.error('Supabase error:', err); setError(`Error: ${err.message || err.code || 'Intenta nuevamente.'}`); return }
     setEnviado(true)
   }
 
