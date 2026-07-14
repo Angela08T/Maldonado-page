@@ -205,9 +205,9 @@ export default function App() {
         <CantoGrandePage onBack={goHome} />
       ) : page === 'ale' ? (
         <AleCoworkingPage onBack={goHome} />
-      ) : page === 'donaciones' ? (
+      ) : /* donaciones oculto temporalmente page === 'donaciones' ? (
         <DonacionesPage onBack={goHome} />
-      ) : page === 'personero' ? (
+      ) : */ page === 'personero' ? (
         <PersoneroPage onBack={goHome} />
       ) : (
         <>

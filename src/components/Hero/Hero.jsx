@@ -113,6 +113,7 @@ export default function Hero({ setPage }) {
         <p className={styles.desc}>
           Trabajamos para construir un distrito moderno, seguro y con más oportunidades.
         </p>
+        {/* APOYA A LA CAUSA — oculto temporalmente
         <button
           className={styles.apoyaSecundario}
           onClick={() => { setPage && setPage('donaciones'); window.scrollTo({ top: 0 }) }}
@@ -124,6 +125,7 @@ export default function Hero({ setPage }) {
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </button>
+        */}
       </div>
 
       <div className={styles.imageWrapper}>
