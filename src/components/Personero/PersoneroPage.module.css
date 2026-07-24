@@ -321,15 +321,36 @@
 
 /* ── IMPRESIÓN ── */
 @media print {
+  @page { margin: 1.5cm; size: A4 portrait; }
+
   body * { visibility: hidden; }
-  .ficha, .ficha * { visibility: visible; }
-  .ficha {
-    position: fixed; top: 0; left: 0;
-    width: 100%; max-width: 100%;
-    box-shadow: none; border-radius: 0;
-    padding: 1.5cm 2cm;
+  .page, .page * { visibility: visible; }
+
+  .page {
+    position: absolute;
+    top: 0; left: 0;
+    padding: 0 !important;
+    background: white !important;
+    gap: 0 !important;
+    min-height: unset;
+    align-items: stretch;
   }
-  .actions { display: none; }
+
+  .ficha {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    font-size: .82rem;
+  }
+
+  .actions,
+  .downloadBtnBottom,
+  .downloadBtnTop,
+  .errorBanner,
+  .popupOverlay { display: none !important; }
 }
 
 /* ── Responsive ── */
