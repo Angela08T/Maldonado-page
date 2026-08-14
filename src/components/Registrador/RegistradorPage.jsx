@@ -315,13 +315,17 @@ export default function RegistradorPage({ onBack }) {
         <div className={styles.duoRow}>
           <div className={styles.campo}>
             <label>N° de Mesa</label>
-            <input type="text" inputMode="numeric" className={styles.inputCampo} value={fields.numero_mesa} onChange={set('numero_mesa')} />
+            <input type="text" inputMode="numeric" placeholder="Ej: 001234" className={styles.inputCampo} value={fields.numero_mesa} onChange={set('numero_mesa')} />
           </div>
           <div className={styles.campoEmail}>
             <label>Colegio de Votación</label>
-            <input type="text" className={styles.inputCampo} value={fields.colegio_votacion} onChange={set('colegio_votacion')} />
+            <input type="text" placeholder="Ej: I.E. San Martín" className={styles.inputCampo} value={fields.colegio_votacion} onChange={set('colegio_votacion')} />
           </div>
         </div>
+        <p className={styles.hintText}>
+          ¿No sabes tu número de mesa o local de votación?{' '}
+          <a href="https://consultaelectoral.onpe.gob.pe/inicio" target="_blank" rel="noopener noreferrer">Consúltalo aquí</a>
+        </p>
 
         <h2 className={styles.seccion}>DOMICILIO ACTUAL</h2>
 
@@ -348,7 +352,12 @@ export default function RegistradorPage({ onBack }) {
         <div className={styles.duoRow}>
           <div className={styles.campo}>
             <label>Comuna</label>
-            <input type="text" className={styles.inputCampo} value={fields.comuna} onChange={set('comuna')} />
+            <select className={styles.inputCampo} value={fields.comuna} onChange={set('comuna')}>
+              <option value="">Seleccione</option>
+              {Array.from({ length: 18 }, (_, i) => (
+                <option key={i + 1} value={`Comuna ${i + 1}`}>Comuna {i + 1}</option>
+              ))}
+            </select>
           </div>
           <div className={styles.campoEmail}>
             <label>Correo Electrónico</label>

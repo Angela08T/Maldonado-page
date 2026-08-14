@@ -310,6 +310,10 @@
 .duoRow { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin-bottom: 2rem; }
 .campoEmail label { font-size: .82rem; display: block; margin-bottom: .2rem; }
 
+/* ── Hint text ── */
+.hintText { font-size: .78rem; color: #555; margin: -1.4rem 0 2rem; }
+.hintText a { color: #003D82; font-weight: 600; text-decoration: underline; }
+
 /* ── Firma y huella ── */
 .firmaRow { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 1rem; }
 .firmaBox { display: flex; flex-direction: column; align-items: center; gap: .4rem; width: 200px; }
@@ -414,6 +418,7 @@
   .downloadBtnBottom,
   .downloadBtnTop,
   .errorBanner,
+  .hintText,
   .popupOverlay { display: none !important; }
 }
 
