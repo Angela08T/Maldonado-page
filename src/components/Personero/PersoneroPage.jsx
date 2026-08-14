@@ -292,6 +292,7 @@ export default function PersoneroPage({ onBack }) {
               {Array.from({ length: 18 }, (_, i) => (
                 <option key={i + 1} value={`Comuna ${i + 1}`}>Comuna {i + 1}</option>
               ))}
+              <option value="No sé / No conozco mi comuna">No sé / No conozco mi comuna</option>
             </select>
           </div>
           <div className={styles.campoEmail}>
