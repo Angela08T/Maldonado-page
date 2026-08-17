@@ -112,9 +112,9 @@ export default function Gestion() {
 
       {/* ── Encabezado ── */}
       <div className={`${styles.header} reveal`}>
-        <span className={styles.eyebrow}>Propuestas 2026 – 2030</span>
+        <span className={styles.eyebrow}>Propuestas 2027 – 2030</span>
         <h2 className={styles.titulo}>
-          NUESTRAS <span>PROPUESTAS 2026-2030</span>
+          NUESTRAS <span>PROPUESTAS 2027-2030</span>
         </h2>
         <div className={styles.titleLine} />
         <p className={styles.subtitulo}>
